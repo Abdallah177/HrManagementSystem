@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
+using HrManagementSystem.Common.Repositories;
 using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace HrManagementSystem.Common
             services.AddFluentValidationConfig();
 
             services.AddMapsterConfig();
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             return services;
         }
