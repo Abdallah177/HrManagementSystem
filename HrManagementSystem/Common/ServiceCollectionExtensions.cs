@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
+using HrManagementSystem.Common.Repositories;
 using Mapster;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;

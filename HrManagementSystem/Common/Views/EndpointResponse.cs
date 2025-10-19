@@ -2,7 +2,7 @@
 
 namespace HrManagementSystem.Common.Views
 {
-    public class EndpointResponse<T>(T Data, bool IsSuccess, string Message, ErrorCode ErrorCode)
+    public record EndpointResponse<T>(T Data, bool IsSuccess, string Message, ErrorCode ErrorCode)
     {
         public T Data { get; } = Data;
         public bool IsSuccess { get; } = IsSuccess;
