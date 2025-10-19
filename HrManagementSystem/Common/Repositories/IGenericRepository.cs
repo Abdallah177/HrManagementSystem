@@ -11,8 +11,8 @@ namespace HrManagementSystem.Common.Repositories
         Task<Entity?> GetByIDAsync(string id, CancellationToken cancellationToken = default);
 
         // --------------------- Add ---------------------
-        Task AddAsync(Entity entity, string currentUserId, CancellationToken cancellationToken);
         Task AddAsync(Entity entity, CancellationToken cancellationToken);
+        Task AddAsync(Entity entity, string currentUserId, CancellationToken cancellationToken);
 
         // --------------------- Update ---------------------
         void Update(Entity entity);
