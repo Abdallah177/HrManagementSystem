@@ -1,5 +1,8 @@
 
 using HrManagementSystem.Common;
+using HrManagementSystem.Common.Middlewares;
+using HrManagementSystem.Common.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem
 {
@@ -13,7 +16,13 @@ namespace HrManagementSystem
 
             builder.Services.AddApplicationServices(builder.Configuration);
 
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            builder.Services.AddScoped<TransactionMiddleware>();
+
             var app = builder.Build();
+
+            app.UseMiddleware<TransactionMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -2,7 +2,7 @@
 
 namespace HrManagementSystem.Common.Middlewares
 {
-    public class TransactionMiddleware
+    public class TransactionMiddleware : IMiddleware
     {
         private readonly AppDbContext _context;
         public TransactionMiddleware(AppDbContext context)

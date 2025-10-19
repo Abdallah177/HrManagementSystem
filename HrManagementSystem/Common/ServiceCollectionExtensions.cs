@@ -25,6 +25,9 @@ namespace HrManagementSystem.Common
 
             services.AddMapsterConfig();
 
+            services.AddMediatRConfig();
+
+
             return services;
         }
 
@@ -45,6 +48,11 @@ namespace HrManagementSystem.Common
             return services;
         }
 
+        public static IServiceCollection AddMediatRConfig(this IServiceCollection services)
+        {
+            services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            return services;
+        }
     }
 
 }
