@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
+using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using Mapster;
 using MapsterMapper;
@@ -21,6 +22,15 @@ namespace HrManagementSystem.Common
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddScoped(typeof(RequestHandlerBaseParameters<>));
+
+            services.AddScoped(typeof(EndpointBaseParameters<>));
+
+            services.AddScoped<TransactionMiddleware>();
+
 
             services.AddFluentValidationConfig();
 

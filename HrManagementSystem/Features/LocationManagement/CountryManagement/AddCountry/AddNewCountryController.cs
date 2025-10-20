@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.AddCo
         [HttpPost("")]
         public async Task<EndpointResponse<bool>> Add([FromBody] AddCountryViewModel addCountryView,CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new AddCountryCommand(addCountryView.Name, addCountryView.Code), cancellationToken);
+            var result = await _mediator.Send(new AddCountryCommand(addCountryView.Name, addCountryView.Code, addCountryView.UserId), cancellationToken);
 
             return result;
         }

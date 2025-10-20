@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.AddCountry.Commands;
 
-public record AddCountryCommand(string Name,string? Code) : IRequest<EndpointResponse<bool>>;
+public record AddCountryCommand(string Name,string? Code , string UserId) : IRequest<EndpointResponse<bool>>;
 
 public class AddCountryHandler(IGenericRepository<Country> genericRepository,IMediator mediator) : IRequestHandler<AddCountryCommand, EndpointResponse<bool>>
 {
@@ -23,7 +23,7 @@ public class AddCountryHandler(IGenericRepository<Country> genericRepository,IMe
 
         var country = new Country { Name = request.Name, Code = request.Code};
 
-        await _genericRepository.AddAsync(country, cancellationToken);
+        await _genericRepository.AddAsync(country, request.UserId, cancellationToken);
 
         return EndpointResponse<bool>.Success(default, "Country Added Successfully");
     }

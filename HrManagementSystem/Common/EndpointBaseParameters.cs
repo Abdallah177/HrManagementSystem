@@ -10,7 +10,7 @@ namespace HrManagementSystem.Common
 
         public IMediator Mediator => _mediator;
         public IValidator<TRequest> Validator => _validator;
-      
+
 
 
         public EndpointBaseParameters(IMediator mediator, IValidator<TRequest> validator)
