@@ -11,11 +11,13 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetAl
 {
     public record GetAllCountriesQuery() : IRequest<EndpointResponse<List<GetAllCountriesViewModel>>>;
 
-    public class GetAllCountriesHandler : RequestHandlerBase<GetAllCountriesQuery, EndpointResponse<List<GetAllCountriesViewModel>>>
+    // Change the base class to provide the required third type argument (Country)
+    public class GetAllCountriesHandler : RequestHandlerBase<GetAllCountriesQuery, EndpointResponse<List<GetAllCountriesViewModel>>, Country>
     {
         private readonly IGenericRepository<Country> _genericRepository;
 
-        public GetAllCountriesHandler( IGenericRepository<Country> genericRepository, RequestHandlerBaseParameters parameters  ) : base(parameters)
+        public GetAllCountriesHandler(IGenericRepository<Country> genericRepository, RequestHandlerBaseParameters<Country> parameters)
+            : base(parameters)
         {
             _genericRepository = genericRepository;
         }
@@ -30,7 +32,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetAl
                 return EndpointResponse<List<GetAllCountriesViewModel>>.Failure("No countries found", ErrorCode.CountryNotFound);
 
             var viewModels = countries.Adapt<List<GetAllCountriesViewModel>>();
-                return EndpointResponse<List<GetAllCountriesViewModel>>.Success(viewModels, "Countries retrieved successfully");
+            return EndpointResponse<List<GetAllCountriesViewModel>>.Success(viewModels, "Countries retrieved successfully");
         }
     }
 }
