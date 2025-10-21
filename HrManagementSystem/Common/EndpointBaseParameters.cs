@@ -18,5 +18,11 @@ namespace HrManagementSystem.Common
             _mediator = mediator;
             _validator = validator;
         }
+
+        public EndpointBaseParameters(IMediator mediator)
+        {
+            _mediator = mediator;
+            _validator = null;
+        }
     }
 }

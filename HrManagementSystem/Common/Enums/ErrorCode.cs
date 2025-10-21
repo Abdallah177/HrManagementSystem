@@ -8,5 +8,9 @@
 
 
         StateNotFound = 200,
+
+        StateIsExist = 300,
+
+        CountryHasStates = 400,
     }
 }
