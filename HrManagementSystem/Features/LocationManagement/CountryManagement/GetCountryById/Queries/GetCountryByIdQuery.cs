@@ -2,7 +2,7 @@
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.GetByIdCountry.Dtos;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.GetCountryById.Dtos;
 using Mapster;
 using MediatR;
 

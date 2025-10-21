@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetByIdCountry.Dtos
+﻿namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetCountryById.Dtos
 {
     public class CountryDto
     {
