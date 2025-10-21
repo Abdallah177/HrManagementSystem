@@ -4,6 +4,7 @@ using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using Mapster;
 using MapsterMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using System.Reflection;
@@ -37,6 +38,9 @@ namespace HrManagementSystem.Common
             services.AddMapsterConfig();
 
             services.AddMediatRConfig();
+            
+            services.AddTransient<RequestHandlerBaseParameters>(sp => new RequestHandlerBaseParameters(sp.GetRequiredService<IMediator>()));
+
 
 
             return services;

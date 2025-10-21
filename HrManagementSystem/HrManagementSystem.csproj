@@ -29,12 +29,18 @@
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
+<<<<<<< HEAD
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetByIdCountry\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+=======
+    <Folder Include="Features\LocationManagement\CityManagement\" />
+    <Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
+    <Folder Include="Features\LocationManagement\StateManagement\" />
+>>>>>>> feature/GetAll
     <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
