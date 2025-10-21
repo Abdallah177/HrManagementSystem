@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Helper\" />
     <Folder Include="Features\Common\" />
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />

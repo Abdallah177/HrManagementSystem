@@ -27,7 +27,7 @@ namespace HrManagementSystem.Common
             services.AddMapsterConfig();
 
             services.AddMediatRConfig();
-
+            
 
             return services;
         }
