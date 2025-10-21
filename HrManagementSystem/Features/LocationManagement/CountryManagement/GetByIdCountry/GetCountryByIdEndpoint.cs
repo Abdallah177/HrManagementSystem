@@ -2,11 +2,11 @@
 using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.GetById.Queries;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.GetByIdCountry.Queries;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetById
+namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetByIdCountry
 {
     public class GetCountryByIdEndpoint : BaseEndPoint<GetCountryByIdRequestViewModel, GetCountryByIdResponseViewModel>
     {
