@@ -11,7 +11,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetAl
 {
     public record GetAllCountriesQuery() : IRequest<EndpointResponse<List<GetAllCountriesViewModel>>>;
 
-    // Change the base class to provide the required third type argument (Country)
+
     public class GetAllCountriesHandler : RequestHandlerBase<GetAllCountriesQuery, EndpointResponse<List<GetAllCountriesViewModel>>, Country>
     {
         private readonly IGenericRepository<Country> _genericRepository;
