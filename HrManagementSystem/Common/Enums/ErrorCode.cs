@@ -12,5 +12,6 @@
         StateIsExist = 300,
 
         CountryHasStates = 400,
+        NoCitiesfound = 201,
     }
 }
