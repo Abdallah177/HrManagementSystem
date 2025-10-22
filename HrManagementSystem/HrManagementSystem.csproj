@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
@@ -30,6 +31,8 @@
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\CityManagement\" />
+    <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
+    <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\" />
     <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\" />

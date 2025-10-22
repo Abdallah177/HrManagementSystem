@@ -23,8 +23,6 @@ namespace HrManagementSystem.Common.Repositories
         {
             entity.CreatedByUser = currentUserId;
             entity.CreatedAt = DateTime.UtcNow;
-            entity.IsActive = true;
-            entity.IsDeleted = false;
 
             await _dbSet.AddAsync(entity , cancellationToken);
         }
