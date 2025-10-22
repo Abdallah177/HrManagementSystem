@@ -15,8 +15,7 @@ namespace HrManagementSystem.Features.BranchManagement.Common.Queries.CheckBranc
         }
         public async override Task<RequestResult<bool>> Handle(CheckBranchExistsQuery request, CancellationToken cancellationToken)
         {
-            var branchExists = await _repository.GetAll()
-                .AnyAsync(b => b.Id == request.BranchId);
+            var branchExists = await _repository.IsExistsAsync(b => b.Id == request.BranchId);
 
             return RequestResult<bool>.Success(branchExists);
         }

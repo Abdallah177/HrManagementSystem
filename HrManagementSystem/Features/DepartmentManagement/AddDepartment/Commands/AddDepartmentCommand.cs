@@ -24,7 +24,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.AddDepartment.Command
 
             var departmentExistsResult = await _mediator.Send(new CheckDepartmentExistOnBranchQuery(request.Name, request.BranchId));
             if (departmentExistsResult.Data)
-                return RequestResult<bool>.Failure("Department with this name already exists in this branch", ErrorCode.DuplicateEntry);
+                return RequestResult<bool>.Failure("Department with this name already exists in this branch", ErrorCode.DepartmentIsExist);
 
             var department = request.Adapt<Department>();
 

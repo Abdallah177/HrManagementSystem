@@ -5,6 +5,7 @@ using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.Country.Queries.CheckCountryExists;
 using HrManagementSystem.Features.Common.Country.Queries.CheckCountryHasStates;
+using HrManagementSystem.Features.LocationManagement.Common.Country.Queries.CheckCountryHasCompany;
 using MediatR;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Commands
@@ -23,9 +24,13 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Delet
             if (!CountryExists.Data)
                 return RequestResult<bool>.Failure("Country not found", ErrorCode.CountryNotFound);
 
-            var HasStates = await _mediator.Send(new CheckCountryHasStatesQuery(request.CountryId));
-            if (HasStates.Data)
+            var hasStates = await _mediator.Send(new CheckCountryHasStatesQuery(request.CountryId));
+            if (hasStates.Data)
                 return RequestResult<bool>.Failure("Country related with states", ErrorCode.CountryHasStates);
+
+            var hasCompany = await _mediator.Send(new CheckCountryHasCompanyQuery(request.CountryId));
+            if (hasCompany.Data)
+                return RequestResult<bool>.Failure("There is companies related with this country", ErrorCode.CountryHasRelatedCompanies);
 
             await _repository.DeleteAsync(request.CountryId ,request.currentUserId,cancellationToken);
 

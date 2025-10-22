@@ -16,5 +16,7 @@
         NoOrganizationFound = 201,
         NoCitiesfound = 202,
         BranchNotFound = 203,
+        DepartmentIsExist = 204,
+        CountryHasRelatedCompanies = 205,
     }
 }
