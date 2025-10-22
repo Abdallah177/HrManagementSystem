@@ -11,12 +11,12 @@ namespace HrManagementSystem.Common.Views
 
         public static RequestResult<T> Failure(string Message = "" , ErrorCode errorCode = ErrorCode.NoError)
         {
-            return new RequestResult<T>(default, true, Message, errorCode);
+            return new RequestResult<T>(default, false, Message, errorCode);
         }
 
         public static RequestResult<T> Failure(ErrorCode errorCode)
         {
-            return new RequestResult<T>(default, true, string.Empty, errorCode);
+            return new RequestResult<T>(default, false, string.Empty, errorCode);
         }
     }
 }
