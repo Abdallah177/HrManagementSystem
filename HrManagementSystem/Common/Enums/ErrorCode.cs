@@ -5,6 +5,7 @@
         NoError = 1 ,
 
         CountryNotFound =100,
-        StateNotFound=101
+        StateNotFound=101,
+            CityNotFound=102
     }
 }
