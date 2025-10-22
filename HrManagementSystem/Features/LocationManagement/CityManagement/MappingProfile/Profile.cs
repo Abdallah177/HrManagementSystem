@@ -1,5 +1,6 @@
 ﻿using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity.DTOs;
 using Mapster;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.MappingProfile
@@ -16,6 +17,8 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.MappingP
             .Map(dest => dest.StateName, src => src.State.Name)
             .Map(dest => dest.CountryName, src => src.State.Country.Name)
             .Map(dest => dest.IsActive, src => src.IsActive);
+
+
 
         }
     }

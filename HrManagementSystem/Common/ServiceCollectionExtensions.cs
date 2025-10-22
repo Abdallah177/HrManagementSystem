@@ -39,7 +39,7 @@ namespace HrManagementSystem.Common
 
             services.AddMediatRConfig();
             
-            services.AddTransient<RequestHandlerBaseParameters>(sp => new RequestHandlerBaseParameters(sp.GetRequiredService<IMediator>()));
+            
 
 
 
