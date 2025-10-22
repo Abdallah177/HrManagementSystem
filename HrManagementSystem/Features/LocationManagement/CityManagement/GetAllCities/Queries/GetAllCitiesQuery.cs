@@ -1,5 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities.Location;
+using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
@@ -24,8 +25,10 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCi
                 .OrderBy(c => c.Name)
                 .ProjectToType<CityResponseDto>()
                 .ToListAsync(cancellationToken);
+            if (cities == null)
+                return RequestResult<List<CityResponseDto>>.Failure("No cities found", ErrorCode.NoCitiesfound);
 
-               return  RequestResult<List<CityResponseDto>>.Success(cities);
+            return RequestResult<List<CityResponseDto>>.Success(cities);
         }
     }
 }
