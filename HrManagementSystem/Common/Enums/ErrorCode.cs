@@ -4,6 +4,7 @@
     {
         NoError = 1 ,
 
-        CountryNotFound =100
+        CountryNotFound =100,
+        StateNotFound=101
     }
 }

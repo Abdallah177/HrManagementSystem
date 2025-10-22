@@ -10,14 +10,14 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Updat
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UpdateCountryController : BaseEndPoint<UpdateCountryRequestViewModle,bool>
+    public class UpdateCountryController : BaseEndPoint<UpdateCountryRequestViewModle, UpdateCountryResponseViewModel>
     {
         public UpdateCountryController(EndpointBaseParameters<UpdateCountryRequestViewModle> parameters):base(parameters) { }
 
 
-        [HttpPut]
+        [HttpPut("")]
 
-        public async Task  <EndpointResponse<UpdateCountryResponseViewModel>> UpdateCountry (UpdateCountryRequestViewModle request)
+        public async Task  <EndpointResponse<UpdateCountryResponseViewModel>> UpdateCountry ([FromBody]UpdateCountryRequestViewModle request)
         {
 
             var validation = ValidateRequest(request);

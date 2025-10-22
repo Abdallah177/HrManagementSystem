@@ -17,31 +17,28 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Updat
     }
 
 
-    public class UpdateCountryCommandHandler : RequestHandlerBase<UdateCountryCommand, RequestResult<Country>>
+    public class UpdateCountryCommandHandler : RequestHandlerBase<UdateCountryCommand, RequestResult<Country>,Country>
     {
-        private readonly IGenericRepository<Country> _countryRepository;
-        public UpdateCountryCommandHandler(RequestHandlerBaseParameters parameters, IGenericRepository<Country> countryRepository) : base(parameters)
-        {
-            _countryRepository = countryRepository;
-        }
-
+        
+        public UpdateCountryCommandHandler(RequestHandlerBaseParameters<Country> parameters) : base(parameters) { }
+       
         public override async Task<RequestResult<Country>> Handle(UdateCountryCommand request, CancellationToken cancellationToken)
         {
 
             // Will Be Refactor After Making GetByIdCrud
-            var country = await _countryRepository.GetByIDAsync(request.Id);
+            var country = await _repository.GetByIDAsync(request.Id);
             if (country == null)
                 return RequestResult<Country>.Failure("Country not found", ErrorCode.CountryNotFound);
 
 
-            request.Adapt(country);
+             request.Adapt(country);
 
            
             country.UpdatedByUser = request.UpdatedByUser;
             country.UpdatedAt = DateTime.UtcNow;
 
             
-             _countryRepository.Update(country, request.UpdatedByUser);
+             _repository.Update(country, request.UpdatedByUser);
 
             
             return RequestResult<Country>.Success(country, "Country updated successfully");
