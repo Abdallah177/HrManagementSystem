@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity
+﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity
 {
     public class GetCityByIdResponseViewModel
     {

@@ -1,4 +1,5 @@
-﻿using HrManagementSystem.Common;
+﻿
+using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;

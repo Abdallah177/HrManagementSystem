@@ -1,6 +1,6 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos
+﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity.DTOs
 {
-    public class CityResponseDto
+    public class CityDTOs
     {
         public string CityId { get; set; }
         public string CityName { get; set; }

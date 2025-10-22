@@ -1,5 +1,5 @@
 ﻿using HrManagementSystem.Common.Entities.Location;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity.DTOs;
+using HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity.DTOs;
 using Mapster;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.MappingProfile
