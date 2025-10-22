@@ -8,9 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
 	  <Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <Content Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
 	  <Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <EmbeddedResource Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
 	  <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <None Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
 	  <None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	</ItemGroup>
 
@@ -34,7 +38,7 @@
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\DeleteCompany\Commands\" />
-		<Folder Include="Features\DepartmentManagement\AddDepartment\Command\" />
+		<Folder Include="Features\DepartmentManagement\AddDepartment\Validators\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />

@@ -15,5 +15,6 @@
 
         NoOrganizationFound = 201,
         NoCitiesfound = 202,
+        BranchNotFound = 203,
     }
 }

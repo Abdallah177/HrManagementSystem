@@ -2,7 +2,7 @@
 {
     public class GetTeamsDto
     {
-        public string DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
+        public string TeamId { get; set; }
+        public string TeamName { get; set; }
     }
 }
