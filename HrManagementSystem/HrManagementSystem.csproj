@@ -7,6 +7,7 @@
     <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Compile Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <Content Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
@@ -42,5 +43,51 @@
     <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
+=======
+	<ItemGroup>
+		<Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	</ItemGroup>
+
+	<!-- Package References -->
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="12.0.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+		<PackageReference Include="Mapster" Version="7.4.0" />
+		<PackageReference Include="MediatR" Version="13.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.21" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.21" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.21" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.21">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.5.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+
+	<!-- Folder Structure -->
+	<ItemGroup>
+		<Folder Include="Features\Common\" />
+		<Folder Include="Features\CompanyManagement\" />
+		<Folder Include="Features\BranchManagement\" />
+		<Folder Include="Features\DepartmentManagement\" />
+		<Folder Include="Features\LocationManagement\CityManagement\" />
+		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
+		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
+		<Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
+		<Folder Include="Features\LocationManagement\CountryManagement\GetByIdCountry\Commands\" />
+		<Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
+		<Folder Include="Features\LocationManagement\Common\Commands\" />
+		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
+		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
+		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+		<Folder Include="Features\OrganizationManagement\" />
+		<Folder Include="Features\TeamManagement\" />
+	</ItemGroup>
+>>>>>>> 0a915aa20a3966276f88a498260bede6c84004d1
 
 </Project>
