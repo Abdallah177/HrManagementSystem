@@ -28,7 +28,7 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.UpdateS
 
             var IsCountryExist = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
 
-            if (!IsCountryExist)
+            if (!IsCountryExist.Data)
                 return RequestResult<StateDto>.Failure("Country Not Found.", ErrorCode.CountryNotFound);
 
             state.Name = request.Name;

@@ -11,26 +11,26 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetAl
 {
     public record GetAllCountriesQuery() : IRequest<EndpointResponse<List<GetAllCountriesViewModel>>>;
 
-    public class GetAllCountriesHandler : RequestHandlerBase<GetAllCountriesQuery, EndpointResponse<List<GetAllCountriesViewModel>>>
-    {
-        private readonly IGenericRepository<Country> _genericRepository;
+    //public class GetAllCountriesHandler : RequestHandlerBase<GetAllCountriesQuery, EndpointResponse<List<GetAllCountriesViewModel>>>
+    //{
+    //    private readonly IGenericRepository<Country> _genericRepository;
 
-        public GetAllCountriesHandler( IGenericRepository<Country> genericRepository, RequestHandlerBaseParameters parameters  ) : base(parameters)
-        {
-            _genericRepository = genericRepository;
-        }
+    //    public GetAllCountriesHandler( IGenericRepository<Country> genericRepository, RequestHandlerBaseParameters parameters  ) : base(parameters)
+    //    {
+    //        _genericRepository = genericRepository;
+    //    }
 
-        public override async Task<EndpointResponse<List<GetAllCountriesViewModel>>> Handle(GetAllCountriesQuery request, CancellationToken cancellationToken)
-        {
-            var countries = await _genericRepository.GetAll()
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
+    //    public override async Task<EndpointResponse<List<GetAllCountriesViewModel>>> Handle(GetAllCountriesQuery request, CancellationToken cancellationToken)
+    //    {
+    //        var countries = await _genericRepository.GetAll()
+    //            .AsNoTracking()
+    //            .ToListAsync(cancellationToken);
 
-            if (countries is null || !countries.Any())
-                return EndpointResponse<List<GetAllCountriesViewModel>>.Failure("No countries found", ErrorCode.CountryNotFound);
+    //        if (countries is null || !countries.Any())
+    //            return EndpointResponse<List<GetAllCountriesViewModel>>.Failure("No countries found", ErrorCode.CountryNotFound);
 
-            var viewModels = countries.Adapt<List<GetAllCountriesViewModel>>();
-                return EndpointResponse<List<GetAllCountriesViewModel>>.Success(viewModels, "Countries retrieved successfully");
-        }
-    }
+    //        var viewModels = countries.Adapt<List<GetAllCountriesViewModel>>();
+    //            return EndpointResponse<List<GetAllCountriesViewModel>>.Success(viewModels, "Countries retrieved successfully");
+    //    }
+    //}
 }
