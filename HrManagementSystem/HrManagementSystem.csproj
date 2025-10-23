@@ -38,6 +38,7 @@
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\DeleteCompany\Commands\" />
+		<Folder Include="Features\CompanyManagement\GetAllCompany\Query\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
@@ -47,14 +48,12 @@
   <ItemGroup>
     <Folder Include="Common\Helper\" />
     <Folder Include="Features\Common\" />
-    <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\CityManagement\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\" />
-    <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
 

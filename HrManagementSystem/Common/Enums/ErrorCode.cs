@@ -5,7 +5,7 @@
         NoError = 1 ,
 
         CountryNotFound =100,
-
+        CityNotFound=101,
 
         StateNotFound = 200,
 
@@ -18,5 +18,6 @@
         BranchNotFound = 203,
         DepartmentIsExist = 204,
         CountryHasRelatedCompanies = 205,
+        OrganizationAlreadyExists=206
     }
 }
