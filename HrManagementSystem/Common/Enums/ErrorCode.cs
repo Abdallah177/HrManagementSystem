@@ -8,22 +8,20 @@
         CountryHasStates = 101,
 
         StateNotFound = 200,
- 
-        StateHasCities =201,
-
-        StateIsExist = 202,
-
+        StateIsExist = 201,
 
         NoCitiesfound = 300,
         CityAlreadyExistsInThisState = 301 ,
 
         OrganizationNotExis = 400,
-
+        
         CompanyNotExist = 500,
 
         BranchNotExist = 600,
 
         DepartmentNotExist= 700,
+        
+        StateHasCities =201,
 
         TeamNotExist = 800,
 

@@ -21,5 +21,8 @@ namespace HrManagementSystem.Common.Repositories
 
         // --------------------- Delete ---------------------
         Task DeleteAsync(string id, string currentUserId, CancellationToken cancellationToken);
+
+        //_______________ Entity exists ______________________
+        Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate);
     }
 }
