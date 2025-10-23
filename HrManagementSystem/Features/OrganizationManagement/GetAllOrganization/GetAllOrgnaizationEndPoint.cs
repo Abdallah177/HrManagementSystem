@@ -1,5 +1,4 @@
 ﻿using HrManagementSystem.Common;
-using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries;
 using Mapster;
