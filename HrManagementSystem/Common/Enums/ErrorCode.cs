@@ -18,5 +18,6 @@
         BranchNotFound = 203,
         DepartmentIsExist = 204,
         CountryHasRelatedCompanies = 205,
+        TeamNotExist = 207,
     }
 }
