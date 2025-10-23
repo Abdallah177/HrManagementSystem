@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 
-namespace HrManagementSystem.Features.LocationManagement.CityManagment.DeleteCity
+namespace HrManagementSystem.Features.LocationManagement.CityManagement.DeleteCity
 {
     public class DeleteCityRequestViewModle
     {
         public string Id { get; set; }
     }
-    public class DeleteCityRequestViewModleValiditor:AbstractValidator<DeleteCityRequestViewModle>
+    public class DeleteCityRequestViewModleValiditor : AbstractValidator<DeleteCityRequestViewModle>
     {
 
         public DeleteCityRequestViewModleValiditor()

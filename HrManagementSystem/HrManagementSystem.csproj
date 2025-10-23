@@ -36,7 +36,7 @@
 		<Folder Include="Features\CompanyManagement\" />
 		<Folder Include="Features\BranchManagement\" />
 		<Folder Include="Features\DepartmentManagement\" />
-		<Folder Include="Features\LocationManagement\CityManagement\" />
+		<Folder Include="Features\LocationManagement\CityManagment\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\OrganizationManagement\" />
@@ -48,7 +48,6 @@
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
-    <Folder Include="Features\LocationManagement\CityManagement\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\" />

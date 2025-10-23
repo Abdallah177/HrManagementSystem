@@ -2,14 +2,13 @@
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-
 using MediatR;
 
-namespace HrManagementSystem.Features.LocationManagement.CityManagment.DeleteCity.Commands
+namespace HrManagementSystem.Features.LocationManagement.CityManagement.DeleteCity.Commands
 {
-    public record DeleteCityCommand(string Id,string UserId):IRequest<RequestResult<bool>>;
+    public record DeleteCityCommand(string Id, string UserId) : IRequest<RequestResult<bool>>;
 
-    public class DeleteCityCommandHandler:RequestHandlerBase<DeleteCityCommand, RequestResult<bool>,State>
+    public class DeleteCityCommandHandler : RequestHandlerBase<DeleteCityCommand, RequestResult<bool>, State>
     {
         public DeleteCityCommandHandler(RequestHandlerBaseParameters<State> parameters) : base(parameters) { }
         public override async Task<RequestResult<bool>> Handle(DeleteCityCommand request, CancellationToken cancellationToken)
@@ -17,8 +16,8 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagment.DeleteCit
             // Will Be Refactoring After Making Get By Id
             var city = await _repository.GetByIDAsync(request.Id, cancellationToken);
             if (city == null)
-                return RequestResult<bool>.Failure("City Not Found",ErrorCode.CityNotFound);
-            
+                return RequestResult<bool>.Failure("City Not Found", ErrorCode.CityNotFound);
+
 
             city.IsDeleted = true;
             city.IsActive = false;
@@ -30,5 +29,5 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagment.DeleteCit
             return RequestResult<bool>.Success(true, "City deleted successfully");
         }
     }
-    
+
 }

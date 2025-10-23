@@ -5,16 +5,16 @@
         NoError = 1 ,
 
         CountryNotFound =100,
-
+        CityNotFound = 102,
 
         StateNotFound = 200,
 
         StateIsExist = 300,
 
         CountryHasStates = 400,
-        NoCitiesfound = 201,
-        CountryNotFound =100,
-        StateNotFound=101,
-            CityNotFound=102
+        NoCitiesfound = 201
+        
+       
+            
     }
 }
