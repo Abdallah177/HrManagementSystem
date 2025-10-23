@@ -26,7 +26,8 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDC
             if (city == null)
                 return RequestResult<CityDTOs?>.Failure("The requested City was not found.", ErrorCode.CountryNotFound);
 
-            var countryDto = city.Adapt<CityDTOs>();
+            var countryDto = city.Adapt<CityDTOs>(); 
+
 
             return RequestResult<CityDTOs?>.Success(countryDto);
         }

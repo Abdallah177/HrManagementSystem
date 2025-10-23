@@ -10,9 +10,8 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.MappingP
         {
             TypeAdapterConfig<City, CityDTOs>
              .NewConfig()
-               .Map(dest => dest.CityId, src => src.Id)
-               .Map(dest => dest.CityName, src => src.Name)
-               .Map(dest => dest.StateId, src => src.StateId)
+               
+               .Map(dest => dest.CityName, src => src.Name) 
                .Map(dest => dest.StateName, src => src.State.Name)
                .Map(dest => dest.CountryName, src => src.State.Country.Name)
                .Map(dest => dest.IsActive, src => src.IsActive);

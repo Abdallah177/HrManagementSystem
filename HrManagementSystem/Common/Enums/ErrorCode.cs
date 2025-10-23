@@ -8,6 +8,7 @@
 
 
         StateNotFound = 200,
+        StateHasCities =201,
 
         StateIsExist = 300,
 
