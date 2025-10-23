@@ -4,19 +4,16 @@ using HrManagementSystem.Common.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace HrManagementSystem.Data.Migrations
+namespace HrManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251021160355_stupmyDB")]
-    partial class stupmyDB
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,10 +123,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BranchId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BranchId1")
+                    b.Property<string>("BranchId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -161,7 +155,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BranchId1");
+                    b.HasIndex("BranchId");
 
                     b.ToTable("Departments");
                 });
@@ -435,7 +429,7 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("HrManagementSystem.Common.Entities.Organization", "Organization")
-                        .WithMany()
+                        .WithMany("Companies")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -449,7 +443,7 @@ namespace HrManagementSystem.Data.Migrations
                 {
                     b.HasOne("HrManagementSystem.Common.Entities.Branch", "Branch")
                         .WithMany("Departments")
-                        .HasForeignKey("BranchId1")
+                        .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -519,6 +513,11 @@ namespace HrManagementSystem.Data.Migrations
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
                 {
                     b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
+                {
+                    b.Navigation("Companies");
                 });
 #pragma warning restore 612, 618
         }

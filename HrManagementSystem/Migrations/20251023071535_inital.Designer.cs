@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace HrManagementSystem.Data.Migrations
+namespace HrManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251018185626_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251023071535_inital")]
+    partial class inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace HrManagementSystem.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Branch", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Branch", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -73,7 +73,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Branches");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Company", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Company", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -121,15 +121,12 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Department", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Department", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BranchId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BranchId1")
+                    b.Property<string>("BranchId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -161,12 +158,12 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BranchId1");
+                    b.HasIndex("BranchId");
 
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.City", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -205,7 +202,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.Country", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.Country", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -241,7 +238,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.State", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -280,7 +277,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("States");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Organization", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -313,7 +310,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Team", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Team", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -352,7 +349,7 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.User", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -407,15 +404,15 @@ namespace HrManagementSystem.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Branch", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Branch", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Location.City", "City")
+                    b.HasOne("HrManagementSystem.Common.Entities.Location.City", "City")
                         .WithMany("Branches")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HrManagementSystem.Entities.Company", "Company")
+                    b.HasOne("HrManagementSystem.Common.Entities.Company", "Company")
                         .WithMany("Branches")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -426,16 +423,16 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Company", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Company", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Location.Country", "Country")
+                    b.HasOne("HrManagementSystem.Common.Entities.Location.Country", "Country")
                         .WithMany("Companies")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HrManagementSystem.Entities.Organization", "Organization")
-                        .WithMany()
+                    b.HasOne("HrManagementSystem.Common.Entities.Organization", "Organization")
+                        .WithMany("Companies")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -445,20 +442,20 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Department", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Department", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Branch", "Branch")
+                    b.HasOne("HrManagementSystem.Common.Entities.Branch", "Branch")
                         .WithMany("Departments")
-                        .HasForeignKey("BranchId1")
+                        .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Branch");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.City", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Location.State", "State")
+                    b.HasOne("HrManagementSystem.Common.Entities.Location.State", "State")
                         .WithMany("Cities")
                         .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -467,9 +464,9 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("State");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.State", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Location.Country", "Country")
+                    b.HasOne("HrManagementSystem.Common.Entities.Location.Country", "Country")
                         .WithMany("States")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -478,9 +475,9 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Team", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Team", b =>
                 {
-                    b.HasOne("HrManagementSystem.Entities.Department", "Department")
+                    b.HasOne("HrManagementSystem.Common.Entities.Department", "Department")
                         .WithMany("Teams")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -489,36 +486,41 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("Department");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Branch", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Branch", b =>
                 {
                     b.Navigation("Departments");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Company", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Company", b =>
                 {
                     b.Navigation("Branches");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Department", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Department", b =>
                 {
                     b.Navigation("Teams");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.City", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
                 {
                     b.Navigation("Branches");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.Country", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.Country", b =>
                 {
                     b.Navigation("Companies");
 
                     b.Navigation("States");
                 });
 
-            modelBuilder.Entity("HrManagementSystem.Entities.Location.State", b =>
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
                 {
                     b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
+                {
+                    b.Navigation("Companies");
                 });
 #pragma warning restore 612, 618
         }

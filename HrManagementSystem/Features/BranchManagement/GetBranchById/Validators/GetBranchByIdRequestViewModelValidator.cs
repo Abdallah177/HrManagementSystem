@@ -8,7 +8,7 @@ namespace HrManagementSystem.Features.BranchManagement.GetBranchById.Validators
         public GetBranchByIdRequestViewModelValidator()
         {
             RuleFor(x => x.BranchId)
-                .NotEmpty().WithMessage("Branch ID is required");
+                .NotEmpty().WithMessage("BranchId is required");
         }
     }
 }

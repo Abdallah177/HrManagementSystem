@@ -23,7 +23,7 @@ namespace HrManagementSystem.Features.BranchManagement.GetBranchById
             if (!BranchQueryResult.IsSuccess)
                 return EndpointResponse<GetBranchByIdResponseViewModel>.Failure(BranchQueryResult.Message);
 
-            var branchData = BranchQueryResult.Adapt<GetBranchByIdResponseViewModel>(); 
+            var branchData = BranchQueryResult.Data.Adapt<GetBranchByIdResponseViewModel>(); 
             return EndpointResponse<GetBranchByIdResponseViewModel>.Success(branchData);
         }
     }

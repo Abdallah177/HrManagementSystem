@@ -5,6 +5,7 @@ using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.BranchManagement.GetBranchById.Queries.Dtos;
 using Mapster;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace HrManagementSystem.Features.BranchManagement.GetBranchById.Queries
 {
@@ -17,13 +18,14 @@ namespace HrManagementSystem.Features.BranchManagement.GetBranchById.Queries
 
         public async override Task<RequestResult<BranchDto>> Handle(GetBranchByIdQuery request, CancellationToken cancellationToken)
         {
-            var branch = await _repository.GetByIDAsync(request.BranchId ,cancellationToken);
+            var branch = await _repository.Get(b => b.Id == request.BranchId)
+                .ProjectToType<BranchDto>().FirstOrDefaultAsync(cancellationToken);
+
 
             if (branch == null)
                 return RequestResult<BranchDto>.Failure("Branch not found", ErrorCode.BranchNotFound);
 
-            var branchData = branch.Adapt<BranchDto>();
-            return RequestResult<BranchDto>.Success(branchData);
+            return RequestResult<BranchDto>.Success(branch);
         }
     }
 
