@@ -7,13 +7,18 @@
     <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 
-<<<<<<< HEAD
   <ItemGroup>
     <Compile Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <Content Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <None Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
   </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+		<None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.0.0" />
@@ -31,26 +36,6 @@
     <PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Common\" />
-    <Folder Include="Features\CompanyManagement\" />
-    <Folder Include="Features\BranchManagement\" />
-    <Folder Include="Features\DepartmentManagement\" />
-    <Folder Include="Features\LocationManagement\Common\Commands\" />
-    <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
-    <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\OrganizationManagement\" />
-    <Folder Include="Features\TeamManagement\" />
-  </ItemGroup>
-=======
-	<ItemGroup>
-		<Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
-		<Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
-		<EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
-		<None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
-	</ItemGroup>
-
 	<!-- Package References -->
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.0.0" />
@@ -69,6 +54,17 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Common\" />
+    <Folder Include="Features\CompanyManagement\" />
+    <Folder Include="Features\BranchManagement\" />
+    <Folder Include="Features\DepartmentManagement\" />
+    <Folder Include="Features\LocationManagement\Common\Commands\" />
+    <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
+    <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+    <Folder Include="Features\OrganizationManagement\" />
+    <Folder Include="Features\TeamManagement\" />
+  </ItemGroup>
 	<!-- Folder Structure -->
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
@@ -88,6 +84,5 @@
 		<Folder Include="Features\OrganizationManagement\" />
 		<Folder Include="Features\TeamManagement\" />
 	</ItemGroup>
->>>>>>> 0a915aa20a3966276f88a498260bede6c84004d1
 
 </Project>
