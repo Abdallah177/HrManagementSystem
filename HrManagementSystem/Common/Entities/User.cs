@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using HrManagementSystem.Common.Entities.Roles;
+using System.Data;
 
 namespace HrManagementSystem.Common.Entities
 {
@@ -9,8 +10,8 @@ namespace HrManagementSystem.Common.Entities
         public string Password { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-
-        // public Role Role { get; set; }
+        public string RoleId { get; set; } = null!;
+        public Role Role { get; set; }
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTokenExpiry { get; set; }
         public User()

@@ -62,6 +62,7 @@
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+    <Folder Include="Features\Authntication\" />
     <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\Commands\" />
   </ItemGroup>
