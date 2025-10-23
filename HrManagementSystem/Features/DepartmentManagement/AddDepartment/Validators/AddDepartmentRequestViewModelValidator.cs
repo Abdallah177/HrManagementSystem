@@ -14,7 +14,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.AddDepartment.Validat
                 .MaximumLength(500).WithMessage("Description cannot exceed 500 characters");
 
             RuleFor(x => x.BranchId)
-                .NotEmpty().WithMessage("Branch ID is required");
+                .NotEmpty().WithMessage("BranchId is required");
         }
     }
 }
