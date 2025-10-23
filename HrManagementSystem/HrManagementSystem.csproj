@@ -61,7 +61,6 @@
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\Commands\" />
   </ItemGroup>
 	<!-- Folder Structure -->
@@ -79,7 +78,6 @@
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-		<Folder Include="Features\OrganizationManagement\" />
 	</ItemGroup>
 
 </Project>
