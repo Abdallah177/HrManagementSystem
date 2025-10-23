@@ -57,7 +57,6 @@
   <ItemGroup>
     <Folder Include="Features\Common\" />
     <Folder Include="Features\CompanyManagement\" />
-    <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
@@ -69,7 +68,6 @@
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\" />
-		<Folder Include="Features\BranchManagement\" />
 		<Folder Include="Features\DepartmentManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
