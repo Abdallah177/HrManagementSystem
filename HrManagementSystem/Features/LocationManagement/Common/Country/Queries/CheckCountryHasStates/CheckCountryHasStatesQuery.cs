@@ -16,8 +16,7 @@ namespace HrManagementSystem.Features.Common.Country.Queries.CheckCountryHasStat
         }
         public async override Task<RequestResult<bool>> Handle(CheckCountryHasStatesQuery request, CancellationToken cancellationToken)
         {
-            var hasStates = await _repository.GetAll()
-                        .AnyAsync(s => s.CountryId == request.countryId);
+            var hasStates = await _repository.IsExistsAsync(s => s.CountryId == request.countryId);
 
             return RequestResult<bool>.Success(hasStates);
         }

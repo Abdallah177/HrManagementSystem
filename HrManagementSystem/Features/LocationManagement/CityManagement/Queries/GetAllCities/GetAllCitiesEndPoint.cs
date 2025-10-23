@@ -1,11 +1,11 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries;
+using HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetAllCities.Queries;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities
+namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetAllCities
 {
     public class GetAllCitiesEndPoint : BaseEndPoint<GetAllCitiesQuery, List<GetAllCitiesResponseViewModel>>
     {

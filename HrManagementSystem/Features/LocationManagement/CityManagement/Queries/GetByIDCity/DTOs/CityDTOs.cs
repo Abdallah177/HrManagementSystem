@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity.DTOs
+﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity.DTOs
 {
     public class CityDTOs
     {
