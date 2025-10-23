@@ -60,7 +60,6 @@
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\OrganizationManagement\GetByIDOrganization\" />
     <Folder Include="Features\TeamManagement\Commands\" />
   </ItemGroup>
 	<!-- Folder Structure -->
@@ -71,7 +70,6 @@
 		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
-		<Folder Include="Features\LocationManagement\CountryManagement\GetByIdCountry\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />

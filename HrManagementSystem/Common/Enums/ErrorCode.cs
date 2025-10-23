@@ -15,7 +15,10 @@
         CityAlreadyExistsInThisState = 301 ,
 
         OrganizationNotExis = 400,
-        
+        NoOrganizationFound = 401,
+        OrganizationIDNotFound =402,
+
+
         CompanyNotExist = 500,
 
         BranchNotExist = 600,

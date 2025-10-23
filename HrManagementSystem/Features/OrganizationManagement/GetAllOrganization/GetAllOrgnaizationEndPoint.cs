@@ -1,7 +1,5 @@
 ﻿using HrManagementSystem.Common;
-using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities;
 using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
