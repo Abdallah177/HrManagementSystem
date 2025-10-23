@@ -1,7 +1,7 @@
 ﻿using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.AddCountry.Queries;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 

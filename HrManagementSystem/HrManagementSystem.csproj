@@ -58,8 +58,6 @@
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\Common\Commands\" />
     <Folder Include="Features\DepartmentManagement\" />
-    <Folder Include="Features\Common\" />
-    <Folder Include="Features\CompanyManagement\Queries\" />
     <Folder Include="Features\DepartmentManagement\Queries\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
@@ -69,8 +67,6 @@
   </ItemGroup>
 	<!-- Folder Structure -->
 	<ItemGroup>
-		<Folder Include="Features\Common\" />
-		<Folder Include="Features\CompanyManagement\" />
 		<Folder Include="Features\BranchManagement\" />
 		<Folder Include="Features\DepartmentManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />

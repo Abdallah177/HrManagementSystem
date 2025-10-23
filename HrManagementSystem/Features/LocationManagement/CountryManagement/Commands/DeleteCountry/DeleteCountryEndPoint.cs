@@ -1,6 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Commands;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.DeleteCountry.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.DeleteCountry

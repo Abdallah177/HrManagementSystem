@@ -3,6 +3,7 @@
     public enum ErrorCode
     {
         NoError = 1 ,
+        DuplicateRecord= 2 ,
 
         CountryNotFound =100,
         CountryHasStates = 101,

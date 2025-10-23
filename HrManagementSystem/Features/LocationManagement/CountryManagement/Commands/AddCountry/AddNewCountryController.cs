@@ -1,5 +1,5 @@
 ﻿using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.AddCountry.Commands;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,5 @@
 ﻿using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.GetAllCountries.Queries;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.Queries.GetAllCountries.Queries;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http;
