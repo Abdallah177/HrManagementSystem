@@ -55,6 +55,7 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
     <Folder Include="Features\Common\" />
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
