@@ -4,5 +4,7 @@
     {
         public string BranchId { get; set; }
         public string BranchName { get; set; }
+
+        public List<GetDepartmentsDto> Departments { get; set; } = new List<GetDepartmentsDto>();
     }
 }
