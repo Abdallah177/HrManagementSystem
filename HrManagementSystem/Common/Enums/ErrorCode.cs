@@ -5,14 +5,27 @@
         NoError = 1 ,
 
         CountryNotFound =100,
-
+        CountryHasStates = 101,
 
         StateNotFound = 200,
+<<<<<<< HEAD
         StateHasCities =201,
+=======
+        StateIsExist = 201,
+>>>>>>> 4d9c389c5ebc0298735dec7d3cd5819b9767e6af
 
-        StateIsExist = 300,
+        NoCitiesfound = 300,
+        CityAlreadyExistsInThisState = 301 ,
 
-        CountryHasStates = 400,
-        NoCitiesfound = 201,
+        OrganizationNotExis = 400,
+
+        CompanyNotExist = 500,
+
+        BranchNotExist = 600,
+
+        DepartmentNotExist= 700,
+
+        TeamNotExist = 800,
+
     }
 }

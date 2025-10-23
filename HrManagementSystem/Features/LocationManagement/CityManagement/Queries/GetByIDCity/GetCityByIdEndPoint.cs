@@ -1,10 +1,10 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity.Queries;
+using HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity.Queries;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDCity
+namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetByIDCity
 {
     public class GetCityByIdEndPoint : BaseEndPoint<GetCityByIdRequestViewModel, GetCityByIdResponseViewModel>
     {
@@ -13,7 +13,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetByIDC
         {
         }
 
-        [HttpGet ("")]
+        [HttpGet("")]
         public async Task<EndpointResponse<GetCityByIdResponseViewModel>> GetCityById([FromQuery] GetCityByIdRequestViewModel requestViewModel)
         {
             var validationResult = ValidateRequest(requestViewModel);
