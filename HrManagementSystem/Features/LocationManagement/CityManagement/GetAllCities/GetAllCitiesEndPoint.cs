@@ -16,9 +16,12 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCi
         [HttpGet]
         public async Task<EndpointResponse<List<GetAllCitiesResponseViewModel>>> GetAllCities()
         {
-            var cities = await _mediator.Send(new GetAllCitiesQuery());
-            var result = cities.Data.Adapt<List<GetAllCitiesResponseViewModel>>();
-            return EndpointResponse<List<GetAllCitiesResponseViewModel>>.Success(result);
+            var result = await _mediator.Send(new GetAllCitiesQuery());
+            if (!result.IsSuccess)
+                return new EndpointResponse<List<GetAllCitiesResponseViewModel>>(default, false, result.Message, result.ErrorCode);
+
+            var citiesData = result.Data.Adapt<List<GetAllCitiesResponseViewModel>>();
+            return EndpointResponse<List<GetAllCitiesResponseViewModel>>.Success(citiesData);
         }
     }
 }

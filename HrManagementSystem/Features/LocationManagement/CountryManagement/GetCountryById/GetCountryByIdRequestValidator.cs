@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetByIdCountry
+namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetCountryById
 {
     public class GetCountryByIdRequestValidator : AbstractValidator<GetCountryByIdRequestViewModel>
     {
