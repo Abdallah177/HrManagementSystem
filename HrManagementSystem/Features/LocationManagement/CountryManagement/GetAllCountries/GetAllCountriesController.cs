@@ -19,7 +19,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetAl
         }
 
         [HttpGet("")]
-        public async Task<EndpointResponse<List<GetAllCountriesViewModel>>> GetAll(CancellationToken cancellationToken)
+        public async Task<EndpointResponse<List<GetAllCountriesViewModel>>> GetAllCountries(CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetAllCountriesQuery(), cancellationToken);
 

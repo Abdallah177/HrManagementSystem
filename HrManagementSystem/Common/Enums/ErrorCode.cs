@@ -5,16 +5,28 @@
         NoError = 1 ,
 
         CountryNotFound =100,
-        CityNotFound = 102,
+        CountryHasStates = 101,
 
         StateNotFound = 200,
+ 
+        StateHasCities =201,
 
-        StateIsExist = 300,
+        StateIsExist = 202,
+
+
+        NoCitiesfound = 300,
+        CityAlreadyExistsInThisState = 301 ,
+
+
+        CompanyNotExist = 500,
+
+        BranchNotExist = 600,
+
+        DepartmentNotExist= 700,
+
+        TeamNotExist = 800,
 
         CountryHasStates = 400,
-        NoCitiesfound = 201
-        
-       
-            
+        NoCitiesfound = 201,
     }
 }

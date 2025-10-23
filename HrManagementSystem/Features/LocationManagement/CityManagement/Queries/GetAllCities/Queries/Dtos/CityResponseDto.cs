@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos
+﻿namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetAllCities.Queries.Dtos
 {
     public class CityResponseDto
     {
