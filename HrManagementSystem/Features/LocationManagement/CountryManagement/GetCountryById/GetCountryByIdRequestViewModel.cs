@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetById
+﻿namespace HrManagementSystem.Features.LocationManagement.CountryManagement.GetCountryById
 {
     public class GetCountryByIdRequestViewModel
     {
