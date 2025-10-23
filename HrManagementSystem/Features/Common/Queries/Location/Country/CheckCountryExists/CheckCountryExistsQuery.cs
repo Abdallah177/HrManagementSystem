@@ -6,16 +6,16 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace HrManagementSystem.Features.Common.Country.Queries.CheckCountryExists
+namespace HrManagementSystem.Features.Common.Queries.Location.Country.CheckCountryExists
 {
     public record CheckCountryExistsQuery(string CountryId) : IRequest<RequestResult<bool>>;
 
     public class CheckCountryExistsQueryHandler : RequestHandlerBase<CheckCountryExistsQuery, RequestResult<bool>, HrManagementSystem.Common.Entities.Location.Country>
     {
-       
+
         public CheckCountryExistsQueryHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Location.Country> parameters) : base(parameters)
         {
-            
+
         }
 
         public async override Task<RequestResult<bool>> Handle(CheckCountryExistsQuery request, CancellationToken cancellationToken)
