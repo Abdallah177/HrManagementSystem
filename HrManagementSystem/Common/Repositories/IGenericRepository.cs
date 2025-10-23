@@ -19,7 +19,14 @@ namespace HrManagementSystem.Common.Repositories
 
         void Update(Entity entity, string currentUserId);
 
+        // --------------------- Reflection Update (Specific Properties) ---------------------
+        Task UpdateIncludeAsync(Entity entity, string currentUserId, CancellationToken cancellationToken, params string[] modifiedParams);
+      
+
         // --------------------- Delete ---------------------
         Task DeleteAsync(string id, string currentUserId, CancellationToken cancellationToken);
+
+        //_______________ Entity exists ______________________
+        Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate);
     }
 }

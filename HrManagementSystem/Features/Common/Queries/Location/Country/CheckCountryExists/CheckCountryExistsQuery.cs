@@ -20,8 +20,7 @@ namespace HrManagementSystem.Features.Common.Queries.Location.Country.CheckCount
 
         public async override Task<RequestResult<bool>> Handle(CheckCountryExistsQuery request, CancellationToken cancellationToken)
         {
-            var countryExists = await _repository.GetAll()
-                    .AnyAsync(c => c.Id == request.CountryId);
+            var countryExists = await _repository.IsExistsAsync(c => c.Id == request.CountryId);
 
             return RequestResult<bool>.Success(countryExists);
         }

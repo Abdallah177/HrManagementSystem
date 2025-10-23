@@ -26,8 +26,11 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.UpdateS
             if (state == null)
                 return  RequestResult<StateDto>.Failure("State Not Found.", ErrorCode.StateNotFound);
 
+            //var IsCountryExist = await _mediator.Send(new IsCountryExistsQuery(request.CountryId));
             var IsCountryExist = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
 
+            //if (!IsCountryExist)
+            //    return RequestResult<StateDto>.Failure("Country Not Found.", ErrorCode.CountryNotFound);
             if (!IsCountryExist.IsSuccess)
                 return RequestResult<StateDto>.Failure("Country Not Found.", ErrorCode.CountryNotFound);
 

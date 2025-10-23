@@ -18,8 +18,7 @@ namespace HrManagementSystem.Features.LocationManagement.Common.State.Queries.Ch
         }
         public async override Task<RequestResult<bool>> Handle(CheckStateExistsQuery request, CancellationToken cancellationToken)
         {
-            var stateExists = await _repository.GetAll()
-                      .AnyAsync(s => s.Name == request.Name && s.CountryId == request.CountryId);
+            var stateExists = await _repository.IsExistsAsync(s => s.Name == request.Name && s.CountryId == request.CountryId);
 
             return RequestResult<bool>.Success(stateExists);
         }

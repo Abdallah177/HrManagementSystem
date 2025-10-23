@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.LocationManagement.Common.City.Queries
 
         public override async Task<bool> Handle(IsCityExistInTheState request, CancellationToken cancellationToken)
         {
-            var IsCityExists = await  _repository.Get(C => C.Name == request.CityName && C.StateId == request.StateId).AnyAsync(cancellationToken);
+            var IsCityExists = await  _repository.IsExistsAsync(C => C.Name == request.CityName && C.StateId == request.StateId);
 
             if (IsCityExists)
                 return true;
