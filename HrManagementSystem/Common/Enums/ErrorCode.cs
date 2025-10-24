@@ -18,6 +18,7 @@
         BranchNotFound = 203,
         DepartmentIsExist = 204,
         CountryHasRelatedCompanies = 205,
-        OrganizationAlreadyExists=206
+        OrganizationAlreadyExists=206,
+        NoCompnyFound=207
     }
 }

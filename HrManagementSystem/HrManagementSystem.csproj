@@ -38,7 +38,6 @@
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\DeleteCompany\Commands\" />
-		<Folder Include="Features\CompanyManagement\GetAllCompany\Query\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />

@@ -5,7 +5,19 @@
         public string Id { get; set; }
         public string Name { get; set; } = null!;
         public string? Email { get; set; }
-        public string CountryName { get; set; } = null!;
-        public string OrganizationName { get; set; } = null!;
+        public GetCountryViewModle country { get; set; }=null!;
+        public GetOrganizationViewModle organization { get; set; } = null!;
+    }
+
+    public class GetCountryViewModle
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class GetOrganizationViewModle
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }
