@@ -3,6 +3,10 @@ using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.DepartmentManagement.Common.Queries;
+<<<<<<< HEAD
+=======
+using HrManagementSystem.Features.TeamManagement.GetTeamById.Quesries;
+>>>>>>> 884b38f3bdd3046d8c9a2da1850993b6540244f5
 using HrManagementSystem.Features.TeamManagement.TeamUpdate.DTOs;
 using Mapster;
 using MediatR;
