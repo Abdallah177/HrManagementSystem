@@ -5,13 +5,13 @@ using HrManagementSystem.Common.Views;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HrManagementSystem.Features.Common.State.Queries.CheckStateExists
+namespace HrManagementSystem.Features.LocationManagement.Common.State.Queries.CheckStateExists
 {
     public record CheckStateExistsQuery(string Name, string CountryId) : IRequest<RequestResult<bool>>;
 
     public class CheckStateExistsQueryHandler : RequestHandlerBase<CheckStateExistsQuery, RequestResult<bool>, HrManagementSystem.Common.Entities.Location.State>
     {
-        
+
 
         public CheckStateExistsQueryHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Location.State> parameters) : base(parameters)
         {

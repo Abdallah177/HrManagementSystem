@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/HrManagementSystem/Common/Repositories/IGenericRepository.cs
+/HrManagementSystem/Features/CompanyManagement/Commands/UpdateCompany
+/.gitignore

@@ -1,7 +1,10 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
+using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
+using HrManagementSystem.Features.Common.Queries.CheckExists;
 using Mapster;
 using MapsterMapper;
 using MediatR;
@@ -15,9 +18,7 @@ namespace HrManagementSystem.Common
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-
             services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
@@ -25,23 +26,23 @@ namespace HrManagementSystem.Common
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
             services.AddScoped(typeof(RequestHandlerBaseParameters<>));
-
             services.AddScoped(typeof(EndpointBaseParameters<>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Organization>, bool>),
+                      typeof(CheckExistsQueryHandler<Organization>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Company>, bool>),
+                      typeof(CheckExistsQueryHandler<Company>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Country>, bool>),
+                                  typeof(CheckExistsQueryHandler<Country>));
 
             services.AddScoped<TransactionMiddleware>();
 
-
             services.AddFluentValidationConfig();
-
             services.AddMapsterConfig();
-
             services.AddMediatRConfig();
-            
-            
-
-
 
             return services;
         }
@@ -49,7 +50,6 @@ namespace HrManagementSystem.Common
 
         public static IServiceCollection AddMapsterConfig(this IServiceCollection services)
         {
-
             var mappingConfig = TypeAdapterConfig.GlobalSettings;
             mappingConfig.Scan(Assembly.GetExecutingAssembly());
 
@@ -59,15 +59,21 @@ namespace HrManagementSystem.Common
 
         public static IServiceCollection AddFluentValidationConfig(this IServiceCollection services)
         {
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly()).AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
+                    .AddFluentValidationAutoValidation();
+
             return services;
         }
 
         public static IServiceCollection AddMediatRConfig(this IServiceCollection services)
         {
-            services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
+            );
+
             return services;
         }
     }
+
 
 }

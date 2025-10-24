@@ -96,6 +96,35 @@ namespace HrManagementSystem.Common.Repositories
             return await _dbSet.AnyAsync(predicate);
         }
 
+
+
+        // --------------------- Reflection Update (Specific Properties) ---------------------
+        public async Task UpdateIncludeAsync(Entity entity, string currentUserId, CancellationToken cancellationToken, params string[] modifiedParams)
+        {
+            var local = _dbSet.Local.FirstOrDefault(x => x.Id == entity.Id);
+            if (local == null)
+                _dbSet.Attach(entity);
+
+            var entry = _dbContext.Entry(entity);
+
+            foreach (var prop in entry.Properties)
+            {
+                if (modifiedParams.Contains(prop.Metadata.Name))
+                {
+                    var newValue = entity.GetType().GetProperty(prop.Metadata.Name)?.GetValue(entity);
+                    prop.CurrentValue = newValue;
+                    prop.IsModified = true;
+                }
+            }
+
+            entity.UpdatedAt = DateTime.UtcNow;
+            entity.UpdatedByUser = currentUserId;
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+
+
     }
 
 }

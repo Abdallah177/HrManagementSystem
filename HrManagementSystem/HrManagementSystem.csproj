@@ -55,33 +55,28 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
     <Folder Include="Features\Common\" />
     <Folder Include="Features\CompanyManagement\" />
-    <Folder Include="Features\BranchManagement\" />
-    <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\Commands\" />
+    <Folder Include="Features\TeamManagement\TeamUpdate\Queries\" />
   </ItemGroup>
 	<!-- Folder Structure -->
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\" />
-		<Folder Include="Features\BranchManagement\" />
-		<Folder Include="Features\DepartmentManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
-		<Folder Include="Features\LocationManagement\CountryManagement\GetByIdCountry\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-		<Folder Include="Features\OrganizationManagement\" />
 	</ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Helper\" />
