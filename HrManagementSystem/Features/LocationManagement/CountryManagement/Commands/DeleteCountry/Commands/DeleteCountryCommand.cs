@@ -20,8 +20,8 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Comma
 
         public async override Task<RequestResult<bool>> Handle(DeleteCountryCommand request, CancellationToken cancellationToken)
         {
-            var CountryExists = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
-            if (!CountryExists.Data)
+            var IsCountryExists = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
+            if (!IsCountryExists.Data)
                 return RequestResult<bool>.Failure("Country not found", ErrorCode.CountryNotFound);
 
             var hasStates = await _mediator.Send(new CheckCountryHasStatesQuery(request.CountryId));
