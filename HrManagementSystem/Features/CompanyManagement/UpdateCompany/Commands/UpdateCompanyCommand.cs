@@ -2,9 +2,8 @@
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.Common.Queries.CheckExists;
-using HrManagementSystem.Features.Common.Queries.Company.CheckCompanyExists;
-using HrManagementSystem.Features.Common.Queries.Location.Country.CheckCountryExists;
+using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Queries;
