@@ -56,6 +56,8 @@ namespace HrManagementSystem.Features.CompanyManagement.UpdateCompany.Commands
             company.CountryId = request.CountryId;
             company.OrganizationId = request.OrganizationId;
             company.Email = request.Email;
+            //company.CreatedAt =DateTime.Now;
+            //company.CreatedByUser = "SYSTEM";
 
             await _repository.UpdateIncludeAsync(company, "SYSTEM", cancellationToken, nameof(Company.Name), nameof(Company.Email), nameof(Company.CountryId), nameof(Company.OrganizationId));
 
