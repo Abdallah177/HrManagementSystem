@@ -24,11 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\DepartmentManagement\UpdateDepartment\Commands\" />
     <Folder Include="Features\LocationManagement\CityManagement\" />
     <Folder Include="Features\OrganizationManagement\" />
-    <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
 
 </Project>

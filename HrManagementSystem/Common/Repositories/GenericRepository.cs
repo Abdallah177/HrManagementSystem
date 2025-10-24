@@ -7,7 +7,7 @@ using System.Threading;
 namespace HrManagementSystem.Common.Repositories
 {
 
-    public class GenericRepository<Entity> : IGenericRepository<Entity> where Entity : BaseModel
+    public class GenericRepository<Entity> :  IGenericRepository<Entity> where Entity : BaseModel
     {
         protected readonly AppDbContext _dbContext;
         DbSet<Entity> _dbSet;
