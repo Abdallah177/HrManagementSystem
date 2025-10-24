@@ -62,6 +62,7 @@
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
     <Folder Include="Features\TeamManagement\Commands\" />
+    <Folder Include="Features\TeamManagement\TeamUpdate\Queries\" />
   </ItemGroup>
 	<!-- Folder Structure -->
 	<ItemGroup>
