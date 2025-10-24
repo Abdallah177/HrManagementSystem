@@ -1,7 +1,7 @@
 ﻿using HrManagementSystem.Common.Entities;
-using HrManagementSystem.Features.BranchManagement.Commands.AddBranch;
-using HrManagementSystem.Features.BranchManagement.Commands.AddBranch.Commands;
-using HrManagementSystem.Features.BranchManagement.Commands.AddBranch.DTOS;
+using HrManagementSystem.Features.BranchManagement.AddBranch;
+using HrManagementSystem.Features.BranchManagement.AddBranch.Commands;
+using HrManagementSystem.Features.BranchManagement.AddBranch.DTOS;
 using Mapster;
 
 namespace HrManagementSystem.Features.BranchManagement.MappingProfiles
