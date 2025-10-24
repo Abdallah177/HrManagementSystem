@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetAllCities
 {
-    public class GetAllCitiesEndPoint : BaseEndPoint<GetAllCitiesQuery, List<GetAllCitiesResponseViewModel>>
+    public class GetAllCitiesEndPoint : BaseEndPoint<object, List<GetAllCitiesResponseViewModel>>
     {
-        public GetAllCitiesEndPoint(EndpointBaseParameters<GetAllCitiesQuery> parameters) : base(parameters)
+        public GetAllCitiesEndPoint(EndpointBaseParameters<object> parameters) : base(parameters)
         {
         }
 

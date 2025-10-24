@@ -27,7 +27,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (organization == null)
-                return RequestResult<GetAllOrganizationDto>.Failure("No organization found", ErrorCode.NoOrganizationFound);
+                return RequestResult<GetAllOrganizationDto>.Failure("No organization found", ErrorCode.OrganizationNotExis);
 
             return RequestResult<GetAllOrganizationDto>.Success(organization);
         }
