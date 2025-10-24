@@ -55,6 +55,8 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Authntication\Login\" />
+    <Folder Include="Features\Authntication\Register\" />
     <Folder Include="Features\Common\" />
     <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />
@@ -62,8 +64,10 @@
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\Authntication\" />
     <Folder Include="Features\OrganizationManagement\" />
+    <Folder Include="Features\Roles\AddRole\" />
+    <Folder Include="Features\Roles\AssginRoleToFeature\" />
+    <Folder Include="Features\Roles\CheckFeatureHasAccess\" />
     <Folder Include="Features\TeamManagement\Commands\" />
   </ItemGroup>
 	<!-- Folder Structure -->
