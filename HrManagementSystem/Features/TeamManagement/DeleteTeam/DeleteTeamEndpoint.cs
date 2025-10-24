@@ -1,10 +1,9 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
 using Microsoft.AspNetCore.Mvc;
-using HrManagementSystem.Features.TeamManagement.Commands.DeleteTeam.Commands;
 using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.DeleteCountry;
-
-namespace HrManagementSystem.Features.TeamManagement.Commands.DeleteTeam
+using HrManagementSystem.Features.TeamManagement.DeleteTeam.Commands;
+namespace HrManagementSystem.Features.TeamManagement.DeleteTeam
 {
     public class DeleteTeamEndpoint : BaseEndPoint<DeleteTeamRequestViewModel, bool>
     {

@@ -3,10 +3,10 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Common;
 using MediatR;
-using HrManagementSystem.Features.CompanyManagement.Queries.GetCompanyById.Dtos;
 using Mapster;
+using HrManagementSystem.Features.CompanyManagement.GetCompanyById.Dtos;
 
-namespace HrManagementSystem.Features.CompanyManagement.Queries.GetCompanyById
+namespace HrManagementSystem.Features.CompanyManagement.GetCompanyById
 {
     public record GetCompanyByIdQuery(string Id) : IRequest<RequestResult<CompanyDto>>;
 

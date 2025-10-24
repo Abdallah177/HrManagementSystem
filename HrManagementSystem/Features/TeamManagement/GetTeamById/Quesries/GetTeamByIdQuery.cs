@@ -2,13 +2,13 @@
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.TeamManagement.Queries.GetTeamById.Dtos;
+using HrManagementSystem.Features.TeamManagement.GetTeamById.Dtos;
 using Mapster;
 using MediatR;
 
-namespace HrManagementSystem.Features.TeamManagement.Queries.GetTeamById.Quesries
+namespace HrManagementSystem.Features.TeamManagement.GetTeamById.Quesries
 {
-    public record GetTeamByIdQuery (string Id) : IRequest<RequestResult<TeamDto>>;
+    public record GetTeamByIdQuery(string Id) : IRequest<RequestResult<TeamDto>>;
 
     public class GetTeamByIdQueryHandler : RequestHandlerBase<GetTeamByIdQuery, RequestResult<TeamDto>, Team>
     {

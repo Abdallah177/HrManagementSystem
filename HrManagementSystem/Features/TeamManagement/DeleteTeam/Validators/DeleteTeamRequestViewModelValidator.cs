@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using HrManagementSystem.Features.TeamManagement.DeleteTeam;
 
-namespace HrManagementSystem.Features.TeamManagement.Commands.DeleteTeam.Validators
+namespace HrManagementSystem.Features.TeamManagement.DeleteTeam.Validators
 {
     public class DeleteTeamRequestViewModelValidator : AbstractValidator<DeleteTeamRequestViewModel>
     {
