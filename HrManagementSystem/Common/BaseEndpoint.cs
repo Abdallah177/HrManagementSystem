@@ -13,10 +13,12 @@ namespace HrManagementSystem.Common
     {
         protected readonly IMediator _mediator;
         protected readonly IValidator<TRequest> _validator;
+        protected readonly UserState _userState;
         public BaseEndPoint(EndpointBaseParameters<TRequest> parameters)
         {
             _mediator = parameters.Mediator;
             _validator = parameters.Validator;
+            _userState = parameters.UserState;
         }
 
         protected EndpointResponse<TResult> ValidateRequest(TRequest request)

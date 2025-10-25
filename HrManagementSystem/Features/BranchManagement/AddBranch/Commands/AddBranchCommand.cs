@@ -1,13 +1,13 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.BranchManagement.Commands.AddBranch.DTOS;
+using HrManagementSystem.Features.BranchManagement.AddBranch.DTOS;
 using Mapster;
 using MediatR;
 
-namespace HrManagementSystem.Features.BranchManagement.Commands.AddBranch.Commands
+namespace HrManagementSystem.Features.BranchManagement.AddBranch.Commands
 {
-    public record AddBranchCommand( string Name, string CityId, string? Phone, string CompanyId, string UserId): IRequest<RequestResult<AddBranchDTO>>;
+    public record AddBranchCommand(string Name, string CityId, string? Phone, string CompanyId, string UserId) : IRequest<RequestResult<AddBranchDTO>>;
 
     public class AddBranchCommandHandler : RequestHandlerBase<AddBranchCommand, RequestResult<AddBranchDTO>, Branch>
     {

@@ -5,7 +5,7 @@ using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata;
 
-namespace HrManagementSystem.Features.BranchManagement.Commands.AddBranch
+namespace HrManagementSystem.Features.BranchManagement.AddBranch
 {
     public class AddBranchEndPoint : BaseEndPoint<AddBranchRquestViewModel, AddBranchResponseViewModel>
     {
@@ -20,7 +20,7 @@ namespace HrManagementSystem.Features.BranchManagement.Commands.AddBranch
             {
                 return validationResult;
             }
-            var result = await _mediator.Send(new AddBranchCommand(viewModel.Name,viewModel.CityId,viewModel.Phone,viewModel.CompanyId,viewModel.UserId));
+            var result = await _mediator.Send(new AddBranchCommand(viewModel.Name, viewModel.CityId, viewModel.Phone, viewModel.CompanyId, viewModel.UserId));
             if (!result.IsSuccess)
                 return EndpointResponse<AddBranchResponseViewModel>.Failure(result.Message, result.ErrorCode);
             var addBranchResponseViewModel = result.Data.Adapt<AddBranchResponseViewModel>();
@@ -28,5 +28,5 @@ namespace HrManagementSystem.Features.BranchManagement.Commands.AddBranch
         }
 
     }
-    
+
 }
