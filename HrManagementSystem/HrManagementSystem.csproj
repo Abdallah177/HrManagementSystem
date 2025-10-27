@@ -41,7 +41,7 @@
 
 	<ItemGroup>
 		<Folder Include="Features\CompanyManagement\DeleteCompany\Commands\" />
-		<Folder Include="Features\LocationManagement\CityManagement\" />
+		<Folder Include="Features\LocationManagement\CityManagement\UpdateCity\Commands\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
