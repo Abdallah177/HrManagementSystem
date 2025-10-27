@@ -5,12 +5,11 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.Common.Company.CheckCompanyExistsWithName;
-using HrManagementSystem.Features.CompanyManagement.NewFolder.Dtos;
-using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
+using HrManagementSystem.Features.CompanyManagement.AddCompany.Dtos;
 using Mapster;
 using MediatR;
 
-namespace HrManagementSystem.Features.CompanyManagement.NewFolder.Commands
+namespace HrManagementSystem.Features.CompanyManagement.AddCompany.Commands
 {
     public record AddCompanyCommand(string Name, string Email, string CountryId, string OrganizationId) : IRequest<RequestResult<AddCompanyDto>>;
 

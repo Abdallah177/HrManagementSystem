@@ -1,10 +1,10 @@
 ﻿using HrManagementSystem.Common.Views;
 using HrManagementSystem.Common;
-using HrManagementSystem.Features.CompanyManagement.NewFolder.Commands;
+using HrManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Mapster;
 
-namespace HrManagementSystem.Features.CompanyManagement.NewFolder
+namespace HrManagementSystem.Features.CompanyManagement.AddCompany
 {
     public class AddCompanyEndpoint
     : BaseEndPoint<AddCompanyRequestViewModel, AddCompanyResponseViewModel>

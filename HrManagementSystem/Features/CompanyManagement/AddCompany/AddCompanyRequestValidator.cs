@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace HrManagementSystem.Features.CompanyManagement.NewFolder
+namespace HrManagementSystem.Features.CompanyManagement.AddCompany
 {
     public class AddCompanyRequestValidator : AbstractValidator<AddCompanyRequestViewModel>
     {
