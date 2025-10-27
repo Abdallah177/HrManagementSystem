@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Azure;
+using FluentValidation;
 using HrManagementSystem.Common.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +14,19 @@ namespace HrManagementSystem.Common
     {
         protected readonly IMediator _mediator;
         protected readonly IValidator<TRequest> _validator;
+        protected readonly UserState _userState;
         public BaseEndPoint(EndpointBaseParameters<TRequest> parameters)
         {
             _mediator = parameters.Mediator;
             _validator = parameters.Validator;
+            _userState = parameters.UserState;
         }
 
         protected EndpointResponse<TResult> ValidateRequest(TRequest request)
         {
+            if (_validator is null)
+                return EndpointResponse<TResult>.Success(default, ""); // skip validation
+
             var validateResult = _validator.Validate(request);
             if (!validateResult.IsValid)
             {

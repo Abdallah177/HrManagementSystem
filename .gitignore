@@ -364,3 +364,5 @@ FodyWeavers.xsd
 /HrManagementSystem/Common/Repositories/IGenericRepository.cs
 /HrManagementSystem/Features/CompanyManagement/Commands/UpdateCompany
 /.gitignore
+/HrManagementSystem/Common/Views
+/.gitignore

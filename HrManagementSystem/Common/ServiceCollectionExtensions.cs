@@ -4,7 +4,7 @@ using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
-using HrManagementSystem.Features.Common.Queries.CheckExists;
+using HrManagementSystem.Features.Common.CheckExists;
 using Mapster;
 using MapsterMapper;
 using MediatR;
