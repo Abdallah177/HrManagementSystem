@@ -52,7 +52,6 @@
     <Folder Include="Features\LocationManagement\CityManagement\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
-    <Folder Include="Features\LocationManagement\StateManagement\" />
     <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
 
