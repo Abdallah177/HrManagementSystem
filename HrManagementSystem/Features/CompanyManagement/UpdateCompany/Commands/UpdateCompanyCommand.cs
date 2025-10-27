@@ -4,11 +4,8 @@ using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
-<<<<<<< HEAD
 using HrManagementSystem.Features.Common.Company.CheckCompanyExistsWithName;
-=======
 using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
->>>>>>> master
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
 using Mapster;
