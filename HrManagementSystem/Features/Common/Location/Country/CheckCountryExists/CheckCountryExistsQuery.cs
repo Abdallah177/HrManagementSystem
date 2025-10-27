@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace HrManagementSystem.Features.Common.Queries.Location.Country.CheckCountryExists
+namespace HrManagementSystem.Features.Common.Location.Country.CheckCountryExists
 {
     public record CheckCountryExistsQuery(string CountryId) : IRequest<RequestResult<bool>>;
 

@@ -1,13 +1,12 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.Common.Queries.CheckExists;
-using HrManagementSystem.Features.Common.Queries.Company.CheckCompanyExists;
-using HrManagementSystem.Features.Common.Queries.Location.Country.CheckCountryExists;
+using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.Common.Company.CheckCompanyExistsWithName;
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
-using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Queries;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +33,9 @@ namespace HrManagementSystem.Features.CompanyManagement.UpdateCompany.Commands
                 return RequestResult<UpdateCompanyDto>.Failure("Company Not Found", ErrorCode.CompanyNotExist);
 
             // CheckCountryExists
-            var IsCountryExists = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
+            var IsCountryExists = await _mediator.Send(new CheckExistsQuery<Country>(request.CountryId));
 
-            if (!IsCountryExists.IsSuccess)
+            if (!IsCountryExists)
                 return RequestResult<UpdateCompanyDto>.Failure("Country Not Found", ErrorCode.CountryNotFound);
 
             // CheckOrganizationExists

@@ -56,7 +56,8 @@
 
   <ItemGroup>
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
-    <Folder Include="Features\Common\" />
+    <Folder Include="Features\CompanyManagement\NewFolder\Queries\" />
+    <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
@@ -64,7 +65,6 @@
   </ItemGroup>
 	<!-- Folder Structure -->
 	<ItemGroup>
-		<Folder Include="Features\Common\" />
 		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />

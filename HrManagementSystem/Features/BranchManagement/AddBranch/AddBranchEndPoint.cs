@@ -1,6 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.BranchManagement.Commands.AddBranch.Commands;
+using HrManagementSystem.Features.BranchManagement.AddBranch.Commands;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata;

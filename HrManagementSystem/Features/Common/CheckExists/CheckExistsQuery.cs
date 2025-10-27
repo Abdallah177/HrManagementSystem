@@ -2,7 +2,7 @@
 using HrManagementSystem.Common.Entities;
 using MediatR;
 
-namespace HrManagementSystem.Features.Common.Queries.CheckExists
+namespace HrManagementSystem.Features.Common.CheckExists
 {
     public record CheckExistsQuery<TEntity>(string Id) : IRequest<bool> where TEntity : BaseModel;
 
