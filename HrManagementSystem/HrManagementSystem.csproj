@@ -18,6 +18,15 @@
 		<Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 		<EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 		<None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	<ItemGroup>
+	  <Compile Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <Content Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <EmbeddedResource Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
+	  <None Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	</ItemGroup>
 
   <ItemGroup>
@@ -74,17 +83,15 @@
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+		<Folder Include="Features\TeamManagement\TeamManagement\" />
 	</ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Helper\" />
     <Folder Include="Features\Common\" />
-    <Folder Include="Features\CompanyManagement\" />
     <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
-    <Folder Include="Features\LocationManagement\StateManagement\" />
-    <Folder Include="Features\OrganizationManagement\" />
     <Folder Include="Features\TeamManagement\" />
   </ItemGroup>
 

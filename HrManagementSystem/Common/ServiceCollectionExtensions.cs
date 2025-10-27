@@ -43,6 +43,10 @@ namespace HrManagementSystem.Common
             services.AddFluentValidationConfig();
             services.AddMapsterConfig();
             services.AddMediatRConfig();
+            
+            //services.AddTransient<RequestHandlerBaseParameters>(sp => new RequestHandlerBaseParameters(sp.GetRequiredService<IMediator>()));
+
+
 
             return services;
         }

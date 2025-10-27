@@ -23,14 +23,14 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Queri
             _genericRepository = genericRepository;
         }
 
-        public override async Task<EndpointResponse<List<GetAllCountriesViewModel>>> Handle(GetAllCountriesQuery request, CancellationToken cancellationToken)
-        {
-            var countries = await _genericRepository.GetAll()
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
+    //    public override async Task<EndpointResponse<List<GetAllCountriesViewModel>>> Handle(GetAllCountriesQuery request, CancellationToken cancellationToken)
+    //    {
+    //        var countries = await _genericRepository.GetAll()
+    //            .AsNoTracking()
+    //            .ToListAsync(cancellationToken);
 
-            if (countries is null || !countries.Any())
-                return EndpointResponse<List<GetAllCountriesViewModel>>.Failure("No countries found", ErrorCode.CountryNotFound);
+    //        if (countries is null || !countries.Any())
+    //            return EndpointResponse<List<GetAllCountriesViewModel>>.Failure("No countries found", ErrorCode.CountryNotFound);
 
             var viewModels = countries.Adapt<List<GetAllCountriesViewModel>>();
             return EndpointResponse<List<GetAllCountriesViewModel>>.Success(viewModels, "Countries retrieved successfully");
