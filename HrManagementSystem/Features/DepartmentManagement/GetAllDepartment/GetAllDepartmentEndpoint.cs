@@ -13,11 +13,12 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment
         }
 
         [HttpGet]
-        public async Task<EndpointResponse<GetAllDepartmentResponseViewModel>> GetAllDepartments()
+        public async Task<EndpointResponse<GetAllDepartmentResponseViewModel>> GetAllDepartments([FromQuery] GetAllDepartmentRequestviewModel request)
         {
-            var result = await _mediator.Send(new GetAllDepartmentQuery());
+            var result = await _mediator.Send(new GetAllDepartmentQuery(request.BranchId));
             if (!result.IsSuccess)
                 return new EndpointResponse<GetAllDepartmentResponseViewModel>(default, false, result.Message, result.ErrorCode);
+
             var departmentData = result.Data.Adapt<GetAllDepartmentResponseViewModel>();
             return EndpointResponse<GetAllDepartmentResponseViewModel>.Success(departmentData);
         }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries
 {
-    public record GetAllDepartmentQuery : IRequest<RequestResult<List<GetAllDepartmentDto>>>;
+    public record GetAllDepartmentQuery(string? BranchId = null) : IRequest<RequestResult<List<GetAllDepartmentDto>>>;
 
     public class GetAllDepartmentQueryHandler : RequestHandlerBase<GetAllDepartmentQuery, RequestResult<List<GetAllDepartmentDto>>, Department>
     {
@@ -20,10 +20,14 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Quer
 
         public async override Task<RequestResult<List<GetAllDepartmentDto>>> Handle(GetAllDepartmentQuery request, CancellationToken cancellationToken)
         {
-            var departments = await _repository.GetAll()
+            var query = _repository.GetAll();
+
+            if (!string.IsNullOrEmpty(request.BranchId))
+                query = query.Where(d => d.BranchId == request.BranchId);
+            
+            var departments = await query
                 .ProjectToType<GetAllDepartmentDto>()
-                .OrderBy(d => d.DepartmentName)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
 
             if (departments == null)
                 return RequestResult<List<GetAllDepartmentDto>>.Failure("No departments found", ErrorCode.NoDepartmentsFound);
