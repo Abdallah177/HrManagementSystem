@@ -4,7 +4,11 @@ using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
+<<<<<<< HEAD
 using HrManagementSystem.Features.Common.Company.CheckCompanyExistsWithName;
+=======
+using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
+>>>>>>> master
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
 using Mapster;
@@ -52,12 +56,12 @@ namespace HrManagementSystem.Features.CompanyManagement.UpdateCompany.Commands
 
             var company = companyResult.Data.Adapt<Company>();
 
+            //var company = await _repository.GetByIDAsync(companyResult.Data.Id);
+                      
             company.Name = request.Name;
             company.CountryId = request.CountryId;
             company.OrganizationId = request.OrganizationId;
             company.Email = request.Email;
-            //company.CreatedAt =DateTime.Now;
-            //company.CreatedByUser = "SYSTEM";
 
             await _repository.UpdateIncludeAsync(company, "SYSTEM", cancellationToken, nameof(Company.Name), nameof(Company.Email), nameof(Company.CountryId), nameof(Company.OrganizationId));
 

@@ -1,7 +1,6 @@
 ﻿using HrManagementSystem.Common.Entities.Location;
-using HrManagementSystem.Features.LocationManagement.CityManagement.Commands.AddCity.Commands;
-using HrManagementSystem.Features.LocationManagement.CityManagement.Commands.AddCity.Dtos;
-using HrManagementSystem.Features.LocationManagement.CityManagement.Queries.GetAllCities.Queries.Dtos;
+using HrManagementSystem.Features.LocationManagement.CityManagement.AddCity.Commands;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
 using Mapster;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.MappingProfile
