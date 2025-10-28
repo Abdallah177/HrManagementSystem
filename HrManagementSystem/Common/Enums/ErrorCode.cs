@@ -29,8 +29,8 @@
 
         StateHasCities =201,
 
-        TeamNotExist = 800
+        TeamNotExist = 800,
+        NoTeamsFound = 801,
 
-      
     }
 }
