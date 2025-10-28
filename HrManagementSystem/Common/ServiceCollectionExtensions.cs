@@ -1,7 +1,10 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
+using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
+using HrManagementSystem.Features.Common.CheckExists;
 using Mapster;
 using MapsterMapper;
 using MediatR;
@@ -32,7 +35,9 @@ namespace HrManagementSystem.Common
 
             services.AddScoped<TransactionMiddleware>();
 
-
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>),typeof(CheckExistsQueryHandler<State>));
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
+            services.AddFluentValidationConfig();
             services.AddFluentValidationConfig();
 
             services.AddMapsterConfig();

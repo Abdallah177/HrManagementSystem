@@ -1,4 +1,5 @@
 ﻿using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment;
 using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.Dtos;
 using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
@@ -21,6 +22,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.MappingProfile
             config.NewConfig<Team, DepartmentTeamDto>()
                 .Map(dest => dest.TeamId, src => src.Id)
                 .Map(dest => dest.TeamName, src => src.Name);
+
         }
     }
 }

@@ -22,5 +22,6 @@
         CityNotExist = 208,
         NoDepartmentsFound = 206,
         CompanyNotExist = 207,
+        DuplicateCityName = 209
     }
 }

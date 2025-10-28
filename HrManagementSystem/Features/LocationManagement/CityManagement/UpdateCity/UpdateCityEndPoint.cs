@@ -1,5 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCity
 {
@@ -9,6 +10,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCi
         {
         }
 
+        [HttpPut]
         public async Task<EndpointResponse<bool>> UpdateCity(UpdateCityRequestViewModel request, CancellationToken cancellationToken)
         {
             var validationResponse = ValidateRequest(request);
@@ -17,7 +19,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCi
 
             var updateCityResult = await _mediator.Send(new Commands.UpdateCityCommand(request.cityId, request.Name, request.StateId, GetCurrentUserId().ToString()), cancellationToken);
             if (!updateCityResult.Data)
-                return EndpointResponse<bool>.Failure(updateCityResult.Message);
+                return EndpointResponse<bool>.Failure(updateCityResult.Message , updateCityResult.ErrorCode);
 
             return EndpointResponse<bool>.Success(true, updateCityResult.Message);
 

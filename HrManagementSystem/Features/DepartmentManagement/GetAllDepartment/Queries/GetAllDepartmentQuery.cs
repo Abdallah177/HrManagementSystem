@@ -2,6 +2,7 @@
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.Dtos;
 using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
@@ -20,6 +21,12 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Quer
 
         public async override Task<RequestResult<List<GetAllDepartmentDto>>> Handle(GetAllDepartmentQuery request, CancellationToken cancellationToken)
         {
+            if(!string.IsNullOrEmpty(request.BranchId))
+            {
+                var branchExists = await _mediator.Send(new CheckExistsQuery<Branch>(request.BranchId));
+                if (!branchExists)
+                    return RequestResult<List<GetAllDepartmentDto>>.Failure("Branch not found", ErrorCode.BranchNotFound);
+            }
             var query = _repository.GetAll();
 
             if (!string.IsNullOrEmpty(request.BranchId))

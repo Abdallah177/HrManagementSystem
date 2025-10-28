@@ -4,12 +4,12 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment
 {
     public class GetAllDepartmentResponseViewModel
     {
-        public string DepartmentId { get; set; } = null!;
-        public string DepartmentName { get; set; } = null!;
-        public string? Description { get; set; }
-        public string? BranchId { get; set; }
-        public string? BranchName { get; set; }
-        public List<DepartmentTeamDto> Teams { get; set; } = new List<DepartmentTeamDto>();
+        public string DepartmentId { get; set; } 
+        public string DepartmentName { get; set; }
+        public string Description { get; set; }
+        public string BranchId { get; set; }
+        public string BranchName { get; set; }
+        public List<DepartmentTeamResponseViewModel> Teams { get; set; } = new List<DepartmentTeamResponseViewModel>();
     }
 
     public class DepartmentTeamResponseViewModel
