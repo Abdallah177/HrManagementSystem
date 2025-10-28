@@ -11,7 +11,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.MappingProfile
         {
             // Organization to GetAllOrganizationDto
             config.NewConfig<Organization, GetAllOrganizationDto>()
-                .Map(dest => dest.OrganizationId, src => src.Id)
+              .Map(dest => dest.OrganizationId, src => src.Id)
                 .Map(dest => dest.OrganizationName, src => src.Name)
                 .Map(dest => dest.Companies, src => src.Companies
                     .Where(c => !c.IsDeleted && c.IsActive)

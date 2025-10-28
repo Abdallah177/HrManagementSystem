@@ -14,22 +14,27 @@
 
         NoCitiesfound = 300,
         CityAlreadyExistsInThisState = 301 ,
+        CityNotExist = 302,
+        DuplicateCityName = 303,
 
         OrganizationNotExis = 400,
         NoOrganizationFound = 401,
         OrganizationIDNotFound =402,
-
+        OrganizationAlreadyExists=403,
 
         CompanyNotExist = 500,
 
         BranchNotExist = 600,
+        BranchNotFound = 601,
 
-        DepartmentNotExist= 700,
+        DepartmentNotExist = 700,
         DepartmentIsExist = 701,
+        DepartmentHasRelatedTeams = 702,
 
         StateHasCities =201,
 
         TeamNotExist = 800,
+        NoTeamsFound = 801,
 
     }
 }

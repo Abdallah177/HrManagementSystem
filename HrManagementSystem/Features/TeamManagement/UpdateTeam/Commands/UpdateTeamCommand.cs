@@ -2,6 +2,7 @@
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.DepartmentManagement.Common.CheckDepartmentIsExist.Queries;
 using HrManagementSystem.Features.DepartmentManagement.Common.Queries;
 using HrManagementSystem.Features.TeamManagement.GetTeamById.Quesries;
 using HrManagementSystem.Features.TeamManagement.TeamUpdate.DTOs;

@@ -3,10 +3,10 @@ using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Views;
 using MediatR;
 
-namespace HrManagementSystem.Features.DepartmentManagement.Common.Queries
+namespace HrManagementSystem.Features.DepartmentManagement.Common.CheckDepartmentIsExist.Queries
 {
     public record CheckDepartmentIsExistQuery(string DepartmentId) : IRequest<RequestResult<bool>>;
-    
+
     public class CheckDepartmentIsExistQueryHandler : RequestHandlerBase<CheckDepartmentIsExistQuery, RequestResult<bool>, Department>
     {
         public CheckDepartmentIsExistQueryHandler(RequestHandlerBaseParameters<Department> parameters) : base(parameters)
