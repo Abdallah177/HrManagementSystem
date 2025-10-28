@@ -56,7 +56,6 @@
 
   <ItemGroup>
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
-    <Folder Include="Features\CompanyManagement\Add\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
