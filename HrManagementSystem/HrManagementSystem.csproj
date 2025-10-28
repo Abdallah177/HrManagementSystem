@@ -56,7 +56,6 @@
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-		<Folder Include="Features\OrganizationManagement\" />
 		<Folder Include="Features\TeamManagement\" />
 		<Folder Include="Features\TeamManagement\TeamUpdate\Queries\" />
 	</ItemGroup>
