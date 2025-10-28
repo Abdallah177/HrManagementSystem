@@ -38,11 +38,16 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Country>, bool>),
                                   typeof(CheckExistsQueryHandler<Country>));
 
+<<<<<<< HEAD
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Department>, bool>),
                                   typeof(CheckExistsQueryHandler<Department>));
 
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
+=======
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>),
+                                  typeof(CheckExistsQueryHandler<Branch>));
+>>>>>>> abdullah-features
 
             services.AddScoped<TransactionMiddleware>();
 

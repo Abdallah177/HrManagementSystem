@@ -1,8 +1,8 @@
 ﻿using HrManagementSystem.Common.Views;
 using HrManagementSystem.Common;
-using HrManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Mapster;
+using HrManagementSystem.Features.CompanyManagement.AddCompany.Commands;
 
 namespace HrManagementSystem.Features.CompanyManagement.AddCompany
 {

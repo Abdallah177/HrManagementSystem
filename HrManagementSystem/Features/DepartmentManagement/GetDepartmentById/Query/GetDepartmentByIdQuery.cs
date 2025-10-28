@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrManagementSystem.Features.DepartmentManagement.GetDepartmentById.Query
 {
-    public record GetDepartmentByIdQuery(string DepartmentId) : IRequest<RequestResult<DepartmentDTO>>;
+    public record GetDepartmentByIdQuery(string Id) : IRequest<RequestResult<DepartmentDTO>>;
 
     public class GetDepartmentByIdQueryHandler : RequestHandlerBase<GetDepartmentByIdQuery, RequestResult<DepartmentDTO>, Department>
     {
@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetDepartmentById.Que
         }
         public async override Task<RequestResult<DepartmentDTO>> Handle(GetDepartmentByIdQuery request, CancellationToken cancellationToken)
         {
-            var department = await _repository.Get(d => d.Id == request.DepartmentId)
+            var department = await _repository.Get(d => d.Id == request.Id)
                 .ProjectToType<DepartmentDTO>().FirstOrDefaultAsync(cancellationToken);
             if (department == null)
                 return RequestResult<DepartmentDTO>.Failure("Department not found", ErrorCode.DepartmentNotExist);
