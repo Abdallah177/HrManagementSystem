@@ -1,16 +1,13 @@
 ﻿using HrManagementSystem.Common.Entities;
-using HrManagementSystem.Common.Entities.Location;
-using HrManagementSystem.Features.BranchManagement.GetBranchById.Queries.Dtos;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
 using Mapster;
 
-namespace HrManagementSystem.Features.BranchManagement.MappingProfile
+namespace HrManagementSystem.Features.BranchManagement.Common.MappingProfile
 {
-    public class Profile : IRegister
+    public class GetAllBranchesProfile : IRegister
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<Branch, BranchDto>()
+            config.NewConfig<Branch, GetAllBranches.GetAllBranchesResponseViewModel>()
              .Map(dest => dest.BranchId, src => src.Id)
              .Map(dest => dest.BranchName, src => src.Name)
              .Map(dest => dest.CompanyId, src => src.CompanyId)
@@ -18,5 +15,6 @@ namespace HrManagementSystem.Features.BranchManagement.MappingProfile
              .Map(dest => dest.CityId, src => src.CityId)
              .Map(dest => dest.CityName, src => src.City.Name);
         }
+
     }
 }

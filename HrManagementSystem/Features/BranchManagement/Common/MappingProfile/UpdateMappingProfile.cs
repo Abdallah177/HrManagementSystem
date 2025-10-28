@@ -3,7 +3,7 @@ using HrManagementSystem.Features.BranchManagement.UpdateBranch.Commands;
 using HrManagementSystem.Features.BranchManagement.UpdateBranch.DTOs;
 using Mapster;
 
-namespace HrManagementSystem.Features.BranchManagement.MappingProfile
+namespace HrManagementSystem.Features.BranchManagement.Common.MappingProfile
 {
     public class UpdateMappingProfile : IRegister
     {
@@ -22,5 +22,5 @@ namespace HrManagementSystem.Features.BranchManagement.MappingProfile
               .Ignore(dest => dest.Id);
         }
     }
-   
+
 }
