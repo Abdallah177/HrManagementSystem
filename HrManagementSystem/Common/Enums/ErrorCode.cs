@@ -18,7 +18,7 @@
         OrganizationNotExis = 400,
         NoOrganizationFound = 401,
         OrganizationIDNotFound =402,
-
+        OrganizationAlreadyExists=403,
 
         CompanyNotExist = 500,
 
@@ -29,9 +29,8 @@
 
         StateHasCities =201,
 
-        TeamNotExist = 800,
+        TeamNotExist = 800
 
-        CountryHasStates = 400,
-        NoCitiesfound = 201,
+      
     }
 }

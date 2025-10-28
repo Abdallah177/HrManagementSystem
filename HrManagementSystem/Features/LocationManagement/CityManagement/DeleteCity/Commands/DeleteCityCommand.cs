@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.DeleteCi
             // Will Be Refactoring After Making Get By Id
             var city = await _repository.GetByIDAsync(request.Id, cancellationToken);
             if (city == null)
-                return RequestResult<bool>.Failure("City Not Found", ErrorCode.CityNotFound);
+                return RequestResult<bool>.Failure("City Not Found", ErrorCode.NoCitiesfound);
 
 
             city.IsDeleted = true;

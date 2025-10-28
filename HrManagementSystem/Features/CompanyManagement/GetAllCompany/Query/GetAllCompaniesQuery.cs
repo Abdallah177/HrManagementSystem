@@ -24,7 +24,7 @@ namespace HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query
                 .ToListAsync(cancellationToken);//.FirstOrDefaultAsync(cancellationToken);
 
             if (Companies ==null )
-            return RequestResult<List<CompanyDto>>.Failure("No Companies found", ErrorCode.NoCompnyFound);
+            return RequestResult<List<CompanyDto>>.Failure("No Companies found", ErrorCode.CompanyNotExist);
 
             return RequestResult<List<CompanyDto>>.Success(Companies);
 

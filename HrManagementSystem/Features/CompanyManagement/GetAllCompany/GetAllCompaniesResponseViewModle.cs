@@ -5,11 +5,11 @@
         public string Id { get; set; }
         public string Name { get; set; } = null!;
         public string? Email { get; set; }
-        public GetCountryViewModle country { get; set; }=null!;
+        public GetCountryWithCompanyViewModle country { get; set; }=null!;
         public GetOrganizationViewModle organization { get; set; } = null!;
     }
 
-    public class GetCountryViewModle
+    public class GetCountryWithCompanyViewModle
     {
         public string Id { get; set; }
         public string Name { get; set; }

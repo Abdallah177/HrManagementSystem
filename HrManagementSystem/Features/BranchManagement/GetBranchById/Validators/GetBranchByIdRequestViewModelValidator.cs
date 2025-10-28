@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry;
+
 
 namespace HrManagementSystem.Features.BranchManagement.GetBranchById.Validators
 {

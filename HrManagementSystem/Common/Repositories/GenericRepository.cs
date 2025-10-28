@@ -124,11 +124,7 @@ namespace HrManagementSystem.Common.Repositories
 
 
 
-        //_______________ Entity exists ______________________
-        public async Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate)
-        {
-            return await _dbSet.AnyAsync(predicate);
-        }
+      
 
     }
 
