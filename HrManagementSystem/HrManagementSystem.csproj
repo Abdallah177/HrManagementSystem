@@ -38,7 +38,6 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
-<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
     <Folder Include="Features\Common\" />
@@ -52,9 +51,8 @@
   </ItemGroup>
 	<!-- Folder Structure -->
 
-=======
+	<ItemGroup>
 	<!-- Folder structure -->
->>>>>>> 3e5c50ec6ecf0c9daf420deb2304903b49bd871b
 	<ItemGroup>
 		<Folder Include="Common\Helper\" />
 		<Folder Include="Features\Common\" />
