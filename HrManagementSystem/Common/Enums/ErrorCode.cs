@@ -27,6 +27,7 @@
 
         DepartmentNotExist = 700,
         DepartmentIsExist = 701,
+        DepartmentHasRelatedTeams = 702,
 
         StateHasCities =201,
 
