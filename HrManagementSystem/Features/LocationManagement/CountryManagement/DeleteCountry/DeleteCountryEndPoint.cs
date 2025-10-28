@@ -12,14 +12,13 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Comma
         }
 
         [HttpDelete]
-        public EndpointResponse<bool> DeleteCountry([FromQuery] DeleteCountryRequestViewModel request)
+        public async Task<EndpointResponse<bool>> DeleteCountry([FromQuery] DeleteCountryRequestViewModel request)
         {
             var validationResponse = ValidateRequest(request);
             if (!validationResponse.IsSuccess)
                 return EndpointResponse<bool>.Failure(validationResponse.Message);
 
-            var command = new DeleteCountryCommand(request.CountryId, GetCurrentUserId().ToString());
-            var result = _mediator.Send(command).Result;
+            var result = await _mediator.Send(new DeleteCountryCommand(request.CountryId, GetCurrentUserId().ToString()));
 
             if (!result.IsSuccess)
                 return EndpointResponse<bool>.Failure(result.Message);

@@ -1,6 +1,7 @@
 ﻿using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Features.BranchManagement.GetBranchById.Queries.Dtos;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
 using Mapster;
 
 namespace HrManagementSystem.Features.BranchManagement.MappingProfile

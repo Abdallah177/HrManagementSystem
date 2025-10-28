@@ -18,7 +18,7 @@
         OrganizationNotExis = 400,
         NoOrganizationFound = 401,
         OrganizationIDNotFound =402,
-
+        OrganizationAlreadyExists=403,
 
         CompanyNotExist = 500,
 

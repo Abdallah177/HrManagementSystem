@@ -6,6 +6,11 @@
         public string OrganizationName { get; set;}
         public List<GetCompaniesViewModel> Companies { get; set; } = new List<GetCompaniesViewModel>();
 
+      
+        public List<GetBranchesViewModel> Branches { get; set; } = new List<GetBranchesViewModel>();
+        public List<GetDepartmentsViewModels> Departments { get; set; } = new List<GetDepartmentsViewModels>();
+        public List<GetTeamsViewModels> Teams { get; set; } = new List<GetTeamsViewModels>();
+
     }
 
     public class GetCompaniesViewModel

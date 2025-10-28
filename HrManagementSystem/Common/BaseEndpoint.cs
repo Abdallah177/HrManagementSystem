@@ -51,5 +51,6 @@ namespace HrManagementSystem.Common
             }
             return Guid.Empty;
         }
+
     }
 }

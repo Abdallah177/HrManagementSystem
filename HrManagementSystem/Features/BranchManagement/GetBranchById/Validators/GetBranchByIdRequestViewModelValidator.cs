@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 
+
 namespace HrManagementSystem.Features.BranchManagement.GetBranchById.Validators
 {
     public class GetBranchByIdRequestViewModelValidator : AbstractValidator<GetBranchByIdRequestViewModel>

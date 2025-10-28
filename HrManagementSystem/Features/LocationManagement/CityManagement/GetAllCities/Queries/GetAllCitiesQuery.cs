@@ -1,9 +1,11 @@
 ﻿using HrManagementSystem.Common;
+using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
+using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

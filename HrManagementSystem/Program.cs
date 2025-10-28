@@ -16,6 +16,12 @@ namespace HrManagementSystem
 
             builder.Services.AddApplicationServices(builder.Configuration);
 
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            builder.Services.AddScoped<TransactionMiddleware>();
+
+            builder.Services.AddScoped(typeof(RequestHandlerBaseParameters<>));
+            builder.Services.AddScoped(typeof(EndpointBaseParameters<>));
             var app = builder.Build();
 
             app.UseMiddleware<TransactionMiddleware>();

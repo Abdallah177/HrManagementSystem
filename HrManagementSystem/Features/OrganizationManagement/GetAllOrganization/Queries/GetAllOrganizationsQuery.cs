@@ -1,5 +1,8 @@
-﻿using HrManagementSystem.Common;
+﻿using HrManagementSystem.Common.Entities.Location;
+using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries;
 using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using MediatR;
 using HrManagementSystem.Common.Entities;
