@@ -1,6 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CityManagment.DeleteCity.Commands;
+using HrManagementSystem.Features.LocationManagement.CityManagement.DeleteCity.Commands;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

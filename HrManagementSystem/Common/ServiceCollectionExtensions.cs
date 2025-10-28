@@ -75,7 +75,7 @@ namespace HrManagementSystem.Common
 
         public static IServiceCollection AddAuthConfig(this IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddSingleton<JwtTokenGenerator>();
             services.AddOptions<JwtSettings>()
                 .BindConfiguration(JwtSettings.SectionName);
 

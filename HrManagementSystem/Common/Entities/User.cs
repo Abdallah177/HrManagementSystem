@@ -14,6 +14,8 @@ namespace HrManagementSystem.Common.Entities
         public Role Role { get; set; }
         public string? PasswordResetToken { get; set; }
         public DateTime? PasswordResetTokenExpiry { get; set; }
+        public string OrganizationId { get; set; } = null!;  
+        public Organization Organization { get; set; } = null!;
         public User()
         {
             Id = Guid.NewGuid().ToString();

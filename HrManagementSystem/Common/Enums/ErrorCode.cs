@@ -26,7 +26,7 @@
 
         TeamNotExist = 800,
 
-        CountryHasStates = 400,
-        NoCitiesfound = 201,
+        CityNotFound=400
+
     }
 }
