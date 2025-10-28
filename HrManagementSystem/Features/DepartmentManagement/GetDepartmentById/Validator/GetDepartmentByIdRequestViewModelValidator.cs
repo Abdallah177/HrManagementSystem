@@ -6,7 +6,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetDepartmentById.Val
     {
         public GetDepartmentByIdRequestViewModelValidator()
         {
-            RuleFor(x => x.DepartmentId)
+            RuleFor(x => x.Id)
                 .NotEmpty().WithMessage("DepartmentId is required");
         }
     }
