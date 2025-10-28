@@ -7,7 +7,7 @@
 		<InvariantGlobalization>false</InvariantGlobalization>
 	</PropertyGroup>
 
-	<!-- إزالة الملفات القديمة -->
+	<!-- Remove old files -->
 	<ItemGroup>
 		<Compile Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
 		<Content Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
@@ -20,7 +20,7 @@
 		<None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	</ItemGroup>
 
-	<!-- المكاتب والباكدجات -->
+	<!-- Package references -->
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.0.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
@@ -38,6 +38,7 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
     <Folder Include="Features\Common\" />
@@ -51,6 +52,9 @@
   </ItemGroup>
 	<!-- Folder Structure -->
 
+=======
+	<!-- Folder structure -->
+>>>>>>> 3e5c50ec6ecf0c9daf420deb2304903b49bd871b
 	<ItemGroup>
 		<Folder Include="Common\Helper\" />
 		<Folder Include="Features\Common\" />
@@ -59,22 +63,17 @@
 		<Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
 		<Folder Include="Features\BranchManagement\" />
 		<Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
-		<Folder Include="Features\DepartmentManagement\" />
 		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
-		<Folder Include="Features\LocationManagement\CityManagement\" />
 		<Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
-		<Folder Include="Features\LocationManagement\StateManagement\" />
 		<Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-		<Folder Include="Features\OrganizationManagement\" />
 		<Folder Include="Features\TeamManagement\" />
 		<Folder Include="Features\TeamManagement\TeamUpdate\Queries\" />
 	</ItemGroup>
 
 </Project>
-

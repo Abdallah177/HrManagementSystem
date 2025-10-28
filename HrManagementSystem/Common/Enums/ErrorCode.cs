@@ -14,6 +14,8 @@
 
         NoCitiesfound = 300,
         CityAlreadyExistsInThisState = 301 ,
+        CityNotExist = 302,
+        DuplicateCityName = 303,
 
         OrganizationNotExis = 400,
         NoOrganizationFound = 401,
@@ -27,6 +29,7 @@
 
         DepartmentNotExist = 700,
         DepartmentIsExist = 701,
+        DepartmentHasRelatedTeams = 702,
 
         StateHasCities =201,
 
