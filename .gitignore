@@ -366,3 +366,5 @@ FodyWeavers.xsd
 /.gitignore
 /HrManagementSystem/Common/Views
 /.gitignore
+/HrManagementSystem/Common/Data/Migrations/20251027202455_init03.cs
+/HrManagementSystem/Common/Data/Migrations
