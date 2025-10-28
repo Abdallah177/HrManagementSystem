@@ -23,8 +23,9 @@
         CompanyNotExist = 500,
 
         BranchNotExist = 600,
+        BranchNotFound = 601,
 
-        DepartmentNotExist= 700,
+        DepartmentNotExist = 700,
         DepartmentIsExist = 701,
 
         StateHasCities =201,

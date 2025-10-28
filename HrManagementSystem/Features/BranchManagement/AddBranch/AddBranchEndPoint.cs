@@ -23,7 +23,9 @@ namespace HrManagementSystem.Features.BranchManagement.AddBranch
             var result = await _mediator.Send(new AddBranchCommand(viewModel.Name, viewModel.CityId, viewModel.Phone, viewModel.CompanyId, viewModel.UserId));
             if (!result.IsSuccess)
                 return EndpointResponse<AddBranchResponseViewModel>.Failure(result.Message, result.ErrorCode);
+
             var addBranchResponseViewModel = result.Data.Adapt<AddBranchResponseViewModel>();
+
             return EndpointResponse<AddBranchResponseViewModel>.Success(addBranchResponseViewModel);
         }
 

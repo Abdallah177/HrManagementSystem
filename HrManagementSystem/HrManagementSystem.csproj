@@ -66,6 +66,7 @@
     <Folder Include="Features\TeamManagement\TeamUpdate\Queries\" />
   </ItemGroup>
 	<!-- Folder Structure -->
+
 	<ItemGroup>
 		<Folder Include="Features\Common\" />
 		<Folder Include="Features\CompanyManagement\" />
