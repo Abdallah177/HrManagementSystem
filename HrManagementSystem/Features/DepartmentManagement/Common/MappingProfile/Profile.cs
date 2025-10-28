@@ -2,7 +2,7 @@
 using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.Dtos;
 using Mapster;
 
-namespace HrManagementSystem.Features.DepartmentManagement.MappingProfile
+namespace HrManagementSystem.Features.DepartmentManagement.Common.MappingProfile
 {
     public class Profile : IRegister
     {

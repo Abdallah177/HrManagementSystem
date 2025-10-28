@@ -2,13 +2,13 @@
 using HrManagementSystem.Features.TeamManagement.GetAllTeams.DTOs;
 using Mapster;
 
-namespace HrManagementSystem.Features.TeamManagement.MappingProfile
+namespace HrManagementSystem.Features.TeamManagement.Common.MappingProfile
 {
     public class GetAllTeamsProfile : IRegister
     {
         public void Register(TypeAdapterConfig config)
         {
-            
+
             config.NewConfig<Team, GetAllTeamsDto>()
                 .Map(dest => dest.TeamId, src => src.Id)
                 .Map(dest => dest.TeamName, src => src.Name)

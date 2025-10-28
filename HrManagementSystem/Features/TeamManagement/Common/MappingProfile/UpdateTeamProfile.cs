@@ -3,7 +3,7 @@ using HrManagementSystem.Features.TeamManagement.TeamUpdate;
 using HrManagementSystem.Features.TeamManagement.TeamUpdate.DTOs;
 using Mapster;
 
-namespace HrManagementSystem.Features.TeamManagement.MappingProfile
+namespace HrManagementSystem.Features.TeamManagement.Common.MappingProfile
 {
     public class UpdateTeamProfile : IRegister
     {
@@ -15,5 +15,5 @@ namespace HrManagementSystem.Features.TeamManagement.MappingProfile
                 .Map(dest => dest.DepartmentId, src => src.DepartmentId);
         }
     }
-    
+
 }
