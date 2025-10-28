@@ -20,6 +20,7 @@
         CountryHasRelatedCompanies = 205,
         TeamNotExist = 207,
         CityNotExist = 208,
-        NoDepartmentsFound = 206
+        NoDepartmentsFound = 206,
+        CompanyNotExist = 207,
     }
 }
