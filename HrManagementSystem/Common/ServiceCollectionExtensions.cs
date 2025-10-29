@@ -41,6 +41,9 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Department>, bool>),
                                   typeof(CheckExistsQueryHandler<Department>));
 
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<City>, bool>),
+                                  typeof(CheckExistsQueryHandler<City>));
+
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
