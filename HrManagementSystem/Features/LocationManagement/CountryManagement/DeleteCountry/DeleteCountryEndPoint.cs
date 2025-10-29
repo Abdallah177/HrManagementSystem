@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Delet
             if (!validationResponse.IsSuccess)
                 return EndpointResponse<bool>.Failure(validationResponse.Message);
 
-            var result = await _mediator.Send(new DeleteCountryCommand(request.CountryId, GetCurrentUserId().ToString()));
+            var result = await _mediator.Send(new DeleteCountryOrchestrator(request.CountryId, GetCurrentUserId().ToString()));
 
             if (!result.IsSuccess)
                 return EndpointResponse<bool>.Failure(result.Message);

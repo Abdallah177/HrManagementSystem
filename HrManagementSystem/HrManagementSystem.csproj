@@ -9,15 +9,19 @@
 
 	<ItemGroup>
 	  <Compile Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <Compile Remove="Features\LocationManagement\Common\Commands\**" />
 	  <Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	  <Compile Remove="Features\TeamManagement\TeamManagement\**" />
 	  <Content Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <Content Remove="Features\LocationManagement\Common\Commands\**" />
 	  <Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	  <Content Remove="Features\TeamManagement\TeamManagement\**" />
 	  <EmbeddedResource Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <EmbeddedResource Remove="Features\LocationManagement\Common\Commands\**" />
 	  <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	  <EmbeddedResource Remove="Features\TeamManagement\TeamManagement\**" />
 	  <None Remove="Features\DepartmentManagement\AddDepartment\Command\**" />
+	  <None Remove="Features\LocationManagement\Common\Commands\**" />
 	  <None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
 	  <None Remove="Features\TeamManagement\TeamManagement\**" />
 	</ItemGroup>
@@ -40,7 +44,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\LocationManagement\Common\Commands\" />
 		<Folder Include="Features\LocationManagement\CountryManagement\Common\" />
 		<Folder Include="Features\LocationManagement\StateManagement\UpdateState\" />
 	</ItemGroup>
