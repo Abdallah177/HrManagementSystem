@@ -37,6 +37,7 @@ namespace HrManagementSystem.Common
 
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>),typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Company>, bool>), typeof(CheckExistsQueryHandler<Company>));
             services.AddFluentValidationConfig();
             services.AddFluentValidationConfig();
 
