@@ -25,7 +25,7 @@
         CompanyNotExist = 500,
 
         BranchNotExist = 600,
-        BranchNotFound = 601,
+        CanNotRemoveThisBranch = 601,
 
         DepartmentNotExist = 700,
         DepartmentIsExist = 701,

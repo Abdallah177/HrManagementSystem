@@ -24,7 +24,7 @@ namespace HrManagementSystem.Features.BranchManagement.UpdateBranch.Commands
             
             var branch = await _repository.GetByIDAsync(request.Id, cancellationToken);
             if (branch is null)
-                return RequestResult<UpdateBranchDto>.Failure("Branch Not Found", ErrorCode.BranchNotFound);
+                return RequestResult<UpdateBranchDto>.Failure("Branch Not Found", ErrorCode.BranchNotExist);
 
            
             var isDuplicate = await _mediator.Send(new CheckBranchExistsByNameQuery(request.Name));

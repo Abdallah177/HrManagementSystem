@@ -25,7 +25,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Quer
             {
                 var branchExists = await _mediator.Send(new CheckExistsQuery<Branch>(request.BranchId));
                 if (!branchExists)
-                    return RequestResult<List<GetAllDepartmentDto>>.Failure("Branch not found", ErrorCode.BranchNotFound);
+                    return RequestResult<List<GetAllDepartmentDto>>.Failure("Branch not found", ErrorCode.BranchNotExist);
             }
             var query = _repository.GetAll();
 
