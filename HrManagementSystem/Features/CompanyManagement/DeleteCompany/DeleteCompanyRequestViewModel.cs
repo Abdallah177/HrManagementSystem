@@ -1,4 +1,4 @@
 ﻿namespace HrManagementSystem.Features.CompanyManagement.DeleteCompany
 {
-    public record DeleteCompanyRequestViewModel(string CompanyId);
+    public record DeleteCompanyRequestViewModel(string companyId);
 }
