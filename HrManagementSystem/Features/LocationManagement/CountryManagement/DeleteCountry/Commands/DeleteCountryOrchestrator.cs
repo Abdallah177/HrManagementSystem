@@ -8,6 +8,8 @@ using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.LocationManagement.Common.Country.Queries.CheckCountryHasCompany;
 using HrManagementSystem.Features.LocationManagement.StateManagement.Common.Commands;
 using HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Queries;
+using HrManagementSystem.Features.LocationManagement.Common.City.DeleteCityByState.Command;
+using HrManagementSystem.Features.LocationManagement.Common.State.DeleteStateByCountry.Command;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Commands
 {
@@ -34,11 +36,11 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Delet
             {
                 foreach (var stateId in stateIds.Data)
                 {
-                    //await _mediator.Send(new DeleteCityByStateCommand(stateId, request.currentuserId));
+                    await _mediator.Send(new DeleteCityByStateCommand(stateId, request.currentuserId));
                 }
             }
 
-            //await _mediator.Send(new DeleteStateByCountryCommand(request.countryId,request.currentuserId));
+            await _mediator.Send(new DeleteStateByCountryCommand(request.countryId,request.currentuserId));
 
             await _mediator.Send(new DeleteCountryCommand(request.countryId,request.currentuserId));
 
