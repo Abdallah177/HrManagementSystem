@@ -1,12 +1,15 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.BranchManagement.GetBranchById.Queries;
 using HrManagementSystem.Features.BranchManagement.UpdateBranch.DTOs;
 using HrManagementSystem.Features.BranchManagement.UpdateBranch.Queries;
+using HrManagementSystem.Features.Common.CheckExists;
 using Mapster;
 using MediatR;
+using System.ComponentModel.Design;
 
 namespace HrManagementSystem.Features.BranchManagement.UpdateBranch.Commands
 {
@@ -26,7 +29,17 @@ namespace HrManagementSystem.Features.BranchManagement.UpdateBranch.Commands
             if (branch is null)
                 return RequestResult<UpdateBranchDto>.Failure("Branch Not Found", ErrorCode.BranchNotExist);
 
-           
+            // Check Company is Exists
+            var companyExists = await _mediator.Send(new CheckExistsQuery<Company>(request.CompanyId));
+            if (!companyExists)
+                return RequestResult<UpdateBranchDto>.Failure("Company Not Found", ErrorCode.CompanyNotExist);
+
+            // Check City is Exists
+            var cityExists = await _mediator.Send(new CheckExistsQuery<City>(request.CityId));
+            if (!cityExists)
+                return RequestResult<UpdateBranchDto>.Failure("City Not Found", ErrorCode.CityNotExist);
+
+            // Check Name Duplicate
             var isDuplicate = await _mediator.Send(new CheckBranchExistsByNameQuery(request.Name));
             if (isDuplicate)
                 return RequestResult<UpdateBranchDto>.Failure("Branch Name Already Exists", ErrorCode.DuplicateRecord);
