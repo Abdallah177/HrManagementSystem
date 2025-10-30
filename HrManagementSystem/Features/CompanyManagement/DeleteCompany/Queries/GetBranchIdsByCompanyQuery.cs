@@ -15,10 +15,8 @@ namespace HrManagementSystem.Features.CompanyManagement.DeleteCompany.Queries
 
         public async override Task<RequestResult<List<string>>> Handle(GetBranchIdsByCompanyQuery request, CancellationToken cancellationToken)
         {
-            var branchIds = await _repository
-                .Get(b => b.CompanyId == request.companyId)
-                .Select(r => r.Id)
-                .ToListAsync(cancellationToken);
+            var branchIds = await _repository.Get(b => b.CompanyId == request.companyId)
+                .Select(r => r.Id).ToListAsync(cancellationToken);
             return RequestResult<List<string>>.Success(branchIds);
         }
     }

@@ -21,7 +21,7 @@ namespace HrManagementSystem.Features.Common.Branch.DeleteBranchesByCompany.Comm
             //if (!IsCompanyExist) 
             //     return RequestResult<bool>.Failure("Company not found", ErrorCode.CompanyNotExist);
 
-            await _repository.DeleteAsync(request.companyId, request.currentUserId, cancellationToken);
+            await _repository.DeleteFromAsync(b => b.CompanyId == request.companyId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "Branhes deleted successfully");
 
         }
