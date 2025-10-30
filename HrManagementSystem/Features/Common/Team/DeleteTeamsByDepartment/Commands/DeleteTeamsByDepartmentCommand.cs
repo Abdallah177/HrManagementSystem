@@ -21,7 +21,7 @@ namespace HrManagementSystem.Features.Common.Team.DeleteTeamsByDepartment.Comman
             //if (!IsDepartmentExist)
             //    return RequestResult<bool>.Failure("Department not found", ErrorCode.NoDepartmentsFound);
 
-            await _repository.DeleteAsync(request.departmentId, request.currentUserId, cancellationToken);
+            await _repository.DeleteFromAsync(t => t.DepartmentId == request.departmentId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "Teams deleted successfully");
         }
     }

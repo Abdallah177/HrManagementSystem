@@ -20,7 +20,7 @@ namespace HrManagementSystem.Features.Common.Department.DeleteDepartmentsByBranc
             //var IsBranchExist = await _mediator.Send(new CheckExistsQuery<Branch>(request.branchId));
             //if (!IsBranchExist)
             //    return RequestResult<bool>.Failure("Branch not found", ErrorCode.BranchNotFound);
-            await _repository.DeleteAsync(request.branchId, request.currentUserId, cancellationToken);
+            await _repository.DeleteFromAsync(d => d.BranchId == request.branchId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "Departments deleted successfully");
         }
     }

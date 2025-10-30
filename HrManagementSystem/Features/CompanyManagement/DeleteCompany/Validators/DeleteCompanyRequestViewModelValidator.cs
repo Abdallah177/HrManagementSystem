@@ -7,7 +7,7 @@ namespace HrManagementSystem.Features.CompanyManagement.DeleteCompany.Validators
         public DeleteCompanyRequestViewModelValidator()
         {
 
-            RuleFor(x => x.companyId)
+            RuleFor(x => x.CompanyId)
                  .NotEmpty().WithMessage("BranchId is required");
         }
     }

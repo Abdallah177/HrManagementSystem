@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.CompanyManagement.DeleteCompany
             if (!validationResult.IsSuccess)
                 return validationResult;
 
-            var result = await _mediator.Send(new DeleteCompanyOrchestrator(request.companyId , GetCurrentUserId().ToString()));
+            var result = await _mediator.Send(new DeleteCompanyOrchestrator(request.CompanyId , GetCurrentUserId().ToString()));
             return new EndpointResponse<bool>(result.Data, result.IsSuccess, result.Message, result.ErrorCode);
         }
     }

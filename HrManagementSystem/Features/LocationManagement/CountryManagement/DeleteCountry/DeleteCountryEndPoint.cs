@@ -1,9 +1,9 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.DeleteCountry.Commands;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Commands;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.DeleteCountry
+namespace HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry
 {
     public class DeleteCountryEndPoint : BaseEndPoint<DeleteCountryRequestViewModel, bool>
     {
@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Comma
             if (!validationResponse.IsSuccess)
                 return EndpointResponse<bool>.Failure(validationResponse.Message);
 
-            var result = await _mediator.Send(new DeleteCountryCommand(request.CountryId, GetCurrentUserId().ToString()));
+            var result = await _mediator.Send(new DeleteCountryOrchestrator(request.CountryId, GetCurrentUserId().ToString()));
 
             if (!result.IsSuccess)
                 return EndpointResponse<bool>.Failure(result.Message);

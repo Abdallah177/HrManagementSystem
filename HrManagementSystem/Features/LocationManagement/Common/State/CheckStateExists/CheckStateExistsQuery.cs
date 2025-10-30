@@ -5,7 +5,7 @@ using HrManagementSystem.Common.Views;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HrManagementSystem.Features.LocationManagement.Common.State.Queries.CheckStateExists
+namespace HrManagementSystem.Features.LocationManagement.Common.State.CheckStateExists
 {
     public record CheckStateExistsQuery(string Name, string CountryId) : IRequest<RequestResult<bool>>;
 

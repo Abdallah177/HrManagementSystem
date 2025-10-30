@@ -47,7 +47,6 @@
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />
-    <Folder Include="Features\LocationManagement\CountryManagement\DeleteCountry\Queries\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetById\Commands\" />
     <Folder Include="Features\LocationManagement\CityManagement\" />
     <Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />

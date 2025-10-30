@@ -46,6 +46,17 @@ namespace HrManagementSystem.Common.Repositories
                     .SetProperty(e => e.UpdatedByUser, currentUserId), cancellationToken);
         }
 
+
+        public async Task DeleteFromAsync(Expression<Func<Entity, bool>> expression, string currentUserId, CancellationToken cancellationToken)
+        {
+            await Get(expression)
+                .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(e => e.IsDeleted, true)
+                    .SetProperty(e => e.IsActive, false)
+                    .SetProperty(e => e.UpdatedAt, DateTime.UtcNow)
+                    .SetProperty(e => e.UpdatedByUser, currentUserId), cancellationToken);
+        }
+
         // --------------------- Get All ---------------------
 
         public IQueryable<Entity> GetAll()

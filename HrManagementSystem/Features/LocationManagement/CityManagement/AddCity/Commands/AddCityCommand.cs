@@ -3,7 +3,7 @@ using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.LocationManagement.CityManagement.AddCity.Dtos;
-using HrManagementSystem.Features.LocationManagement.Common.City.Queries;
+using HrManagementSystem.Features.LocationManagement.Common.City.IsCityExistInTheState;
 using Mapster;
 using MediatR;
 
@@ -19,7 +19,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.AddCity.
 
         public override async Task<RequestResult<AddCityDto>> Handle(AddCityCommand request, CancellationToken cancellationToken)
         {
-            var isCityExistInTheState = await _mediator.Send(new IsCityExistInTheState(request.Name, request.StateId));
+            var isCityExistInTheState = await _mediator.Send(new IsCityExistInTheStateQuery(request.Name, request.StateId));
 
             if (isCityExistInTheState)
                 return RequestResult<AddCityDto>.Failure("This City Already Exists In This State .", ErrorCode.CityAlreadyExistsInThisState);
