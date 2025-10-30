@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.BranchManagement.UpdateBranch
 {
-    public class BranchUpdateEndPoint : BaseEndPoint<UpdateBranchRequsetViewModel, UpdateBranchResponseViewModel>
+    public class UpdateBranchEndPoint : BaseEndPoint<UpdateBranchRequsetViewModel, UpdateBranchResponseViewModel>
     {
-        public BranchUpdateEndPoint(EndpointBaseParameters<UpdateBranchRequsetViewModel> parameters)
+        public UpdateBranchEndPoint(EndpointBaseParameters<UpdateBranchRequsetViewModel> parameters)
             : base(parameters)
         {
         }

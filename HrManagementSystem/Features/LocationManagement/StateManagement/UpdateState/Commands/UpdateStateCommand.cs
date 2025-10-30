@@ -4,7 +4,9 @@ using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
+using HrManagementSystem.Features.LocationManagement.StateManagement.Common.Commands;
 using HrManagementSystem.Features.LocationManagement.StateManagement.UpdateState.Dtos;
 using Mapster;
 using MediatR;
@@ -21,20 +23,22 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.UpdateS
 
         public override async Task<RequestResult<StateDto>> Handle(UpdateStateCommand request, CancellationToken cancellationToken)
         {
-            var state = await _repository.GetByIDAsync(request.StateId);
 
-            if (state == null)
+            var stateResponse = await _mediator.Send(new GetStateByIdQuery(request.StateId));
+            if (!stateResponse.IsSuccess)
                 return  RequestResult<StateDto>.Failure("State Not Found.", ErrorCode.StateNotFound);
 
-            var IsCountryExist = await _mediator.Send(new CheckCountryExistsQuery(request.CountryId));
+            var IsCountryExist = await _mediator.Send(new CheckExistsQuery<Country>(request.CountryId));
 
-            if (!IsCountryExist.IsSuccess)
+            if (!IsCountryExist)
                 return RequestResult<StateDto>.Failure("Country Not Found.", ErrorCode.CountryNotFound);
+
+            var state = stateResponse.Data.Adapt<State>();  
 
             state.Name = request.Name;
             state.CountryId = request.CountryId;
 
-            _repository.Update(state);
+            await _repository.UpdateIncludeAsync(state, "System", cancellationToken, nameof(State.Name), nameof(State.CountryId));
 
             var stateDto = state.Adapt<StateDto>();
 
