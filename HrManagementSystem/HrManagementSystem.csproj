@@ -42,7 +42,6 @@
     <Folder Include="Common\Helper\" />
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
-    <Folder Include="Features\BranchManagement\" />
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
     <Folder Include="Features\DepartmentManagement\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
