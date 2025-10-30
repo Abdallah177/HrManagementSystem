@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.LocationManagement.Common.State.DeleteStat
 
         public async override Task<RequestResult<bool>> Handle(DeleteStateByCountryCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteAsync(request.countryId, request.currentUserId, cancellationToken);
+            await _repository.DeleteFromAsync( s => s.CountryId == request.countryId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "States deleted successfully");
         }
     }

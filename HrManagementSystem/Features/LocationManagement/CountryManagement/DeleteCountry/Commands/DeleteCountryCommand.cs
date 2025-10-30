@@ -24,7 +24,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Delet
             //if (hasStates.Data)
             //    return RequestResult<bool>.Failure("Country related with states", ErrorCode.CountryHasStates);
 
-            await _repository.DeleteAsync(request.countryId ,request.currentUserId,cancellationToken);
+            await _repository.DeleteFromAsync(c => c.Id == request.countryId ,request.currentUserId,cancellationToken);
 
             return RequestResult<bool>.Success(true, "Country deleted successfully");
         }

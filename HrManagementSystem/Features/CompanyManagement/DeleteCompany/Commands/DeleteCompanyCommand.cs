@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.CompanyManagement.DeleteCompany.Commands
 
         public async override Task<RequestResult<bool>> Handle(DeleteCompanyCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteAsync(request.companyId, request.currentUserId, cancellationToken);
+            await _repository.DeleteFromAsync(c => c.Id == request.companyId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "company deleted successfully");
         }
     }
