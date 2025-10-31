@@ -2,6 +2,7 @@
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.LocationManagement.CityManagement.AddCity.Dtos;
 using HrManagementSystem.Features.LocationManagement.Common.City.IsCityExistInTheState;
 using Mapster;
@@ -19,6 +20,12 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.AddCity.
 
         public override async Task<RequestResult<AddCityDto>> Handle(AddCityCommand request, CancellationToken cancellationToken)
         {
+            var IsStateExists = await _mediator.Send(new CheckExistsQuery<State>(request.StateId));
+
+            if (!IsStateExists)
+                return RequestResult<AddCityDto>.Failure("This Stae Not Exists.", ErrorCode.StateNotFound);
+
+
             var isCityExistInTheState = await _mediator.Send(new IsCityExistInTheStateQuery(request.Name, request.StateId));
 
             if (isCityExistInTheState)
