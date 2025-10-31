@@ -1,25 +1,32 @@
-﻿using HrManagementSystem.Common.Entities.Location;
+﻿using Azure.Core;
+using HrManagementSystem.Common;
+using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
-namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Queries;
-
-public record IsCountryExistsByNameQuery(string name) : IRequest<EndpointResponse<bool>>;
-
-public class IsCountryExistsQueryByNameHandler(IGenericRepository<Country> genericRepository) : IRequestHandler<IsCountryExistsByNameQuery, EndpointResponse<bool>>
+namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Queries
 {
-    private readonly IGenericRepository<Country> _genericRepository = genericRepository;
 
-    public async Task<EndpointResponse<bool>> Handle(IsCountryExistsByNameQuery request, CancellationToken cancellationToken)
+    public record IsCountryExistsByNameQuery(string name) : IRequest<RequestResult<bool>>;
+
+    public class IsCountryExistsQueryByNameHandler : RequestHandlerBase<IsCountryExistsByNameQuery, RequestResult<bool>, Country>
     {
+        public IsCountryExistsQueryByNameHandler(RequestHandlerBaseParameters<Country> parameters) : base(parameters)
+        {
+        }
 
-        var isCountryExists = await _genericRepository.Get(x => x.Name == request.name).AnyAsync(cancellationToken);
+        public async override Task<RequestResult<bool>> Handle(IsCountryExistsByNameQuery request, CancellationToken cancellationToken)
+        {
+            var isCountryExists = await _repository.IsExistsAsync(x => x.Name == request.name);
 
-        return isCountryExists ?
-            EndpointResponse<bool>.Success(default, "country Exist")
-            : EndpointResponse<bool>.Failure("CountryNotExist", ErrorCode.CountryNotFound);
+            return RequestResult<bool>.Success(isCountryExists);
+
+        }
     }
+
+
 }

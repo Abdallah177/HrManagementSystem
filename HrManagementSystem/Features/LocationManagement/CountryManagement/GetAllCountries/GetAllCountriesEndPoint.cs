@@ -1,24 +1,23 @@
-﻿using HrManagementSystem.Common.Views;
+﻿using HrManagementSystem.Common;
+using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries;
+using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities;
 using HrManagementSystem.Features.LocationManagement.CountryManagement.Queries.GetAllCountries.Queries;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Queries.GetAllCountries
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GetAllCountriesController : ControllerBase
+    public class GetAllCountriesEndPoint : BaseEndPoint<object, List<GetAllCountriesViewModel>>
     {
-        private readonly IMediator _mediator;
-
-        public GetAllCountriesController(IMediator mediator)
+        public GetAllCountriesEndPoint(EndpointBaseParameters<object> parameters) : base(parameters)
         {
-            _mediator = mediator;
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public async Task<EndpointResponse<List<GetAllCountriesViewModel>>> GetAllCountries(CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetAllCountriesQuery(), cancellationToken);
@@ -33,5 +32,6 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Queri
 
             return EndpointResponse<List<GetAllCountriesViewModel>>.Failure(result.Message, result.ErrorCode);
         }
+
     }
 }
