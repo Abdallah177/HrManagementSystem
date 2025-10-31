@@ -1,14 +1,20 @@
-﻿using HrManagementSystem.Common;
+﻿using Azure.Core;
+using HrManagementSystem.Common;
+using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.CompanyManagement.UpdateCompany;
+using HrManagementSystem.Features.DepartmentManagement.UpdateDepartmet.Dtos;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.Queries.GetCountryById.Queries;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.UpdateCountry.Dtos;
 using Mapster;
 using MediatR;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.UpdateCountry.Commands
 {
-    public class UdateCountryCommand : IRequest<RequestResult<Country>>
+    public class UdateCountryCommand : IRequest<RequestResult<UpdateCountryDto>>
     {
         public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
@@ -17,33 +23,38 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Updat
     }
 
 
-    public class UpdateCountryCommandHandler : RequestHandlerBase<UdateCountryCommand, RequestResult<Country>,Country>
+    public class UpdateCountryCommandHandler : RequestHandlerBase<UdateCountryCommand, RequestResult<UpdateCountryDto>, Country>
     {
-        
-        public UpdateCountryCommandHandler(RequestHandlerBaseParameters<Country> parameters) : base(parameters) { }
-       
-        public override async Task<RequestResult<Country>> Handle(UdateCountryCommand request, CancellationToken cancellationToken)
+        public UpdateCountryCommandHandler(RequestHandlerBaseParameters<Country> parameters) : base(parameters)
         {
 
-            // Will Be Refactor After Making GetByIdCrud
-            var country = await _repository.GetByIDAsync(request.Id);
-            if (country == null)
-                return RequestResult<Country>.Failure("Country not found", ErrorCode.CountryNotFound);
-
-
-             request.Adapt(country);
-
-           
-            country.UpdatedByUser = request.UpdatedByUser;
-            country.UpdatedAt = DateTime.UtcNow;
-
-            
-             _repository.Update(country, request.UpdatedByUser);
-
-            
-            return RequestResult<Country>.Success(country, "Country updated successfully");
         }
 
+        public async  override Task<RequestResult<UpdateCountryDto>> Handle(UdateCountryCommand request, CancellationToken cancellationToken)
+        {
+            // Will Be Refactor After Making GetByIdCrud
+            var countryQuery = await _mediator.Send(new GetCountryByIdQuery(request.Id));
 
+            if (!countryQuery.IsSuccess)
+                return RequestResult<UpdateCountryDto>.Failure("Country not found", ErrorCode.CountryNotFound);
+
+            var country = countryQuery.Data.Adapt<Country>();
+
+            request.Adapt(country);
+
+            await _repository.UpdateIncludeAsync(
+                country,
+                request.UpdatedByUser,
+                cancellationToken,
+                nameof(Country.Name),
+                nameof(Country.Code)
+            );
+
+            var result = country.Adapt<UpdateCountryDto>();
+
+            // _repository.Update(country, request.UpdatedByUser);
+
+            return RequestResult<UpdateCountryDto>.Success(result, "Country updated successfully");
+        }
     }
 }
