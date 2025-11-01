@@ -3,7 +3,6 @@ using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.LocationManagement.StateManagement.GetStateById.Queries.Dto;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +21,7 @@ namespace HrManagementSystem.Features.LocationManagement.StateMangement.GetState
 
 
             var state = await _repository
-                    .GetAll() 
-                    .Where(s => s.Id == request.Id)
+                    .Get(s => s.Id == request.Id)
                     .ProjectToType<GetByIdStateDto>() 
                     .FirstOrDefaultAsync(cancellationToken);
 

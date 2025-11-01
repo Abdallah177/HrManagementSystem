@@ -3,7 +3,7 @@ using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities;
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
 using HrManagementSystem.Features.LocationManagement.StateManagement.GetAllState.Query.DTOS;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization;
+using HrManagementSystem.Features.OrganizationManagement.GetOrganization;
 using HrManagementSystem.Features.TeamManagement.GetAllTeams.DTOs;
 using Mapster;
 

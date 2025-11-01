@@ -2,9 +2,8 @@
 using HrManagementSystem.Features.BranchManagement.GetAllBranches.DTOs;
 using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.Dtos;
 using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities;
-using HrManagementSystem.Features.LocationManagement.CityManagement.GetAllCities.Queries.Dtos;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization;
-using HrManagementSystem.Features.TeamManagement.GetAllTeams.DTOs;
+using HrManagementSystem.Features.OrganizationManagement.GetOrganization;
+
 
 namespace HrManagementSystem.Features.LocationManagement.StateManagement.GetAllState
 {
