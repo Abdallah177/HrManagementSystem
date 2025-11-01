@@ -6,7 +6,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Queri
     {
         public GetCountryByIdRequestValidator()
         {
-            RuleFor(x => x.Id)
+            RuleFor(x => x.countryId)
              .NotEmpty().WithMessage("Country Id is required.");
         }
     }

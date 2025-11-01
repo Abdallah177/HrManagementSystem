@@ -11,7 +11,7 @@ using MediatR;
 
 namespace HrManagementSystem.Features.CompanyManagement.AddCompany.Commands
 {
-    public record AddCompanyCommand(string Name, string Email, string CountryId, string OrganizationId) : IRequest<RequestResult<AddCompanyDto>>;
+    public record AddCompanyCommand(string Name, string Email, string CountryId, string OrganizationId , string currentUserId) : IRequest<RequestResult<AddCompanyDto>>;
 
     public class AddCompanyCommandHandler : RequestHandlerBase<AddCompanyCommand, RequestResult<AddCompanyDto>, Company>
     {
@@ -46,7 +46,7 @@ namespace HrManagementSystem.Features.CompanyManagement.AddCompany.Commands
                 Email = request.Email
             };
 
-            await _repository.AddAsync(company,"SYSTEM", cancellationToken);
+            await _repository.AddAsync(company,request.currentUserId, cancellationToken);
 
             var addCompantDto = company.Adapt<AddCompanyDto>();
 

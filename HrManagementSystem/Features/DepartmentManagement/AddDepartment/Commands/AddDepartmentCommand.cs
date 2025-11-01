@@ -3,6 +3,7 @@ using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.BranchManagement.Common.CheckBranchExists;
+using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.DepartmentManagement.Common.Queries;
 using Mapster;
 using MediatR;
@@ -18,9 +19,10 @@ namespace HrManagementSystem.Features.DepartmentManagement.AddDepartment.Command
 
         public async override Task<RequestResult<bool>> Handle(AddDepartmentCommand request, CancellationToken cancellationToken)
         {
-            var branchExistsResult = await _mediator.Send(new CheckBranchExistsQuery(request.BranchId));
-            if (!branchExistsResult.Data)
+            var branchExistsResult = await _mediator.Send(new CheckExistsQuery<Branch>(request.BranchId), cancellationToken);
+            if (!branchExistsResult)
                 return RequestResult<bool>.Failure("Branch not found", ErrorCode.BranchNotExist);
+
 
             var departmentExistsResult = await _mediator.Send(new CheckDepartmentExistOnBranchQuery(request.Name, request.BranchId));
             if (departmentExistsResult.Data)

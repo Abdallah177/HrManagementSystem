@@ -27,7 +27,8 @@ namespace HrManagementSystem.Features.DepartmentManagement.UpdateDepartmet
                 viewModel.Id,
                 viewModel.Name,
                 viewModel.Description,
-                viewModel.BranchId
+                viewModel.BranchId,
+                GetCurrentUserId().ToString()
             );
 
             var result = await _mediator.Send(command);

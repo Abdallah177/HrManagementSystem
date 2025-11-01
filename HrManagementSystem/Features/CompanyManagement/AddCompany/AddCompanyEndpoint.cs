@@ -27,7 +27,8 @@ namespace HrManagementSystem.Features.CompanyManagement.AddCompany
                 viewModel.Name,
                 viewModel.Email,
                 viewModel.CountryId,
-                viewModel.OrganizationId
+                viewModel.OrganizationId,
+                GetCurrentUserId().ToString()
             );
 
             var result = await _mediator.Send(command);

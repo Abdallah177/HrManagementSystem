@@ -17,9 +17,11 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetDepartmentById
             var validationResponse = ValidateRequest(request);
             if (!validationResponse.IsSuccess)
                 return EndpointResponse<GetDepartmentByIdResponseViewModel>.Failure(validationResponse.Message);
+
             var departmentQueryResult = await _mediator.Send(new GetDepartmentByIdQuery(request.Id));
             if (!departmentQueryResult.IsSuccess)
                 return EndpointResponse<GetDepartmentByIdResponseViewModel>.Failure(departmentQueryResult.Message);
+
             var departmentData = departmentQueryResult.Data.Adapt<GetDepartmentByIdResponseViewModel>();
             return EndpointResponse<GetDepartmentByIdResponseViewModel>.Success(departmentData);
         }

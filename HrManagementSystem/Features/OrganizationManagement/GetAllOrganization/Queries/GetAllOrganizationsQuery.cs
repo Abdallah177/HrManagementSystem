@@ -22,10 +22,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.
 
         public async override Task<RequestResult<GetAllOrganizationDto>> Handle(GetAllOrganizationsQuery request, CancellationToken cancellationToken)
         {
-            var query = _repository.GetAll();
-
-            var organization = await query
-                .OrderBy(o => o.Name)
+            var organization = await _repository.GetAll()
                 .ProjectToType<GetAllOrganizationDto>()
                 .FirstOrDefaultAsync(cancellationToken);
 

@@ -6,9 +6,9 @@ using MediatR;
 using Mapster;
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById.Dtos;
 
-namespace HrManagementSystem.Features.CompanyManagement.GetCompanyById
+namespace HrManagementSystem.Features.CompanyManagement.GetCompanyById.Queries
 {
-    public record GetCompanyByIdQuery(string Id) : IRequest<RequestResult<CompanyDto>>;
+    public record GetCompanyByIdQuery(string companyId) : IRequest<RequestResult<CompanyDto>>;
 
     public class GetCompanyByIdQueryHandler
         : RequestHandlerBase<GetCompanyByIdQuery, RequestResult<CompanyDto>, Company>
@@ -20,7 +20,7 @@ namespace HrManagementSystem.Features.CompanyManagement.GetCompanyById
 
         public override async Task<RequestResult<CompanyDto>> Handle(GetCompanyByIdQuery request, CancellationToken cancellationToken)
         {
-            var company = await _repository.GetByIDAsync(request.Id, cancellationToken);
+            var company = await _repository.GetByIDAsync(request.companyId, cancellationToken);
 
             if (company == null)
                 return RequestResult<CompanyDto>.Failure(

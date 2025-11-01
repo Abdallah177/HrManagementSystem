@@ -2,9 +2,9 @@
 
 namespace HrManagementSystem.Features.DepartmentManagement.DeleteDepartment
 {
-    public class DeleteDepartmentRequestViledator : AbstractValidator<DeleteDepartmentRequestViewModel>
+    public class DeleteDepartmentRequestValidator : AbstractValidator<DeleteDepartmentRequestViewModel>
     {
-        public DeleteDepartmentRequestViledator()
+        public DeleteDepartmentRequestValidator()
         {
             RuleFor(x => x.DepartmentId)
                 .NotEmpty().WithMessage("DepartmentId is required.");
