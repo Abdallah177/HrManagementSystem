@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.LocationManagement.CityManagement.DeleteCity
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DeleteCityController : BaseEndPoint<DeleteCityRequestViewModle, bool>
+    public class DeleteCityEndpoint : BaseEndPoint<DeleteCityRequestViewModle, bool>
     {
-        public DeleteCityController(EndpointBaseParameters<DeleteCityRequestViewModle> parameters) : base(parameters) { }
+        public DeleteCityEndpoint(EndpointBaseParameters<DeleteCityRequestViewModle> parameters) : base(parameters) { }
 
         [HttpDelete("")]
 

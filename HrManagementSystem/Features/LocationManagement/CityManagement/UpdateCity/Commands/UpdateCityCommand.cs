@@ -31,7 +31,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCi
                 return RequestResult<bool>.Failure("State not found", ErrorCode.StateNotFound);
 
             var duplicateCityResult = await _mediator.Send(new CheckDublicateCityNameInStateQuery(request.StateId, request.Name));
-            if (duplicateCityResult.IsSuccess)
+            if (!duplicateCityResult.IsSuccess)
                 return RequestResult<bool>.Failure(duplicateCityResult.Message, duplicateCityResult.ErrorCode);
 
             var city = cityResult.Data.Adapt<City>();
