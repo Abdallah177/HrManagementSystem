@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCi
             if (isCityDeuplicated)
                 return RequestResult<bool>.Failure("City name already exists in the specified state" ,ErrorCode.DuplicateCityName);
 
-            return RequestResult<bool>.Success(isCityDeuplicated, "Check completed successfully");
+            return RequestResult<bool>.Success(isCityDeuplicated);
         }
     }
 }
