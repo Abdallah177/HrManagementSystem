@@ -16,10 +16,8 @@ namespace HrManagementSystem.Features.LocationManagement.StateMangement.GetState
     {
         public GetStateByIdQueryHandler(RequestHandlerBaseParameters<State> requestHandlerBaseParameters) : base(requestHandlerBaseParameters) { }
 
-        public override async Task<RequestResult<GetByIdStateDto?>> Handle(GetStateByIdQuery request, CancellationToken cancellationToken)
+        public async override  Task<RequestResult<GetByIdStateDto?>> Handle(GetStateByIdQuery request, CancellationToken cancellationToken)
         {
-
-
             var state = await _repository
                     .Get(s => s.Id == request.Id)
                     .ProjectToType<GetByIdStateDto>() 

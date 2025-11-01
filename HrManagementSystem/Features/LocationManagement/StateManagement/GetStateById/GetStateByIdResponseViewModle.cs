@@ -4,21 +4,23 @@ namespace HrManagementSystem.Features.LocationManagement.StateMangement.GetState
 {
     public class GetStateByIdResponseViewModle
     {
-        public string Id { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public string Id { get; set; } 
+        public string Name { get; set; } 
         public GetCountryViewModle Country { get; set; }
         public List<GetCityViewModle> Cities { get; set; }
     }
 
     public class GetCountryViewModle
     {
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 
     public class GetCityViewModle
     {
-
+        public string Id { get; set; }
         public string Name { get; set; }
+
     }
 
 }

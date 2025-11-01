@@ -18,9 +18,7 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.GetAllS
         }
         public async override Task<RequestResult<List<GetAllStateDTO>>> Handle(GetAllStateQuery request, CancellationToken cancellationToken)
         {
-            var query = _repository.GetAll();
-
-            var states = await query
+            var states = await _repository.GetAll()
                 .OrderBy(s => s.Name)
                 .ProjectToType<GetAllStateDTO>()
                 .ToListAsync(cancellationToken);
