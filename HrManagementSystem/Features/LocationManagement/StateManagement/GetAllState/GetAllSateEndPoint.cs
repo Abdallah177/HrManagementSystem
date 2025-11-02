@@ -6,22 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.LocationManagement.StateManagement.GetAllState
 {
-    public class GetAllSateEndPoint : BaseEndPoint<object, GetAllStateResponseViewModel>
+    public class GetAllSateEndPoint : BaseEndPoint<object, List<GetAllStateResponseViewModel>>
     {
         public GetAllSateEndPoint(EndpointBaseParameters<object> parameters) : base(parameters)
         {
         }
         [HttpGet]
-        public async Task<EndpointResponse<GetAllStateResponseViewModel>> GetAllStates()
+        public async Task<EndpointResponse<List<GetAllStateResponseViewModel>>> GetAllStates()
         {
             var result = await _mediator.Send(new GetAllStateQuery());
 
             if (!result.IsSuccess)
-                return new EndpointResponse<GetAllStateResponseViewModel>(default, false, result.Message, result.ErrorCode);
+                return new EndpointResponse<List<GetAllStateResponseViewModel>>(default, false, result.Message, result.ErrorCode);
 
-            var stateData = result.Data.Adapt<GetAllStateResponseViewModel>();
+            var stateData = result.Data.Adapt<List<GetAllStateResponseViewModel>>();
 
-            return EndpointResponse<GetAllStateResponseViewModel>.Success(stateData);
+            return EndpointResponse<List<GetAllStateResponseViewModel>>.Success(stateData);
         }
     }
 }

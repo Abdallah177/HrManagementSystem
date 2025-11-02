@@ -12,10 +12,11 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.GetAllS
         public string StateName { get; set; } = null!;
         public string CountryId { get; set; } = null!;
         public string CountryName { get; set; } = null!;
-        public List<CityResponseDto> Cities { get; set; } = new List<CityResponseDto>();
-        public List<GetAllBranchesDto> Branches { get; set; } = new List<GetAllBranchesDto>();  
-        public List<GetAllDepartmentDto> Departments { get; set; } = new List<GetAllDepartmentDto>();   
-        public List<GetAllTeamsDto> Teams { get; set; } = new List<GetAllTeamsDto>();
+        public List<GetCitiesDto> cities { get; set; } = new List<GetCitiesDto>();
+
+        //public List<GetAllBranchesDto> Branches { get; set; } = new List<GetAllBranchesDto>();  
+        //public List<GetAllDepartmentDto> Departments { get; set; } = new List<GetAllDepartmentDto>();   
+        //public List<GetAllTeamsDto> Teams { get; set; } = new List<GetAllTeamsDto>();
     }
 
 }

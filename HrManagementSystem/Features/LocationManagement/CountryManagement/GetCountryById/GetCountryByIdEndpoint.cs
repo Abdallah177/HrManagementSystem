@@ -23,7 +23,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Queri
                 return validationResult;
             }
 
-            var result = await _mediator.Send(new GetCountryByIdQuery(requestViewModel.Id));
+            var result = await _mediator.Send(new GetCountryByIdQuery(requestViewModel.countryId));
 
             if (!result.IsSuccess)
             {

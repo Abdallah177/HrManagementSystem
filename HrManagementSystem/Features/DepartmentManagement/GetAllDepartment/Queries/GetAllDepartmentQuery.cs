@@ -4,7 +4,6 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.DepartmentManagement.GetAllDepartment.Queries.Dtos;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

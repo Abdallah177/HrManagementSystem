@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos
+﻿namespace HrManagementSystem.Features.OrganizationManagement.GetOrganization.Queries.Dtos
 {
     public class GetTeamsDto
     {

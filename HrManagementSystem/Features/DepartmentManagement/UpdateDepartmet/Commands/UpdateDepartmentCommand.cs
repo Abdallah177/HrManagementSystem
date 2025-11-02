@@ -11,7 +11,7 @@ using Mapster;
 
 namespace HrManagementSystem.Features.DepartmentManagement.UpdateDepartmetn.Commands
 {
-    public record UpdateDepartmentCommand(string Id, string Name, string? Description, string BranchId)
+    public record UpdateDepartmentCommand(string Id, string Name, string? Description, string BranchId , string currentUserId)
     : IRequest<RequestResult<UpdateDepartmentDto>>;
 
     public class UpdateDepartmentCommandHandler
@@ -50,7 +50,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.UpdateDepartmetn.Comm
 
             await _repository.UpdateIncludeAsync(
                 department,
-                "SYSTEM",
+                request.currentUserId,
                 cancellationToken,
                 nameof(Department.Name),
                 nameof(Department.Description),
