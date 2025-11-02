@@ -67,7 +67,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Company", b =>
@@ -115,7 +115,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Companies");
+                    b.ToTable("Companies", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Department", b =>
@@ -157,7 +157,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
@@ -196,7 +196,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.Country", b =>
@@ -232,7 +232,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
@@ -271,7 +271,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("States");
+                    b.ToTable("States", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
@@ -304,7 +304,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Team", b =>
@@ -343,7 +343,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.User", b =>
@@ -398,7 +398,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Branch", b =>

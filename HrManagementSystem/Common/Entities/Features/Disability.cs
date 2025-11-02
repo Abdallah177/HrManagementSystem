@@ -14,8 +14,7 @@ namespace HrManagementSystem.Common.Entities.Features
 
         [Required]
         public bool RequiresSpecialSupport { get; set; }
-
         
-        public ICollection<DisabilityScope> DisabilityScopes { get; set; }
+        public ICollection<DisabilityScope> DisabilityScopes { get; set; } = new List<DisabilityScope>();
     }
 }

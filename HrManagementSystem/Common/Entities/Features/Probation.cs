@@ -14,8 +14,7 @@ namespace HrManagementSystem.Common.Entities.Features
 
         [Required]
         public ProbationStatus Status { get; set; } = ProbationStatus.Active;
-
         
-        public ICollection<ProbationScope> ProbationScopes { get; set; }
+        public ICollection<ProbationScope> ProbationScopes { get; set; } = new List<ProbationScope>();
     }
 }

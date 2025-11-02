@@ -5,19 +5,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.FeatureSope
 {
-    public class VacationScope
+    public class VacationScope : BaseModel
     {
-        [Key]
-        public string Id { get; set; }
 
         [Required]
         [ForeignKey(nameof(ScopeBase))]
-        public string ScopeId { get; set; }
-        public ScopeBase ScopeBase { get; set; }
+        public string ScopeId { get; set; } = null!;
+        public ScopeBase ScopeBase { get; set; } = null!;
 
         [Required]
         [ForeignKey(nameof(Vacation))]
-        public string VacationId { get; set; }
-        public Vacation Vacation { get; set; }
+        public string VacationId { get; set; } = null!;
+        public Vacation Vacation { get; set; } = null!;
     }
 }

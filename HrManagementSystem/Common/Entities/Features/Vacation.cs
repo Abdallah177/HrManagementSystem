@@ -6,6 +6,8 @@ namespace HrManagementSystem.Common.Entities.Features
 {
     public class Vacation : BaseModel
     {
+        public string Name { get; set; } = null!;
+
         [Required]
         public VacationType Type { get; set; }
 
@@ -14,8 +16,7 @@ namespace HrManagementSystem.Common.Entities.Features
 
         [MaxLength(200)]
         public string? Description { get; set; }
-
         
-        public ICollection<VacationScope> VacationScopes { get; set; }
+        public ICollection<VacationScope> VacationScopes { get; set; } = new List<VacationScope>();
     }
 }

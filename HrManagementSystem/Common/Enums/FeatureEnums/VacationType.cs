@@ -2,10 +2,11 @@
 {
     public enum VacationType
     {
-        Annual,
+        Annual=1,
         Sick,
         Unpaid,
         Maternity,
-        Emergency
+        Emergency,
+        Other
     }
 }

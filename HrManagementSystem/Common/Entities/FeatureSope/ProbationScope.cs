@@ -4,19 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.FeatureSope
 {
-    public class ProbationScope
+    public class ProbationScope : BaseModel
     {
-        [Key]
-        public string Id { get; set; }
-
         [Required]
         [ForeignKey(nameof(ScopeBase))]
-        public string ScopeId { get; set; }
-        public ScopeBase ScopeBase { get; set; }
+        public string ScopeId { get; set; } = null!;
+        public ScopeBase ScopeBase { get; set; } = null!;
 
         [Required]
         [ForeignKey(nameof(Probation))]
-        public string ProbationId { get; set; }
-        public Probation Probation { get; set; }
+        public string ProbationId { get; set; } = null!;
+        public Probation Probation { get; set; } = null!;
     }
 }

@@ -4,19 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.FeatureSope
 {
-    public class ShiftScope
+    public class ShiftScope : BaseModel
     {
-        [Key]
-        public string Id { get; set; }
-
         [Required]
         [ForeignKey(nameof(ScopeBase))]
-        public string ScopeId { get; set; }
-        public ScopeBase ScopeBase { get; set; }
+        public string ScopeId { get; set; } = null!;
+        public ScopeBase ScopeBase { get; set; } = null!;
 
         [Required]
         [ForeignKey(nameof(Shift))]
-        public string ShiftId { get; set; }
-        public Shift Shift { get; set; }
+        public string ShiftId { get; set; } = null!;
+        public Shift Shift { get; set; } = null!;
     }
 }

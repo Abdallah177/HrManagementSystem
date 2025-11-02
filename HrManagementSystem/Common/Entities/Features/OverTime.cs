@@ -12,8 +12,7 @@ namespace HrManagementSystem.Common.Entities.Features
         public int MaxHoursPerMonth { get; set; }
 
         public bool RequiresApproval { get; set; }
-
         
-        public ICollection<OverTimeScope> OverTimeScopes { get; set; }
+        public ICollection<OverTimeScope> OverTimeScopes { get; set; } = new List<OverTimeScope>();
     }
 }

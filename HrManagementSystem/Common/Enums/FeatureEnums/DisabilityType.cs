@@ -2,7 +2,7 @@
 {
     public enum DisabilityType
     {
-        None,
+        None = 1 ,
         Physical,
         Mental,
         Visual,

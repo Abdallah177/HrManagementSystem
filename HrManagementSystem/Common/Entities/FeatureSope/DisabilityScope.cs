@@ -4,19 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.FeatureSope
 {
-    public class DisabilityScope
+    public class DisabilityScope : BaseModel
     {
-        [Key]
-        public string Id { get; set; }
-
         [Required]
         [ForeignKey(nameof(ScopeBase))]
-        public string ScopeId { get; set; }
-        public ScopeBase ScopeBase { get; set; }
+        public string ScopeId { get; set; } = null!;
+        public ScopeBase ScopeBase { get; set; } = null!;
 
         [Required]
         [ForeignKey(nameof(Disability))]
-        public string DisabilityId { get; set; }
-        public Disability Disability { get; set; }
+        public string DisabilityId { get; set; } = null!;
+        public Disability Disability { get; set; } = null!;
     }
 }

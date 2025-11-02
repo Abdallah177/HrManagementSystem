@@ -7,15 +7,14 @@ namespace HrManagementSystem.Common.Entities.Features
     public class Request : BaseModel
     {
         [Required, MaxLength(150)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [MaxLength(500)]
         public string? Description { get; set; }
 
         [Required]
         public RequestStatus Status { get; set; } = RequestStatus.Pending;
-
         
-        public ICollection<RequestScope> RequestScopes { get; set; }
+        public ICollection<RequestScope> RequestScopes { get; set; } = new List<RequestScope>();
     }
 }

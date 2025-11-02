@@ -7,7 +7,7 @@ namespace HrManagementSystem.Common.Entities.Features
     public class Shift : BaseModel
     {
         [Required, MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Required]
         public ShiftType Type { get; set; }
@@ -17,11 +17,8 @@ namespace HrManagementSystem.Common.Entities.Features
 
         [Required]
         public TimeSpan EndTime { get; set; }
-
-        public bool IsFlexible => Type == ShiftType.Flexible;
-
-        
-        public ICollection<ShiftScope> ShiftScopes { get; set; }
+     
+        public ICollection<ShiftScope> ShiftScopes { get; set; } = new List<ShiftScope>();  
     }
 
 }
