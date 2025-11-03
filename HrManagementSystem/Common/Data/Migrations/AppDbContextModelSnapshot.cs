@@ -67,7 +67,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Company", b =>
@@ -115,7 +115,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Companies", (string)null);
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Department", b =>
@@ -157,7 +157,631 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.BreakScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BreakId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BreakId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("BreakScope");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.DisabilityScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisabilityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisabilityId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("DisabilityScope");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.OverTimeScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OverTimeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OverTimeId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("OverTimeScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ProbationScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProbationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProbationId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("ProbationScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.RequestScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RequestId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("ScopeId");
+
+                    b.ToTable("RequestScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BranchId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DepartmentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrganizationId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Scopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ShiftScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ShiftId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScopeId");
+
+                    b.HasIndex("ShiftId");
+
+                    b.ToTable("ShiftScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.VacationScope", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ScopeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VacationId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScopeId");
+
+                    b.HasIndex("VacationId");
+
+                    b.ToTable("VacationScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Break", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Breaks");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Disability", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("RequiresSpecialSupport")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Disability");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.OverTime", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaxHoursPerMonth")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RatePerHour")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("RequiresApproval")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OverTime");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Probation", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DurationInDays")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EvaluationCriteria")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Probations");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Request", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Requests");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Shift", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Shifts");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Vacation", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedByUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("DurationInDays")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vacations");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
@@ -196,7 +820,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("Cities", (string)null);
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.Country", b =>
@@ -232,7 +856,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries", (string)null);
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
@@ -271,7 +895,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("States", (string)null);
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
@@ -304,7 +928,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations", (string)null);
+                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Team", b =>
@@ -343,7 +967,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.User", b =>
@@ -398,7 +1022,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Branch", b =>
@@ -429,7 +1053,7 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("HrManagementSystem.Common.Entities.Organization", "Organization")
-                        .WithMany()
+                        .WithMany("Companies")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -448,6 +1072,172 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Branch");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.BreakScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Break", "Break")
+                        .WithMany("BreakScopes")
+                        .HasForeignKey("BreakId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Break");
+
+                    b.Navigation("ScopeBase");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.DisabilityScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Disability", "Disability")
+                        .WithMany("DisabilityScopes")
+                        .HasForeignKey("DisabilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Disability");
+
+                    b.Navigation("ScopeBase");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.OverTimeScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.OverTime", "OverTime")
+                        .WithMany("OverTimeScopes")
+                        .HasForeignKey("OverTimeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OverTime");
+
+                    b.Navigation("ScopeBase");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ProbationScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Probation", "Probation")
+                        .WithMany("ProbationScopes")
+                        .HasForeignKey("ProbationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Probation");
+
+                    b.Navigation("ScopeBase");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.RequestScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Request", "Request")
+                        .WithMany("RequestScopes")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Request");
+
+                    b.Navigation("ScopeBase");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId");
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId");
+
+                    b.Navigation("Branch");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Organization");
+
+                    b.Navigation("Team");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ShiftScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Shift", "Shift")
+                        .WithMany("ShiftScopes")
+                        .HasForeignKey("ShiftId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ScopeBase");
+
+                    b.Navigation("Shift");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.VacationScope", b =>
+                {
+                    b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
+                        .WithMany()
+                        .HasForeignKey("ScopeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Vacation", "Vacation")
+                        .WithMany("VacationScopes")
+                        .HasForeignKey("VacationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ScopeBase");
+
+                    b.Navigation("Vacation");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
@@ -498,6 +1288,41 @@ namespace HrManagementSystem.Data.Migrations
                     b.Navigation("Teams");
                 });
 
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Break", b =>
+                {
+                    b.Navigation("BreakScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Disability", b =>
+                {
+                    b.Navigation("DisabilityScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.OverTime", b =>
+                {
+                    b.Navigation("OverTimeScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Probation", b =>
+                {
+                    b.Navigation("ProbationScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Request", b =>
+                {
+                    b.Navigation("RequestScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Shift", b =>
+                {
+                    b.Navigation("ShiftScopes");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Features.Vacation", b =>
+                {
+                    b.Navigation("VacationScopes");
+                });
+
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
                 {
                     b.Navigation("Branches");
@@ -513,6 +1338,11 @@ namespace HrManagementSystem.Data.Migrations
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.State", b =>
                 {
                     b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("HrManagementSystem.Common.Entities.Organization", b =>
+                {
+                    b.Navigation("Companies");
                 });
 #pragma warning restore 612, 618
         }

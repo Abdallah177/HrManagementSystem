@@ -1,4 +1,5 @@
-﻿using Azure.Core;
+﻿
+using HrManagementSystem.Common.Entities.Features;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
