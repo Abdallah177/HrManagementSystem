@@ -14,6 +14,8 @@ namespace HrManagementSystem.Common.Repositories
         Task AddAsync(Entity entity, CancellationToken cancellationToken);
         Task AddAsync(Entity entity, string currentUserId, CancellationToken cancellationToken);
 
+        Task AddRangeAsync(List<Entity> entities, string currentUserId,CancellationToken cancellationToken) ;
+
         // --------------------- Update ---------------------
         void Update(Entity entity);
 
