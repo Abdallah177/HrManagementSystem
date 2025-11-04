@@ -1,30 +1,36 @@
-﻿using HrManagementSystem.Common.Entities.Location;
+﻿using HrManagementSystem.Common;
+using HrManagementSystem.Common.Entities.Location;
+using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Queries;
+using HrManagementSystem.Features.LocationManagement.CountryManagement.DeleteCountry.Commands;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Commands.AddCountry.Commands;
 
-public record AddCountryCommand(string Name, string? Code, string UserId) : IRequest<EndpointResponse<bool>>;
+public record AddCountryCommand(string Name, string? Code, string UserId) : IRequest<RequestResult<bool>>;
 
-public class AddCountryHandler(IGenericRepository<Country> genericRepository, IMediator mediator) : IRequestHandler<AddCountryCommand, EndpointResponse<bool>>
+public class AddCountryCommandHandler : RequestHandlerBase<AddCountryCommand, RequestResult<bool>, Country>
 {
-    private readonly IGenericRepository<Country> _genericRepository = genericRepository;
-    private readonly IMediator _mediator = mediator;
+    public AddCountryCommandHandler(RequestHandlerBaseParameters<Country> parameters) : base(parameters)
+    {
+    }
 
-    public async Task<EndpointResponse<bool>> Handle(AddCountryCommand request, CancellationToken cancellationToken)
+    public async override Task<RequestResult<bool>> Handle(AddCountryCommand request, CancellationToken cancellationToken)
     {
         var isCountryExists = await _mediator.Send(new IsCountryExistsByNameQuery(request.Name));
 
-        if (isCountryExists.IsSuccess)
-            return isCountryExists;
+        if (isCountryExists.Data)
+            return RequestResult<bool>.Failure("Country Name is exist befor", ErrorCode.CountryNameIsExist);
 
-        var country = new Country { Name = request.Name, Code = request.Code };
 
-        await _genericRepository.AddAsync(country, request.UserId, cancellationToken);
+        var country = request.Adapt<Country>();
 
-        return EndpointResponse<bool>.Success(default, "Country Added Successfully");
+        await _repository.AddAsync(country, request.UserId, cancellationToken);
+
+        return RequestResult<bool>.Success(default, "Country Added Successfully");
     }
 }

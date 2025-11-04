@@ -7,6 +7,7 @@ using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.Common.Company.CheckCompanyExistsWithName;
 using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
 using HrManagementSystem.Features.CompanyManagement.GetCompanyById;
+using HrManagementSystem.Features.CompanyManagement.GetCompanyById.Queries;
 using HrManagementSystem.Features.CompanyManagement.UpdateCompany.Dtos;
 using Mapster;
 using MediatR;

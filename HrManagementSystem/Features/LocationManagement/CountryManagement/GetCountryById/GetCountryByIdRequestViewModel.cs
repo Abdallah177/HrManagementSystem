@@ -2,6 +2,6 @@
 {
     public class GetCountryByIdRequestViewModel
     {
-        public string Id { get; set; } = null!;
+        public string countryId { get; set; } = null!;
     }
 }

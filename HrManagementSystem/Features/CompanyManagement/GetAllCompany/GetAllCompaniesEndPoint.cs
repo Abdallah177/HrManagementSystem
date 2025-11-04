@@ -1,7 +1,5 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization;
 using Microsoft.AspNetCore.Mvc;
 using HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query;
 using Mapster;

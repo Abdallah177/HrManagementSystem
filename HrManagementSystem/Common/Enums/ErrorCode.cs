@@ -8,6 +8,7 @@
         CountryNotFound =100,
         CountryHasStates = 101,
         CountryHasRelatedCompanies = 102,
+        CountryNameIsExist = 103,
 
         StateNotFound = 200,
         StateIsExist = 201,
@@ -35,6 +36,7 @@
 
         TeamNotExist = 800,
         NoTeamsFound = 801,
+
 
     }
 }

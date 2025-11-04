@@ -18,15 +18,10 @@ namespace HrManagementSystem.Features.DepartmentManagement.DeleteDepartment.Comm
         }
         public async override Task<RequestResult<bool>> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
-            // Check if Department exists
-            var departmentExists = await _mediator.Send(new CheckExistsQuery<Department>(request.DepartmentId), cancellationToken);
-            if (!departmentExists)
-                return RequestResult<bool>.Failure("Department not found", ErrorCode.DepartmentNotExist);
-
             // Check if Department has related Teams
-            var hasTeams = await _mediator.Send(new CheckDepartmentHasTeamsQuery(request.DepartmentId), cancellationToken);
-            if (hasTeams.Data)
-                return RequestResult<bool>.Failure("Department has related teams", ErrorCode.DepartmentHasRelatedTeams);
+            //var hasTeams = await _mediator.Send(new CheckDepartmentHasTeamsQuery(request.DepartmentId), cancellationToken);
+            //if (hasTeams.Data)
+            //    return RequestResult<bool>.Failure("Department has related teams", ErrorCode.DepartmentHasRelatedTeams);
 
             await _repository.DeleteAsync(request.DepartmentId, request.currentUserId, cancellationToken);
             return RequestResult<bool>.Success(true, "Department deleted successfully");

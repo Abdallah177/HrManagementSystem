@@ -4,7 +4,7 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.Location.Country.CheckCountryExists;
-using HrManagementSystem.Features.LocationManagement.Common.State.Queries.CheckStateExists;
+using HrManagementSystem.Features.LocationManagement.Common.State.CheckStateExists;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

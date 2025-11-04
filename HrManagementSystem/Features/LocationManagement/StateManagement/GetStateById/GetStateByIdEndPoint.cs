@@ -11,7 +11,7 @@ namespace HrManagementSystem.Features.LocationManagement.StateManagement.GetStat
     {
         public GetStateByIdEndPoint(EndpointBaseParameters<GetByIdRequestViewModle> endpoints) : base(endpoints) { }
 
-        [HttpGet("")]
+        [HttpGet]
         public async Task<EndpointResponse<GetStateByIdResponseViewModle>> GetStatEById([FromQuery] GetByIdRequestViewModle request, CancellationToken cancellationToken)
         {
 

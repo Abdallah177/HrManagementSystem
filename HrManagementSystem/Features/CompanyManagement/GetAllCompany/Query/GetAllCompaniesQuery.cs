@@ -3,7 +3,6 @@ using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.CompanyManagement.GetAllCompany.Dto;
-using HrManagementSystem.Features.OrganizationManagement.GetAllOrganization.Queries.Dtos;
 using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
