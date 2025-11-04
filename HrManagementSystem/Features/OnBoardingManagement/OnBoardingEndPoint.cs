@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement
         }
 
         [HttpPost]
-        public async Task<EndpointResponse<bool>> OnBoarding(OnBoardingRequestViewModel RequestViewModel , CancellationToken cancellationToken)
+        public async Task<EndpointResponse<bool>> OnBoarding([FromBody]OnBoardingRequestViewModel RequestViewModel , CancellationToken cancellationToken)
         {
             var validationResult = ValidateRequest(RequestViewModel);
             if (!validationResult.IsSuccess)

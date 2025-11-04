@@ -1,5 +1,5 @@
 ﻿namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos
 {
-    public record OnBoardingDto(OrganizationDto OrganizationDto);
+    public record OnBoardingDto(OrganizationDto Organization);
 
 }
