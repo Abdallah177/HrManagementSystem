@@ -1,11 +1,14 @@
 ﻿using HrManagementSystem.Common.Entities.FeatureSope;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.Features
 {
     public class OverTime : BaseModel
     {
         [Required]
+
+        [Column(TypeName = "decimal(18,2)")]
         public decimal RatePerHour { get; set; }
 
         [Required]
