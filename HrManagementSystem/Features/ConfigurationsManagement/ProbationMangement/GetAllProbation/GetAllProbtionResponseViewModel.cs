@@ -4,12 +4,13 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ProbationMangemen
 {
     public class GetAllProbtionResponseViewModel
     {
+        public int Id { get; set; }
         public int DurationInDays { get; set; }
 
 
         public string? EvaluationCriteria { get; set; }
 
 
-        public ProbationStatus Status { get; set; } = ProbationStatus.Active;
+        public string Status { get; set; } 
     }
 }
