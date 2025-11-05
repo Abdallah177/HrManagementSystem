@@ -12,7 +12,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.GetDepartmentById
         {
         }
         [HttpGet]
-        public async Task<EndpointResponse<GetDepartmentByIdResponseViewModel>> GetDepartmentById([FromQuery] GetDepartmentByIdRequestViewModel request)
+        public async Task<EndpointResponse<GetDepartmentByIdResponseViewModel>> GetDepartmentById( GetDepartmentByIdRequestViewModel request)
         {
             var validationResponse = ValidateRequest(request);
             if (!validationResponse.IsSuccess)

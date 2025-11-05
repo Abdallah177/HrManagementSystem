@@ -37,6 +37,8 @@
         TeamNotExist = 800,
         NoTeamsFound = 801,
 
+        ProbationNotFound = 900,
+
 
     }
 }
