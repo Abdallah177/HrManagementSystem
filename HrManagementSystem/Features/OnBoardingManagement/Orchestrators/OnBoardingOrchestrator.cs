@@ -20,7 +20,16 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         public async override Task<RequestResult<bool>> Handle(OnBoardingOrchestrator request, CancellationToken cancellationToken)
         {
             var organizationResult = await _mediator.Send(new OnBoardingOrgainzationCommand(request.OnBoardingDto.Organization.Name, request.currentUserId), cancellationToken);
-            await _mediator.Send(new OnBoardingCompainesCommand(request.OnBoardingDto.Organization.Companies,request.currentUserId));
+            var companiesDto = request.OnBoardingDto.Organization.Compaines
+                .Select(c => new CompaniesDto(
+                    c.Name,
+                    c.Email,
+                    c.CountryId,
+                    //organizationResult.Data,
+                    c.Branches
+                )).ToList();
+
+            var companiesResult = await _mediator.Send(new OnBoardingCompainesCommand(companiesDto, request.currentUserId),cancellationToken);
             return RequestResult<bool>.Success(true);
         }
     }
