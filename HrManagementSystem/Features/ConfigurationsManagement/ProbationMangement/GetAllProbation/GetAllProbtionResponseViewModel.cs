@@ -4,7 +4,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ProbationMangemen
 {
     public class GetAllProbtionResponseViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int DurationInDays { get; set; }
 
 
