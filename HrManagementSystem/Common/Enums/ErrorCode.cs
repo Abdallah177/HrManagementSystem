@@ -38,6 +38,7 @@
         NoTeamsFound = 801,
 
         ProbationNotFound = 900,
+        ProbationNotExist = 901,    
 
 
     }
