@@ -55,6 +55,7 @@
     <Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
     <Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
+    <Folder Include="Features\OnBoardingManagement\Queries\" />
     <Folder Include="Features\OnBoardingManagement\Validators\" />
   </ItemGroup>
 
