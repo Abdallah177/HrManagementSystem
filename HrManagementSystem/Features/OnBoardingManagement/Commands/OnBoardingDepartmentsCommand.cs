@@ -26,6 +26,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                 departmentsResponses.Add(new DepartmentsResponseDto
                 {
                     DepartmentId = department.Id,
+                    DepartmentName = department.Name,
                     Teams = deptDto.Teams 
                 });
             }

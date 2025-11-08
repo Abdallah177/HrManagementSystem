@@ -4,7 +4,7 @@
 
     public record OrganizationRequestViewModel(
             string Name , 
-            List<CompanyRequestViewModel> Compaines
+            List<CompanyRequestViewModel> Companies
       );
 
     public record CompanyRequestViewModel(

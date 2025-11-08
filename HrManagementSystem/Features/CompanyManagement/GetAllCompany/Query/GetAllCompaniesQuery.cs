@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query
 {
-    public class GetAllCompaniesQuery: IRequest<RequestResult<List< CompanyDto>>>;
+    public class GetAllCompaniesQuery: IRequest<RequestResult<List<CompanyDto>>>;
 
     public class GetAllCompaniesHandler : RequestHandlerBase<GetAllCompaniesQuery, RequestResult<List<CompanyDto>>, Company>
     {
@@ -22,7 +22,7 @@ namespace HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query
                 .ProjectToType<CompanyDto>()
                 .ToListAsync(cancellationToken);//.FirstOrDefaultAsync(cancellationToken);
 
-            if (Companies ==null )
+            if (Companies ==null)
             return RequestResult<List<CompanyDto>>.Failure("No Companies found", ErrorCode.CompanyNotExist);
 
             return RequestResult<List<CompanyDto>>.Success(Companies);

@@ -18,7 +18,6 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            // ✅ Bulk add - CompanyId already assigned in each branch
             foreach (var branchDto in request.Branches)
             {
                 var branch = branchDto.Adapt<Branch>();
@@ -27,6 +26,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                 branchesResponses.Add(new BranchesResponseDto
                 {
                     BranchId = branch.Id,
+                    BranchName = branch.Name,
                     Departments = branchDto.Departments
                 });
             }

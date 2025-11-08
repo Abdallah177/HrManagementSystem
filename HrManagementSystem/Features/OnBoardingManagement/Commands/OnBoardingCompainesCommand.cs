@@ -2,6 +2,7 @@
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
+using HrManagementSystem.Features.OnBoardingManagement.Queries;
 using Mapster;
 using MediatR;
 
@@ -18,6 +19,9 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             {
                 var companiesResponses = new List<CompaniesResponseDto>();
 
+                var countryIds =  request.companies.Select(c => c.CountryId).Distinct().ToList();
+                var defaultCities = await _mediator.Send(new GetDefaultCitiesByCountryIdsQuery(countryIds));
+
                 foreach (var companyDto in request.companies)
                 {
                     var company = companyDto.Adapt<Company>();
@@ -26,6 +30,8 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     companiesResponses.Add(new CompaniesResponseDto
                     {
                       CompanyId = company.Id,
+                      CompanyName = company.Name,
+                      DefaultCity = defaultCities.Data.GetValueOrDefault(companyDto.CountryId),
                       Branches = companyDto.Branches
                     });
                 }

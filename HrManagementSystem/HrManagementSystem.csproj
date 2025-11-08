@@ -43,6 +43,7 @@
 
   <!-- Folder Structure -->
   <ItemGroup>
+    <Folder Include="Common\Data\Migrations\" />
     <Folder Include="Common\Helper\" />
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
@@ -55,8 +56,6 @@
     <Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
     <Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\OnBoardingManagement\Queries\" />
-    <Folder Include="Features\OnBoardingManagement\Validators\" />
   </ItemGroup>
 
 </Project>

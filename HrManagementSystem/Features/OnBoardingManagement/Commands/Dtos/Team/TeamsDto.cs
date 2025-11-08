@@ -2,6 +2,5 @@
 {
     public record TeamsDto(
     string Name,
-    string DepartmentId
-);
+    string DepartmentId);
 }
