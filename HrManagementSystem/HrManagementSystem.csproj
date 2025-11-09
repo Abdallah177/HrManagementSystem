@@ -55,7 +55,6 @@
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\DeleteVacation\Queries\" />
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\GetAllVacation\Command\" />
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\GetVacationById\Commands\" />
-    <Folder Include="Features\ConfigurationsManagement\VacationMangement\UpdateVacation\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />

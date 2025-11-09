@@ -80,6 +80,7 @@ namespace HrManagementSystem.Common.Repositories
         {
             var entity = await _dbSet
             .AsNoTracking()
+            .Where(e => !e.IsDeleted && e.IsActive)
             .FirstOrDefaultAsync(f => f.Id == id, cancellationToken);
 
             return entity;
