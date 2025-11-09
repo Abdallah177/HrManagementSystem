@@ -29,20 +29,20 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 
             var branchesResult = await _mediator.Send(new OnBoardingBranchesCommand(companiesResult.Data, request.currentUserId),cancellationToken);
 
-            var departmentsResult = await _mediator.Send(new OnBoardingDepartmentsCommand(branchesResult.Data, request.currentUserId),cancellationToken);
+            var departmentsResult = await _mediator.Send(new OnBoardingDepartmentsCommand(branchesResult.Data, request.currentUserId), cancellationToken);
 
-            var teamsResult = await _mediator.Send(new OnBoardingTeamsCommand(departmentsResult.Data, request.currentUserId),cancellationToken);
+            var teamsResult = await _mediator.Send(new OnBoardingTeamsCommand(departmentsResult.Data,organizationResult.Data, request.currentUserId), cancellationToken);
 
             if (!teamsResult.IsSuccess)
                 return RequestResult<bool>.Failure(teamsResult.Message, teamsResult.ErrorCode);
 
             //generate scops
-            var generateScops = await _mediator.Send(new GenerateScopeCommand(teamsResult.Data,request.currentUserId));
+            var generateScops = await _mediator.Send(new GenerateScopeCommand(teamsResult.Data, request.currentUserId));
 
             if (!generateScops.IsSuccess)
                 return RequestResult<bool>.Failure(generateScops.Message, generateScops.ErrorCode);
 
-            return RequestResult<bool>.Success(true, $"Organization onboarded successfully and created the scops correctly : {generateScops.Data} scops!");
+            return RequestResult<bool>.Success(true, $"Organization onboarded successfully and created the scops correctly : scops!");
 
         }
     }

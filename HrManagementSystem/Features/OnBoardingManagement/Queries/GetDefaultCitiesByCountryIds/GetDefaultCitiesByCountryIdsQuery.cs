@@ -5,9 +5,9 @@ using MediatR;
 using HrManagementSystem.Common.Entities.Location;
 using Microsoft.EntityFrameworkCore;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Queries
+namespace HrManagementSystem.Features.OnBoardingManagement.Queries.GetDefaultCitiesByCountryIds
 {
-    public record GetDefaultCitiesByCountryIdsQuery(List<string> countries):IRequest<RequestResult<Dictionary<string,string>>>;
+    public record GetDefaultCitiesByCountryIdsQuery(List<string> countries) : IRequest<RequestResult<Dictionary<string, string>>>;
     public class GetDefaultCitiesByCountryIdsQueryHandler : RequestHandlerBase<GetDefaultCitiesByCountryIdsQuery, RequestResult<Dictionary<string, string>>, State>
     {
         public GetDefaultCitiesByCountryIdsQueryHandler(RequestHandlerBaseParameters<State> parameters) : base(parameters)

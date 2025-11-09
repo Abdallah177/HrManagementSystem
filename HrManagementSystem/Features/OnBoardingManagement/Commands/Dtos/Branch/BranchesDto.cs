@@ -7,6 +7,6 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch
          string? Phone,
          string CityId,
          string CompanyId,
-         List<DepartmentsDto> Departments
+         List<DepartmentsDto>? Departments = null
      );
 }

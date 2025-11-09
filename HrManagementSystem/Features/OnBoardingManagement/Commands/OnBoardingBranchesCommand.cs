@@ -16,50 +16,49 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
         }
 
-        public async  override Task<RequestResult<List<BranchesResponseDto>>> Handle(OnBoardingBranchesCommand request, CancellationToken cancellationToken)
+        public async override Task<RequestResult<List<BranchesResponseDto>>> Handle(OnBoardingBranchesCommand request, CancellationToken cancellationToken)
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            var branchesDto = request.Companies.SelectMany(company =>
-          company.Branches.Any() ? company.Branches.Select(branch => new
-          {
-              BranchDto = new BranchesDto(
-                  branch.Name,
-                  branch.Phone,
-                  branch.CityId,
-                  company.CompanyId,
-                  branch.Departments
-              )
-          })
-          : new[]
-          {
-                new
+            var branchesDto = request.Companies
+             .SelectMany(company =>
+             {
+                 var validBranches = company.Branches?.Where(b => b != null).ToList();
+
+                 return (validBranches?.Count ?? 0) > 0
+                     ? validBranches.Select(branch => 
+                     new BranchesDto(
+                         branch.Name,
+                         branch.Phone,
+                         branch.CityId,
+                         company.CompanyId,
+                         branch.Departments?.Where(d => d != null).ToList() ?? new List<DepartmentsDto>()))
+                     : new[]
+                     {
+                        new BranchesDto(
+                            $"{company.CompanyName} Branch",
+                            null,
+                            company.DefaultCityId,
+                            company.CompanyId,
+                            new List<DepartmentsDto>())
+                     };
+                 }).ToList();
+
+                foreach (var item in branchesDto)
                 {
-                    BranchDto = new BranchesDto(
-                        $"{company.CompanyName} Branch",
-                        null,
-                        company.DefaultCityId,
-                        company.CompanyId,
-                        new List<DepartmentsDto>()
-                    )
+                    var branch = item.Adapt<Branch>();
+                    await _repository.AddAsync(branch, request.currentUserId, cancellationToken);
+
+                    branchesResponses.Add(new BranchesResponseDto
+                    {
+                        BranchId = branch.Id,
+                        BranchName = branch.Name,
+                        CompanyId = branch.CompanyId,
+                        Departments = item.Departments
+                    });
                 }
-          }).ToList();
 
-            foreach (var item in branchesDto)
-            {
-                var branch = item.BranchDto.Adapt<Branch>();
-                await _repository.AddAsync(branch, request.currentUserId, cancellationToken);
-
-                branchesResponses.Add(new BranchesResponseDto
-                {
-                    BranchId = branch.Id,
-                    BranchName = branch.Name,
-                    CompanyId = branch.CompanyId,
-                    Departments = item.BranchDto.Departments
-                });
-            }
-
-            return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses,"Branches created successfully");
+               return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses,"Branches created successfully");
         }
     }
 }

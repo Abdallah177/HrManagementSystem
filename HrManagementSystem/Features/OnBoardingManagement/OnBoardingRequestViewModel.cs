@@ -3,7 +3,7 @@
     public record OnBoardingRequestViewModel(OrganizationRequestViewModel Organization);
 
     public record OrganizationRequestViewModel(
-            string Name , 
+            string Name,
             List<CompanyRequestViewModel> Companies
       );
 
@@ -11,20 +11,20 @@
         string Name,
         string? Email,
         string CountryId,
-        List<BranchRequestViewModel> Branches
+        List<BranchRequestViewModel>? Branches = null
     );
 
     public record BranchRequestViewModel(
         string Name,
         string? Phone,
         string CityId,
-        List<DepartmentRequestViewModel> Departments
+        List<DepartmentRequestViewModel>? Departments = null
     );
 
     public record DepartmentRequestViewModel(
         string Name,
         string? Description,
-        List<TeamRequestViewModel> Teams
+        List<TeamRequestViewModel>? Teams = null
     );
 
     public record TeamRequestViewModel(string Name);

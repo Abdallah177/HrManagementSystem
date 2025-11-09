@@ -25,10 +25,10 @@ namespace HrManagementSystem.Features.OnBoardingManagement
             }
 
             var onBoardingRequest = RequestViewModel.Adapt<OnBoardingDto>();
-            var organizationResult = await _mediator.Send(new OnBoardingOrchestrator(onBoardingRequest, GetCurrentUserId().ToString()),cancellationToken);
+            var onBoardingResult = await _mediator.Send(new OnBoardingOrchestrator(onBoardingRequest, GetCurrentUserId().ToString()),cancellationToken);
             
 
-            return EndpointResponse<bool>.Success(true);
+            return EndpointResponse<bool>.Success(onBoardingResult.Data,onBoardingResult.Message);
 
         }
     }

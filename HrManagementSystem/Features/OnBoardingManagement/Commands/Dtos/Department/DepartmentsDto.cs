@@ -6,6 +6,6 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Departm
         string Name,
         string? Description,
         string BranchId,
-        List<TeamsDto> Teams
+        List<TeamsDto>? Teams = null
     );
 }

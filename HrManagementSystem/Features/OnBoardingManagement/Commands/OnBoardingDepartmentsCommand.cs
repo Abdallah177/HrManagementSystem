@@ -22,34 +22,30 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             var departmentsResponses = new List<DepartmentsResponseDto>();
 
             var departmentsDto = request.Branches
-         .SelectMany(branch => branch.Departments.Any() ? branch.Departments.Select(dept => new
-         {
-             DepartmentDto = new DepartmentsDto(
-                 dept.Name,
-                 dept.Description,
-                 branch.BranchId,
-                 dept.Teams
-             ),
-             CompanyId = branch.CompanyId,
-         })
-         : new[]
-         {
-            new
-            {
-                DepartmentDto = new DepartmentsDto(
-                    $"{branch.BranchName} Department",
-                    "Default department",
-                    branch.BranchId,
-                    new List<TeamsDto>()
-                ),
-                CompanyId = branch.CompanyId,
-            }
-         })
-         .ToList();
+              .SelectMany(branch =>
+              {
+                  var validDepartments = branch.Departments?.Where(d => d != null).ToList();
 
-            foreach (var item in departmentsDto)
+                  return (validDepartments?.Count ?? 0) > 0
+                      ? validDepartments.Select(dept => new DepartmentsDto(
+                          dept.Name,
+                          dept.Description,
+                          branch.BranchId,
+                          dept.Teams?.Where(t => t != null).ToList() ?? new List<TeamsDto>()))
+
+                      : new[]
+                      {
+                        new DepartmentsDto(
+                            $"{branch.BranchName} Department",
+                            "Default department",
+                            branch.BranchId,
+                            new List<TeamsDto>())
+                      };
+              }).ToList();
+
+            foreach (var departmentDto in departmentsDto)
             {
-                var department = item.DepartmentDto.Adapt<Department>();
+                var department = departmentDto.Adapt<Department>();
                 await _repository.AddAsync(department, request.currentUserId, cancellationToken);
 
                 departmentsResponses.Add(new DepartmentsResponseDto
@@ -57,10 +53,8 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     DepartmentId = department.Id,
                     DepartmentName = department.Name,
                     BranchId = department.BranchId,
-                    CompanyId = department.Branch.CompanyId,
-                    Teams = item.DepartmentDto.Teams
+                    Teams = departmentDto.Teams
                 });
-               
             }
 
             return RequestResult<List<DepartmentsResponseDto>>.Success(departmentsResponses, "Departments created successfully");
