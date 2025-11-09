@@ -53,5 +53,6 @@
 
         
         VacationNotFound = 310,
+        VacationNotExist = 311,
     }
 }

@@ -26,7 +26,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.VacationMangement
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (vacation == null)
-                return RequestResult<GetVacationByIdResponseViewModel>.Failure("The requested Probation was not found.", ErrorCode.VacationNotFound);
+                return RequestResult<GetVacationByIdResponseViewModel>.Failure("The requested Vacation was not found.", ErrorCode.VacationNotFound);
 
             return RequestResult<GetVacationByIdResponseViewModel>.Success(vacation);
         }
