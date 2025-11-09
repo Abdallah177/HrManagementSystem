@@ -4,10 +4,12 @@ using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
 using MediatR;
 using Mapster;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingBranchesCommand(List<BranchesDto> Branches,string CurrentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
+    public record OnBoardingBranchesCommand(List<CompaniesResponseDto> Companies, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
     public class OnBoardingBranchesCommandHandler : RequestHandlerBase<OnBoardingBranchesCommand, RequestResult<List<BranchesResponseDto>>, Branch>
     {
         public OnBoardingBranchesCommandHandler(RequestHandlerBaseParameters<Branch> parameters) : base(parameters)
@@ -18,16 +20,42 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            foreach (var branchDto in request.Branches)
+            var branchesDto = request.Companies.SelectMany(company =>
+          company.Branches.Any() ? company.Branches.Select(branch => new
+          {
+              BranchDto = new BranchesDto(
+                  branch.Name,
+                  branch.Phone,
+                  branch.CityId,
+                  company.CompanyId,
+                  branch.Departments
+              )
+          })
+          : new[]
+          {
+                new
+                {
+                    BranchDto = new BranchesDto(
+                        $"{company.CompanyName} Branch",
+                        null,
+                        company.DefaultCityId,
+                        company.CompanyId,
+                        new List<DepartmentsDto>()
+                    )
+                }
+          }).ToList();
+
+            foreach (var item in branchesDto)
             {
-                var branch = branchDto.Adapt<Branch>();
-                await _repository.AddAsync(branch, request.CurrentUserId, cancellationToken);
+                var branch = item.BranchDto.Adapt<Branch>();
+                await _repository.AddAsync(branch, request.currentUserId, cancellationToken);
 
                 branchesResponses.Add(new BranchesResponseDto
                 {
                     BranchId = branch.Id,
                     BranchName = branch.Name,
-                    Departments = branchDto.Departments
+                    CompanyId = branch.CompanyId,
+                    Departments = item.BranchDto.Departments
                 });
             }
 

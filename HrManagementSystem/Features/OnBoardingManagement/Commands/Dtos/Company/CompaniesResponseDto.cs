@@ -6,7 +6,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company
     {
         public string CompanyId { get; set; }
         public string CompanyName { get; set; }
-        public string DefaultCity { get; set; }
+        public string DefaultCityId { get; set; }
         public List<BranchesDto> Branches { get; set; }
     }
 }

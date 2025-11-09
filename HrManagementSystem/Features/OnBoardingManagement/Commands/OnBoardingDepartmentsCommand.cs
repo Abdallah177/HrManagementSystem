@@ -4,10 +4,13 @@ using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using MediatR;
 using Mapster;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
+using System.Linq;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingDepartmentsCommand(List<DepartmentsDto> Departments, string CurrentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
+    public record OnBoardingDepartmentsCommand(List<BranchesResponseDto> Branches, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
     public class OnBoardingDepartmentsCommandHandler : RequestHandlerBase<OnBoardingDepartmentsCommand, RequestResult<List<DepartmentsResponseDto>>, Department>
     {
         public OnBoardingDepartmentsCommandHandler(RequestHandlerBaseParameters<Department> parameters) : base(parameters)
@@ -18,19 +21,49 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var departmentsResponses = new List<DepartmentsResponseDto>();
 
-            foreach (var deptDto in request.Departments)
+            var departmentsDto = request.Branches
+         .SelectMany(branch => branch.Departments.Any() ? branch.Departments.Select(dept => new
+         {
+             DepartmentDto = new DepartmentsDto(
+                 dept.Name,
+                 dept.Description,
+                 branch.BranchId,
+                 dept.Teams
+             ),
+             CompanyId = branch.CompanyId,
+         })
+         : new[]
+         {
+            new
             {
-                var department = deptDto.Adapt<Department>();
-                await _repository.AddAsync(department, request.CurrentUserId, cancellationToken);
+                DepartmentDto = new DepartmentsDto(
+                    $"{branch.BranchName} Department",
+                    "Default department",
+                    branch.BranchId,
+                    new List<TeamsDto>()
+                ),
+                CompanyId = branch.CompanyId,
+            }
+         })
+         .ToList();
+
+            foreach (var item in departmentsDto)
+            {
+                var department = item.DepartmentDto.Adapt<Department>();
+                await _repository.AddAsync(department, request.currentUserId, cancellationToken);
 
                 departmentsResponses.Add(new DepartmentsResponseDto
                 {
                     DepartmentId = department.Id,
                     DepartmentName = department.Name,
-                    Teams = deptDto.Teams 
+                    BranchId = department.BranchId,
+                    CompanyId = department.Branch.CompanyId,
+                    Teams = item.DepartmentDto.Teams
                 });
+               
             }
-            return RequestResult<List<DepartmentsResponseDto>>.Success(departmentsResponses,"Departments created successfully");
+
+            return RequestResult<List<DepartmentsResponseDto>>.Success(departmentsResponses, "Departments created successfully");
         }
     }
 }

@@ -5,7 +5,9 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Departm
     public class DepartmentsResponseDto
     {
         public string DepartmentId { get; set; }
-        public string DepartmentName { get; set; }
+        public string DepartmentName { get; set; } //for a default value
+        public string BranchId { get; set; }   
+        public string CompanyId { get; set; }
         public List<TeamsDto> Teams { get; set; }
     }
 }

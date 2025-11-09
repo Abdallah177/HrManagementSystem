@@ -8,7 +8,7 @@ using MediatR;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingCompainesCommand(List<CompaniesDto> companies, string currentUserId) : IRequest<RequestResult<List<CompaniesResponseDto>>>;
+    public record OnBoardingCompainesCommand(List<CompaniesDto> companies , string OrganizationId, string currentUserId) : IRequest<RequestResult<List<CompaniesResponseDto>>>;
 
     public class OnBoardingCompainesCommandHandler : RequestHandlerBase<OnBoardingCompainesCommand, RequestResult<List<CompaniesResponseDto>>, Company>
     {
@@ -18,11 +18,20 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             public override async Task<RequestResult<List<CompaniesResponseDto>>> Handle(OnBoardingCompainesCommand request,CancellationToken cancellationToken)
             {
                 var companiesResponses = new List<CompaniesResponseDto>();
-
-                var countryIds =  request.companies.Select(c => c.CountryId).Distinct().ToList();
+                var countryIds = request.companies.Select(c => c.CountryId).Distinct().ToList();
                 var defaultCities = await _mediator.Send(new GetDefaultCitiesByCountryIdsQuery(countryIds));
 
-                foreach (var companyDto in request.companies)
+                var companiesDto = request.companies
+                    .Select(c => new CompaniesDto
+                    (
+                        c.Name,
+                        c.Email,
+                        c.CountryId,
+                        request.OrganizationId,
+                        c.Branches
+                    )).ToList();
+
+                foreach (var companyDto in companiesDto)
                 {
                     var company = companyDto.Adapt<Company>();
                     await _repository.AddAsync(company, request.currentUserId, cancellationToken);
@@ -31,7 +40,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     {
                       CompanyId = company.Id,
                       CompanyName = company.Name,
-                      DefaultCity = defaultCities.Data.GetValueOrDefault(companyDto.CountryId),
+                      DefaultCityId = defaultCities.Data.GetValueOrDefault(companyDto.CountryId),
                       Branches = companyDto.Branches
                     });
                 }

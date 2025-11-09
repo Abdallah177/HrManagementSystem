@@ -17,22 +17,17 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Queries
         public async override Task<RequestResult<Dictionary<string, string>>> Handle(GetDefaultCitiesByCountryIdsQuery request, CancellationToken cancellationToken)
         {
             var countryDefaultCities = await _repository
-                    .Get(s => request.countries.Contains(s.CountryId))
-                    .GroupBy(s => s.CountryId)
-                    .Select(g => new 
-                    {
-                        CountryId = g.Key,
-                        FirstState = g.OrderBy(s => s.Name).FirstOrDefault()
-                    })
-                    .Select(x => new 
-                    {
-                        x.CountryId,
-                        FirstCityId = x.FirstState.Cities  
-                        .OrderBy(c => c.Name)
-                        .Select(c => c.Id)
-                        .FirstOrDefault()
-                    })
-                    .ToDictionaryAsync(x => x.CountryId, x => x.FirstCityId);
+                .Get(s => request.countries.Contains(s.CountryId))
+                .SelectMany(s => s.Cities, (state, city) => new { state.CountryId, City = city })
+                .GroupBy(x => x.CountryId)
+                .Select(g => new
+                {
+                    CountryId = g.Key,
+                    FirstCityId = g.OrderBy(x => x.City.Name)
+                                  .Select(x => x.City.Id)
+                                  .FirstOrDefault()
+                })
+                .ToDictionaryAsync(x => x.CountryId, x => x.FirstCityId);
 
             return RequestResult<Dictionary<string, string>>.Success(countryDefaultCities);
         }
