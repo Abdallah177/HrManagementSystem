@@ -1,10 +1,14 @@
 ﻿using FluentValidation;
 using HrManagementSystem.Common.Data;
 using HrManagementSystem.Common.Entities;
+using HrManagementSystem.Common.Entities.Features;
+using HrManagementSystem.Common.Entities.FeatureSope;
 using HrManagementSystem.Common.Entities.Location;
 using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
+using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScopeOrchestrator;
 using Mapster;
 using MapsterMapper;
 using MediatR;
@@ -44,14 +48,15 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<City>, bool>),
                                   typeof(CheckExistsQueryHandler<City>));
 
-<<<<<<< HEAD
-=======
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Company>, bool>),
                                   typeof(CheckExistsQueryHandler<Company>));
 
->>>>>>> master
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
+
+            services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
+
+
 
             services.AddScoped<TransactionMiddleware>();
 

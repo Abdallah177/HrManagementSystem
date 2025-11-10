@@ -37,6 +37,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PredicateExtensions" Version="1.0.0" />
     <PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
@@ -55,7 +56,6 @@
     <Folder Include="Features\LocationManagement\CityManagement\GetByIDCity\Commands\" />
     <Folder Include="Features\LocationManagement\StateManagement\AddState\Queries\" />
     <Folder Include="Features\LocationManagement\StateManagement\UpdateState\Queries\" />
-    <Folder Include="Features\ConfigurationsManagement\" />
   </ItemGroup>
 
 </Project>

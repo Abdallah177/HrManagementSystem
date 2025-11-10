@@ -25,4 +25,5 @@ namespace HrManagementSystem.Common.Entities.FeatureSope
         public string? TeamId { get; set; }
         public Team? Team { get; set; } = null!;
     }
+
 }

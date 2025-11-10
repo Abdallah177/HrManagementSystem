@@ -79,7 +79,7 @@ namespace HrManagementSystem.Common.Repositories
         public async Task<Entity?> GetByIDAsync(string id, CancellationToken cancellationToken = default)
         {
             var entity = await _dbSet
-            .AsNoTracking()
+            .Where(e => !e.IsDeleted && e.IsActive)
             .FirstOrDefaultAsync(f => f.Id == id, cancellationToken);
 
             return entity;

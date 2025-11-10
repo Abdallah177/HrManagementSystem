@@ -165,16 +165,16 @@ namespace HrManagementSystem.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BreakId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedByUser")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -194,7 +194,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BreakId");
+                    b.HasIndex("EntityId");
 
                     b.HasIndex("ScopeId");
 
@@ -213,7 +213,7 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DisabilityId")
+                    b.Property<string>("EntityId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -235,7 +235,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DisabilityId");
+                    b.HasIndex("EntityId");
 
                     b.HasIndex("ScopeId");
 
@@ -254,15 +254,15 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("OverTimeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScopeId")
                         .IsRequired()
@@ -276,7 +276,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OverTimeId");
+                    b.HasIndex("EntityId");
 
                     b.HasIndex("ScopeId");
 
@@ -295,6 +295,10 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -302,7 +306,6 @@ namespace HrManagementSystem.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ProbationId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScopeId")
@@ -316,6 +319,8 @@ namespace HrManagementSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EntityId");
 
                     b.HasIndex("ProbationId");
 
@@ -336,15 +341,15 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("RequestId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScopeId")
                         .IsRequired()
@@ -358,7 +363,7 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("EntityId");
 
                     b.HasIndex("ScopeId");
 
@@ -431,6 +436,10 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -438,10 +447,6 @@ namespace HrManagementSystem.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ScopeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ShiftId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -453,9 +458,9 @@ namespace HrManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex("EntityId");
 
-                    b.HasIndex("ShiftId");
+                    b.HasIndex("ScopeId");
 
                     b.ToTable("ShiftScopes");
                 });
@@ -472,6 +477,10 @@ namespace HrManagementSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EntityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -488,15 +497,11 @@ namespace HrManagementSystem.Data.Migrations
                     b.Property<string>("UpdatedByUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("VacationId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex("EntityId");
 
-                    b.HasIndex("VacationId");
+                    b.HasIndex("ScopeId");
 
                     b.ToTable("VacationScopes");
                 });
@@ -1076,9 +1081,9 @@ namespace HrManagementSystem.Data.Migrations
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.BreakScope", b =>
                 {
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Break", "Break")
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Break", "Entity")
                         .WithMany("BreakScopes")
-                        .HasForeignKey("BreakId")
+                        .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1088,16 +1093,16 @@ namespace HrManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Break");
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.DisabilityScope", b =>
                 {
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Disability", "Disability")
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Disability", "Entity")
                         .WithMany("DisabilityScopes")
-                        .HasForeignKey("DisabilityId")
+                        .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1107,16 +1112,16 @@ namespace HrManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Disability");
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.OverTimeScope", b =>
                 {
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.OverTime", "OverTime")
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.OverTime", "Entity")
                         .WithMany("OverTimeScopes")
-                        .HasForeignKey("OverTimeId")
+                        .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1126,18 +1131,22 @@ namespace HrManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("OverTime");
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ProbationScope", b =>
                 {
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Probation", "Probation")
-                        .WithMany("ProbationScopes")
-                        .HasForeignKey("ProbationId")
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.OverTime", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Probation", null)
+                        .WithMany("ProbationScopes")
+                        .HasForeignKey("ProbationId");
 
                     b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
                         .WithMany()
@@ -1145,16 +1154,16 @@ namespace HrManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Probation");
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.RequestScope", b =>
                 {
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Request", "Request")
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Request", "Entity")
                         .WithMany("RequestScopes")
-                        .HasForeignKey("RequestId")
+                        .HasForeignKey("EntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1164,7 +1173,7 @@ namespace HrManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Request");
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
                 });
@@ -1204,40 +1213,40 @@ namespace HrManagementSystem.Data.Migrations
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.ShiftScope", b =>
                 {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Shift", "Entity")
+                        .WithMany("ShiftScopes")
+                        .HasForeignKey("EntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
                         .WithMany()
                         .HasForeignKey("ScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Shift", "Shift")
-                        .WithMany("ShiftScopes")
-                        .HasForeignKey("ShiftId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
-
-                    b.Navigation("Shift");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.FeatureSope.VacationScope", b =>
                 {
+                    b.HasOne("HrManagementSystem.Common.Entities.Features.Vacation", "Entity")
+                        .WithMany("VacationScopes")
+                        .HasForeignKey("EntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HrManagementSystem.Common.Entities.FeatureSope.ScopeBase", "ScopeBase")
                         .WithMany()
                         .HasForeignKey("ScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HrManagementSystem.Common.Entities.Features.Vacation", "Vacation")
-                        .WithMany("VacationScopes")
-                        .HasForeignKey("VacationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Entity");
 
                     b.Navigation("ScopeBase");
-
-                    b.Navigation("Vacation");
                 });
 
             modelBuilder.Entity("HrManagementSystem.Common.Entities.Location.City", b =>
