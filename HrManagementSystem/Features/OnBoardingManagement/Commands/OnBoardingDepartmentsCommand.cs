@@ -7,6 +7,7 @@ using Mapster;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
@@ -23,7 +24,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 
             var departmentsDto = request.Branches
             .SelectMany(branch =>
-                branch.Departments?.Where(d => d != null)
+                branch.Departments?.Where(d => d != null).Select(b => b with { BranchId = branch.BranchId })
                 ?? new List<DepartmentsDto>
                 {
                         new DepartmentsDto(

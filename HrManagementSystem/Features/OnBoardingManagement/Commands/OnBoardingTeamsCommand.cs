@@ -21,22 +21,25 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var teamsResponses = new List<TeamsResponseDto>();
 
-            var teamsWithScope = request.Departments
-        .SelectMany(dept =>
-               dept.Teams?.Where(t => t != null).Select(team => new {
-                   Team = team,
-                   dept.BranchId,
-                   dept.CompanyId
-               })
-            ?? new List<TeamsDto>
-            {
-                   new TeamsDto($"{dept.DepartmentName} Team", dept.DepartmentId),
+            var teamsWithScopes = request.Departments
+                .SelectMany(dept =>
+                    dept.Teams?.Where(t => t != null).Select(team => new TeamWithScopesDto
+                    {
+                        Team = team,
+                        BranchId = dept.BranchId,
+                        CompanyId = dept.CompanyId
+                    })
+                    ?? new List<TeamWithScopesDto> 
+                    {
+                        new TeamWithScopesDto
+                        {
+                            Team = new TeamsDto($"{dept.DepartmentName} Team", dept.DepartmentId),
+                            BranchId = dept.BranchId,
+                            CompanyId = dept.CompanyId
+                        }
+                    }).ToList();
 
-            },
-            
-        ).ToList();
-
-            var teamDtos = teamsWithScope.Select(x => x.Team).ToList();
+            var teamDtos = teamsWithScopes.Select(x => x.Team).ToList();
 
             var teams = teamDtos.Adapt<List<Team>>();
             await _repository.AddRangeAsync(teams, request.currentUserId, cancellationToken);
@@ -45,8 +48,8 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             {
                 TeamId = team.Id,
                 DepartmentId = team.DepartmentId,
-                BranchId = teamsWithScope[index].BranchId, 
-                CompanyId = teamsWithScope[index].CompanyId,  
+                BranchId = teamsWithScopes[index].BranchId, 
+                CompanyId = teamsWithScopes[index].CompanyId,  
                 OrganizationId = request.OrganizationId
             }).ToList();
 

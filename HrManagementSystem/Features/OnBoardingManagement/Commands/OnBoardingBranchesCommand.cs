@@ -21,9 +21,11 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             var branchesResponses = new List<BranchesResponseDto>();
 
             var branchesDto = request.Companies
-         .SelectMany(company =>
-             company.Branches?.Where(b => b != null)
+               .SelectMany(company =>
+                  company.Branches?.Where(b => b != null).Select(b => b with { CompanyId = company.CompanyId })
+
              ?? new List<BranchesDto>
+
              {
                 new BranchesDto(
                     $"{company.CompanyName} Branch",
@@ -45,6 +47,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                 BranchName = branch.Name,
                 CompanyId = branch.CompanyId,
                 Departments = branchesDto[index].Departments
+
             }).ToList();
 
 

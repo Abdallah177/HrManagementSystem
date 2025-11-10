@@ -42,7 +42,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             if (!generateScops.IsSuccess)
                 return RequestResult<bool>.Failure(generateScops.Message, generateScops.ErrorCode);
 
-            return RequestResult<bool>.Success(true, $"Organization onboarded successfully and created the scops correctly : scops!");
+            return RequestResult<bool>.Success(true, $"Organization onboarded successfully and created the scops correctly :{ generateScops.Data} scops!");
 
         }
     }
