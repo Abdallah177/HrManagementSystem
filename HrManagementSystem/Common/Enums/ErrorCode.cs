@@ -2,41 +2,58 @@
 {
     public enum ErrorCode
     {
-        NoError = 1 ,
-        DuplicateRecord= 2 ,
+        //------------ General (0– 99)---------------
+        NoError = 1,
+        DuplicateRecord = 2,
 
-        CountryNotFound =100,
-        CountryHasStates = 101,
-        CountryHasRelatedCompanies = 102,
-        CountryNameIsExist = 103,
 
-        StateNotFound = 200,
-        StateIsExist = 201,
+        //--------- Main Entity (100–199)--------------
+        OrganizationNotExis = 100,
+        OrganizationIDNotFound = 101,
+        NoOrganizationFound = 102,
+        OrganizationAlreadyExists = 103,
 
-        NoCitiesfound = 300,
-        CityAlreadyExistsInThisState = 301 ,
-        CityNotExist = 302,
-        DuplicateCityName = 303,
+        
+        CompanyNotExist = 110,
 
-        OrganizationNotExis = 400,
-        NoOrganizationFound = 401,
-        OrganizationIDNotFound =402,
-        OrganizationAlreadyExists=403,
+       
+        BranchNotExist = 120,
+        CanNotRemoveThisBranch = 121,
 
-        CompanyNotExist = 500,
+       
+        DepartmentNotExist = 130,
+        DepartmentIsExist = 131,
+        DepartmentHasRelatedTeams = 132,
 
-        BranchNotExist = 600,
-        CanNotRemoveThisBranch = 601,
+        
+        TeamNotExist = 140,
+        NoTeamsFound = 141,
 
-        DepartmentNotExist = 700,
-        DepartmentIsExist = 701,
-        DepartmentHasRelatedTeams = 702,
+        //--------------------Location (200–299)-----------
+        CountryNotFound = 200, 
+        CountryHasStates = 201,
+        CountryHasRelatedCompanies = 202,
+        CountryNameIsExist = 203,
 
-        StateHasCities =201,
+       
+        StateNotFound = 210, 
+        StateIsExist = 211,
+        StateHasCities = 212,
 
-        TeamNotExist = 800,
-        NoTeamsFound = 801,
+       
+        NoCitiesfound = 220,
+        CityAlreadyExistsInThisState = 221,
+        CityNotExist = 222,
+        DuplicateCityName = 223,
 
+
+        //--------------Configurations(300–399)----------
+        ProbationNotFound = 300,
+        ProbationNotExist = 301,
+
+        
+        VacationNotFound = 310,
+        VacationNotExist = 311,
         ProbationNotFound = 900,
         ProbationNotExist = 901,
         RequestNotExist = 902,
