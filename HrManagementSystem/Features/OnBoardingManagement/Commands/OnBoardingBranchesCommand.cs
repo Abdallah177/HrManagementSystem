@@ -20,11 +20,11 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            var branchesDto = request.Companies
+            var branchesDtos = request.Companies
                .SelectMany(company =>
                   company.Branches?.Where(b => b != null).Select(b => b with { CompanyId = company.CompanyId })
 
-             ?? new List<BranchesDto>
+             ?? new[] 
 
              {
                 new BranchesDto(
@@ -34,11 +34,9 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     company.CompanyId,
                     new List<DepartmentsDto>()
                 )
-             }
-             
-         ).ToList(); 
+             }).ToList(); 
 
-            var branches = branchesDto.Adapt<List<Branch>>();
+            var branches = branchesDtos.Adapt<List<Branch>>();
             await _repository.AddRangeAsync(branches, request.currentUserId, cancellationToken);
 
              branchesResponses = branches.Select((branch, index) => new BranchesResponseDto
@@ -46,7 +44,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                 BranchId = branch.Id,
                 BranchName = branch.Name,
                 CompanyId = branch.CompanyId,
-                Departments = branchesDto[index].Departments
+                Departments = branchesDtos[index].Departments
 
             }).ToList();
 

@@ -22,28 +22,39 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var departmentsResponses = new List<DepartmentsResponseDto>();
 
-            var departmentsDto = request.Branches
+        var departmentsDtos = request.Branches
             .SelectMany(branch =>
-                branch.Departments?.Where(d => d != null).Select(b => b with { BranchId = branch.BranchId })
-                ?? new List<DepartmentsDto>
+                branch.Departments?.Where(d => d != null)
+                    .Select(d => new
+                    {
+                        Department = d with { BranchId = branch.BranchId },
+                        branch.CompanyId
+                    })
+                ?? new[]
                 {
-                        new DepartmentsDto(
+                    new
+                    {
+                        Department = new DepartmentsDto(
                             $"{branch.BranchName} Department",
                             "Default department",
                             branch.BranchId,
                             new List<TeamsDto>()
-                        )
-                }
-            ).ToList();
+                        ),
+                        branch.CompanyId
+                    }
+               }).ToList();
 
+            var departmentsDto = departmentsDtos.Select(x => x.Department).ToList();
             var departments = departmentsDto.Adapt<List<Department>>();
+
             await _repository.AddRangeAsync(departments, request.currentUserId, cancellationToken);
 
-            var response = departments.Select((dept, index) => new DepartmentsResponseDto
+             departmentsResponses = departments.Select((dept, index) => new DepartmentsResponseDto
             {
                 DepartmentId = dept.Id,
                 DepartmentName = dept.Name,
                 BranchId = dept.BranchId,
+                CompanyId = departmentsDtos[index].CompanyId,
                 Teams = departmentsDto[index].Teams 
 
             }).ToList();
