@@ -21,44 +21,34 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             var branchesResponses = new List<BranchesResponseDto>();
 
             var branchesDto = request.Companies
-             .SelectMany(company =>
+         .SelectMany(company =>
+             company.Branches?.Where(b => b != null)
+             ?? new List<BranchesDto>
              {
-                 var validBranches = company.Branches?.Where(b => b != null).ToList();
+                new BranchesDto(
+                    $"{company.CompanyName} Branch",
+                    null,
+                    company.DefaultCityId,
+                    company.CompanyId,
+                    new List<DepartmentsDto>()
+                )
+             }
+             
+         ).ToList(); 
 
-                 return (validBranches?.Count ?? 0) > 0
-                     ? validBranches.Select(branch => 
-                     new BranchesDto(
-                         branch.Name,
-                         branch.Phone,
-                         branch.CityId,
-                         company.CompanyId,
-                         branch.Departments?.Where(d => d != null).ToList() ?? new List<DepartmentsDto>()))
-                     : new[]
-                     {
-                        new BranchesDto(
-                            $"{company.CompanyName} Branch",
-                            null,
-                            company.DefaultCityId,
-                            company.CompanyId,
-                            new List<DepartmentsDto>())
-                     };
-                 }).ToList();
+            var branches = branchesDto.Adapt<List<Branch>>();
+            await _repository.AddRangeAsync(branches, request.currentUserId, cancellationToken);
 
-                foreach (var item in branchesDto)
-                {
-                    var branch = item.Adapt<Branch>();
-                    await _repository.AddAsync(branch, request.currentUserId, cancellationToken);
+             branchesResponses = branches.Select((branch, index) => new BranchesResponseDto
+            {
+                BranchId = branch.Id,
+                BranchName = branch.Name,
+                CompanyId = branch.CompanyId,
+                Departments = branchesDto[index].Departments
+            }).ToList();
 
-                    branchesResponses.Add(new BranchesResponseDto
-                    {
-                        BranchId = branch.Id,
-                        BranchName = branch.Name,
-                        CompanyId = branch.CompanyId,
-                        Departments = item.Departments
-                    });
-                }
 
-               return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses,"Branches created successfully");
+            return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses,"Branches created successfully");
         }
     }
 }
