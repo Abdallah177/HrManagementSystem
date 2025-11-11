@@ -21,23 +21,26 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var teamsResponses = new List<TeamsResponseDto>();
 
-            var teamsWithScopes = request.Departments
-                .SelectMany(dept =>
-                    dept.Teams?.Where(t => t != null).Select(team => new 
+             var teamsWithScopes = request.Departments
+             .SelectMany(dept =>
+               (dept.Teams != null && dept.Teams.Count != 0)
+                ? dept.Teams
+                    .Where(t => t != null)
+                    .Select(team => new
                     {
-                        Team = team with { DepartmentId = dept.DepartmentId},
+                        Team = team with { DepartmentId = dept.DepartmentId },
                         dept.BranchId,
                         dept.CompanyId
                     })
-                    ?? new[] 
+                : new[]
+                {
+                    new
                     {
-                        new 
-                        {
-                            Team = new TeamsDto($"{dept.DepartmentName} Team", dept.DepartmentId),
-                             dept.BranchId,
-                             dept.CompanyId
-                        }
-                    }).ToList();
+                        Team = new TeamsDto($"{dept.DepartmentName} Team", dept.DepartmentId),
+                        dept.BranchId,
+                        dept.CompanyId
+                    }
+                }).ToList();
 
             var teamDtos = teamsWithScopes.Select(x => x.Team).ToList();
 

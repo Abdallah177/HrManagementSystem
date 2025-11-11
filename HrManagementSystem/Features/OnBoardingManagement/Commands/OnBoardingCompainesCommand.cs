@@ -19,49 +19,23 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         }
         public override async Task<RequestResult<List<CompaniesResponseDto>>> Handle(OnBoardingCompainesCommand request, CancellationToken cancellationToken)
         {
-            //var companiesResponses = new List<CompaniesResponseDto>();
-            //var companiesDto = request.companies
-            //     .Select(c => new CompaniesDto
-            //     (
-            //         c.Name,
-            //         c.Email,
-            //         c.CountryId,
-            //         request.OrganizationId,
-            //         c.Branches
-            //     )).ToList();
-
-            ////for choose the first city as default value in branch
-            // var countryIds = companiesDto.Select(c => c.CountryId).Distinct().ToList();
-            // var defaultCities = await _mediator.Send(new GetDefaultCitiesByCountryIdsQuery(countryIds));
-
-            //foreach (var companyDto in companiesDto)
-            // {
-            //     var company = companyDto.Adapt<Company>();
-            //     await _repository.AddAsync(company, request.currentUserId, cancellationToken);
-
-            //     companiesResponses.Add(new CompaniesResponseDto
-            //     {
-            //       CompanyId = company.Id,
-            //       CompanyName = company.Name,
-            //       DefaultCityId = defaultCities.Data.GetValueOrDefault(companyDto.CountryId),
-            //       Branches = companyDto.Branches 
-            //     });
-            // }
-
-            var countryIds = request.companies.Select(c => c.CountryId).Distinct().ToList();
-            var defaultCities = await _mediator.Send(new GetDefaultCitiesByCountryIdsQuery(countryIds));
-
             var companies = request.companies.Adapt<List<Company>>();
             companies.ForEach(c => c.OrganizationId = request.OrganizationId);
 
             await _repository.AddRangeAsync(companies, request.currentUserId, cancellationToken);
 
+            //get defaultCityId if branches not exist
+            var countryIds = request.companies.Where(c => c.Branches == null || !c.Branches.Any()).Select(c => c.CountryId).Distinct().ToList();
+            var defaultCities = countryIds.Any() ?
+                (await _mediator.Send(new GetDefaultCitiesByCountryIdsQuery(countryIds), cancellationToken))?.Data ?? new Dictionary<string, string>() : new Dictionary<string, string>();
+
             var companiesResponses = companies.Select((company, index) => new CompaniesResponseDto
             {
                 CompanyId = company.Id,
                 CompanyName = company.Name,
-                DefaultCityId = defaultCities.Data.GetValueOrDefault(request.companies[index].CountryId),
+                DefaultCityId = request.companies[index].Branches?.Any() == true ? null : defaultCities.GetValueOrDefault(request.companies[index].CountryId),
                 Branches = request.companies[index].Branches 
+
             }).ToList();
 
             return RequestResult<List<CompaniesResponseDto>>.Success(companiesResponses, "Companies created successfully");
