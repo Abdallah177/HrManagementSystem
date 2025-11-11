@@ -36,6 +36,7 @@
 
         TeamNotExist = 800,
         NoTeamsFound = 801,
+        BreakNotFound = 802
 
 
     }
