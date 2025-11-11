@@ -1,7 +1,9 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Entities.FeatureSope;
+using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.Common.CheckExists;
 using HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScopeOrchestrator.ViewModels;
 using HrManagementSystem.Features.ConfigurationsManagement.ScopeMnangement.GetScope.Queries;
 using MediatR;
@@ -14,8 +16,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
         where TEntity : BaseModel;
 
 
-    public class ConfigurationScopeOrchestratorHandler<TConfigScope, TEntity>
-        : RequestHandlerBase<
+    public class ConfigurationScopeOrchestratorHandler<TConfigScope, TEntity>: RequestHandlerBase<
             ConfigurationScopeOrchestrator<TConfigScope, TEntity>,
             RequestResult<bool>,
             TConfigScope>
@@ -32,6 +33,12 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
             ConfigurationScopeOrchestrator<TConfigScope, TEntity> request,
             CancellationToken cancellationToken)
         {
+
+            var IsConfigIdExist = await _mediator.Send(new CheckExistsQuery<TEntity>(request.ConfigId));
+
+            if (!IsConfigIdExist)
+                return RequestResult<bool>.Failure($"Configuration Entity is Not Found",ErrorCode.ConfiguratioEntityNotFound); 
+
             var scopeIdResponse = await _mediator.Send(
                 new GetScopeQuery(
                     request.ViewModel.OrganizationId,

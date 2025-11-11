@@ -22,7 +22,10 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ScopeMnangement.G
             var predicate = PredicateExtensions.PredicateExtensions.Begin<ScopeBase>(true);
 
             if (!string.IsNullOrWhiteSpace(request.OrganizationId))
+            {
+                
                 predicate = predicate.And(x => x.OrganizationId == request.OrganizationId);
+            }
 
             if (!string.IsNullOrWhiteSpace(request.CompanyId))
                 predicate = predicate.And(x => x.CompanyId == request.CompanyId);

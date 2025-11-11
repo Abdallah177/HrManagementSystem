@@ -48,7 +48,7 @@
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
-    <Folder Include="Features\ConfigurationsManagement\BreakManageMent\GetAllBreaks\" />
+    <Folder Include="Features\ConfigurationsManagement\BreakManagement\GetAllBreaks\Queries\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />

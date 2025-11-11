@@ -20,7 +20,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
             var v =await _mediator.Send(new ConfigurationScopeOrchestrator<ShiftScope, Shift>(assignConfig.ScopeViewModel, assignConfig.ConfigId));
 
             if (!v.IsSuccess)
-                return EndpointResponse<bool>.Failure("Error012154", ErrorCode.DuplicateCityName);
+                return EndpointResponse<bool>.Failure(v.Message, v.ErrorCode);
 
             return EndpointResponse<bool>.Success(true);
         }
