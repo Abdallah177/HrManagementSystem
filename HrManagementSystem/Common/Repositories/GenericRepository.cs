@@ -34,15 +34,16 @@ namespace HrManagementSystem.Common.Repositories
             await _dbSet.AddAsync(entity, cancellationToken);
         }
 
-        public async Task AddRangeAsync(List<Entity> entities, string currentUserId , CancellationToken cancellationToken)
+        public async Task AddRangeAsync(List<Entity> entities, string currentUserId, CancellationToken cancellationToken)
         {
             entities.ForEach(e =>
             {
                 e.CreatedAt = DateTime.UtcNow;
                 e.CreatedByUser = currentUserId;
             });
-            await _dbContext.AddRangeAsync(entities,cancellationToken);
+            await _dbContext.AddRangeAsync(entities, cancellationToken);
         }
+
 
         // --------------------- Delete ---------------------
 
@@ -89,7 +90,7 @@ namespace HrManagementSystem.Common.Repositories
         public async Task<Entity?> GetByIDAsync(string id, CancellationToken cancellationToken = default)
         {
             var entity = await _dbSet
-            .AsNoTracking()
+            .Where(e => !e.IsDeleted && e.IsActive)
             .FirstOrDefaultAsync(f => f.Id == id, cancellationToken);
 
             return entity;

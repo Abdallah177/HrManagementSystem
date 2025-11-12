@@ -5,23 +5,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrManagementSystem.Features.OrganizationManagement.AddOrganization
 {
-    public class AddOrganizationEndPoint : BaseEndPoint<AddOrganizationRequestViewModle, bool>
+    public class AddOrganizationEndPoint : BaseEndPoint<AddOrganizationRequestViewModle, string>
     {
         public AddOrganizationEndPoint(EndpointBaseParameters<AddOrganizationRequestViewModle> parameters) : base(parameters)
         {
         }
 
         [HttpPost]
-        public async Task<EndpointResponse<bool>> AddOrganization([FromBody] AddOrganizationRequestViewModle request)
+        public async Task<EndpointResponse<string>> AddOrganization([FromBody] AddOrganizationRequestViewModle request)
         {
             var validation = ValidateRequest(request);
             if (!validation.IsSuccess)
                 return validation;
 
             var UserId = GetCurrentUserId().ToString();
-           var res= await _mediator.Send(new AddOrganizationCommand(request.Name, UserId));
+            var res= await _mediator.Send(new AddOrganizationCommand(request.Name, UserId));
 
-            return new EndpointResponse<bool>(res.Data, res.IsSuccess, res.Message, res.ErrorCode);
+            return new EndpointResponse<string>(res.Data, res.IsSuccess, res.Message, res.ErrorCode);
 
         }
     }

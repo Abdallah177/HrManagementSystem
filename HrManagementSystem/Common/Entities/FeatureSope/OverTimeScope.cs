@@ -4,16 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrManagementSystem.Common.Entities.FeatureSope
 {
-    public class OverTimeScope : BaseModel
+    public class OverTimeScope : BaseScope<OverTime>
     {
-        [Required]
-        [ForeignKey(nameof(ScopeBase))]
-        public string ScopeId { get; set; } = null!;
-        public ScopeBase ScopeBase { get; set; } = null!;
-
-        [Required]
-        [ForeignKey(nameof(OverTime))]
-        public string OverTimeId { get; set; } = null!;
-        public OverTime OverTime { get; set; } = null!;
+        
     }
 }
