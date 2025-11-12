@@ -5,7 +5,7 @@
         //------------ General (0– 99)---------------
         NoError = 1,
         DuplicateRecord = 2,
-
+        ConfiguratioEntityNotFound = 3,
 
         //--------- Main Entity (100–199)--------------
         OrganizationNotExis = 100,
@@ -54,7 +54,13 @@
         
         VacationNotFound = 310,
         VacationNotExist = 311,
-        RequestNotExist = 902,
-        RequestNotFound = 903,
+
+        RequestNotExist = 320,
+        RequestNotFound = 321,
+
+        BreakNotFound = 330,
+        NonBreakFound = 331,
+
+        
     }
 }
