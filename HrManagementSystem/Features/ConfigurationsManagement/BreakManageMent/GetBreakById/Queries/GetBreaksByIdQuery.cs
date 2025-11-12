@@ -9,25 +9,25 @@ using MediatR;
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.GetBreakById.Queries
 {
-    public record GetBreaksByIdQuery (string Id) : IRequest<RequestResult<GetBreakByIdDto>>;
+    public record GetBreaksByIdQuery (string Id) : IRequest<RequestResult<BreakDto>>;
 
-    public class GetBreaksByIdQueryHandler : RequestHandlerBase<GetBreaksByIdQuery, RequestResult<GetBreakByIdDto>, Break>
+    public class GetBreaksByIdQueryHandler : RequestHandlerBase<GetBreaksByIdQuery, RequestResult<BreakDto>, Break>
     {
         public GetBreaksByIdQueryHandler(RequestHandlerBaseParameters<Break> parameters) : base(parameters)
         {
         }
 
-        public override async Task<RequestResult<GetBreakByIdDto>> Handle(GetBreaksByIdQuery request, CancellationToken cancellationToken)
+        public override async Task<RequestResult<BreakDto>> Handle(GetBreaksByIdQuery request, CancellationToken cancellationToken)
         {
 
             var Break =await _repository.GetByIDAsync(request.Id);
 
             if (Break == null)
-                return RequestResult<GetBreakByIdDto>.Failure("Break Not Found.", ErrorCode.BreakNotFound);
+                return RequestResult<BreakDto>.Failure("Break Not Found.", ErrorCode.BreakNotFound);
 
-            var breakdto = Break.Adapt<GetBreakByIdDto>();
+            var breakdto = Break.Adapt<BreakDto>();
 
-            return RequestResult<GetBreakByIdDto>.Success(breakdto);    
+            return RequestResult<BreakDto>.Success(breakdto);    
         }
     }
 

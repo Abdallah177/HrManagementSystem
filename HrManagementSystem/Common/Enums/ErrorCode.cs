@@ -38,7 +38,7 @@
         NoTeamsFound = 801,
         BreakNotFound = 802,
         ConfiguratioEntityNotFound = 803,
-
+        NonBreakFound=804,
 
     }
 }
