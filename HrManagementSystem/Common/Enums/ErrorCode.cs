@@ -54,8 +54,6 @@
         
         VacationNotFound = 310,
         VacationNotExist = 311,
-        ProbationNotFound = 900,
-        ProbationNotExist = 901,
         RequestNotExist = 902,
         RequestNotFound = 903,
     }
