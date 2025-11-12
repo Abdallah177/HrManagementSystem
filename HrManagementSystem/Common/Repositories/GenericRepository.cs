@@ -74,6 +74,7 @@ namespace HrManagementSystem.Common.Repositories
             return filteredQuery;
         }
 
+       
         // --------------------- Get by ID ---------------------
 
         public async Task<Entity?> GetByIDAsync(string id, CancellationToken cancellationToken = default)
