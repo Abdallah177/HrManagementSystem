@@ -9,26 +9,20 @@ using Mapster;
 
 namespace HrManagementSystem.Features.OrganizationManagement.AddOrganization.Commands
 {
-    public record AddOrganizationCommand(string Name,string UserId):IRequest<RequestResult<bool>>;
-    public class AddOrganizationCommandHandler: RequestHandlerBase<AddOrganizationCommand, RequestResult<bool>,Organization>
+    public record AddOrganizationCommand(string Name, string UserId) : IRequest<RequestResult<string>>;
+    public class AddOrganizationCommandHandler : RequestHandlerBase<AddOrganizationCommand, RequestResult<string>, Organization>
     {
-        
+
 
         public AddOrganizationCommandHandler(RequestHandlerBaseParameters<Organization> parameters) : base(parameters) { }
-        
-          
-        public override async Task<RequestResult<bool>> Handle(AddOrganizationCommand request, CancellationToken cancellationToken)
+
+
+        public override async Task<RequestResult<string>> Handle(AddOrganizationCommand request, CancellationToken cancellationToken)
         {
-           
-            var existResult = await _mediator.Send(new CheckOrganizationExistQuery(request.Name), cancellationToken);
-            if (existResult.Data)
-                return RequestResult<bool>.Failure("Organization already exists", ErrorCode.OrganizationAlreadyExists);
-
-           
             var organization = request.Adapt<Organization>();
-            await _repository.AddAsync(organization,request.UserId,cancellationToken);
+            await _repository.AddAsync(organization, request.UserId, cancellationToken);
 
-            return RequestResult<bool>.Success(true, "Organization created successfully");
+            return RequestResult<string>.Success(organization.Id, "Organization created successfully");
         }
     }
 

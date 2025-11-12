@@ -10,6 +10,7 @@ using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.GenerateScope;
+using HrManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
@@ -23,7 +24,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 
         public async override Task<RequestResult<bool>> Handle(OnBoardingOrchestrator request, CancellationToken cancellationToken)
         {
-            var organizationResult = await _mediator.Send(new OnBoardingOrgainzationCommand(request.OnBoardingDto.Organization.Name, request.currentUserId), cancellationToken);
+            var organizationResult = await _mediator.Send(new AddOrganizationCommand(request.OnBoardingDto.Organization.Name, request.currentUserId), cancellationToken);
 
             var companiesResult = await _mediator.Send(new OnBoardingCompainesCommand(request.OnBoardingDto.Organization.Companies,organizationResult.Data, request.currentUserId),cancellationToken);
 
