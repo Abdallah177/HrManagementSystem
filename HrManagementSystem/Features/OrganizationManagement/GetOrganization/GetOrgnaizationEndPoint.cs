@@ -14,7 +14,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.GetOrganization
         }
 
         [HttpGet]
-        public async Task<EndpointResponse<GetOrganizationResponseViewModel>> GetOrganizations()
+        public async Task<EndpointResponse<GetOrganizationResponseViewModel>> GetOrganization()
         {
             var result = await _mediator.Send(new GetOrganizationsQuery());
 
