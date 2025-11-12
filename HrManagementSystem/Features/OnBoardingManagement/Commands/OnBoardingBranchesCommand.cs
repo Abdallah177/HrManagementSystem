@@ -19,12 +19,13 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         public async override Task<RequestResult<List<BranchesResponseDto>>> Handle(OnBoardingBranchesCommand request, CancellationToken cancellationToken)
         {
             var branchesResponses = new List<BranchesResponseDto>();
+
             var branchesDtos = request.Companies
               .SelectMany(company =>
                 (company.Branches != null && company.Branches.Count != 0)
                     ? company.Branches
-                        .Where(b => b != null)
                         .Select(b => b with { CompanyId = company.CompanyId })
+
                     : new[]
                     {
                         new BranchesDto(
@@ -34,8 +35,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                             company.CompanyId,
                             new List<DepartmentsDto>()
                         )
-                    }
-              ).ToList();
+                    }).ToList();
 
             var branches = branchesDtos.Adapt<List<Branch>>();
             await _repository.AddRangeAsync(branches, request.currentUserId, cancellationToken);

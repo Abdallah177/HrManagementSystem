@@ -21,12 +21,11 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var teamsResponses = new List<TeamsResponseDto>();
 
-             var teamsWithScopes = request.Departments
+            var teamsWithScopes = request.Departments
              .SelectMany(dept =>
                (dept.Teams != null && dept.Teams.Count != 0)
                 ? dept.Teams
-                    .Where(t => t != null)
-                    .Select(team => new
+                   .Select(team => new
                     {
                         Team = team with { DepartmentId = dept.DepartmentId },
                         dept.BranchId,
@@ -40,11 +39,11 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                         dept.BranchId,
                         dept.CompanyId
                     }
+
                 }).ToList();
 
-            var teamDtos = teamsWithScopes.Select(x => x.Team).ToList();
 
-            var teams = teamDtos.Adapt<List<Team>>();
+            var teams = teamsWithScopes.Select(x => x.Team).Adapt<List<Team>>();
             await _repository.AddRangeAsync(teams, request.currentUserId, cancellationToken);
 
              teamsResponses = teams.Select((team, index) => new TeamsResponseDto
