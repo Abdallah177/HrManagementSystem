@@ -40,22 +40,13 @@
         StateIsExist = 211,
         StateHasCities = 212,
 
-<<<<<<< HEAD
        
         NoCitiesfound = 220,
         CityAlreadyExistsInThisState = 221,
         CityNotExist = 222,
         DuplicateCityName = 223,
 
-=======
-        StateHasCities =201,
-
-        TeamNotExist = 800,
-        NoTeamsFound = 801,
-        BreakNotFound = 802,
-        ConfiguratioEntityNotFound = 803,
-        NonBreakFound=804,
->>>>>>> abdullah-features
+ 
 
         //--------------Configurations(300–399)----------
         ProbationNotFound = 300,
