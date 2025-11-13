@@ -47,10 +47,7 @@
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
-    <Folder Include="Features\DisabilityManagement\DeleteDisability\Commands\" />
-    <Folder Include="Features\DisabilityManagement\DeleteDisability\Validators\" />
     <Folder Include="Features\DisabilityManagement\DeleteDisability\Orchestrators\" />
-    <Folder Include="Features\DisabilityManagement\UpdateDisability\Validators\" />
     <Folder Include="Features\LocationManagement\Common\Commands\" />
     <Folder Include="Features\LocationManagement\CountryManagement\Common\" />
     <Folder Include="Features\LocationManagement\CountryManagement\GetAllCountries\Commands\" />

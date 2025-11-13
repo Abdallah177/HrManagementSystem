@@ -5,6 +5,7 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Enums.FeatureEnums;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.DisabilityManagement.GetDisabilityById.Queries;
+using Mapster;
 using MediatR;
 
 namespace HrManagementSystem.Features.DisabilityManagement.UpdateDisability.Commands
@@ -19,13 +20,12 @@ namespace HrManagementSystem.Features.DisabilityManagement.UpdateDisability.Comm
 
         public async override Task<RequestResult<bool>> Handle(UpdateDisabilityCommand request, CancellationToken cancellationToken)
         {
-            var disability = await _mediator.Send(new GetDisabilityByIdQuery(request.Id));
-            if (disability == null)
-                return RequestResult<bool>.Failure(disability.Message , disability.ErrorCode);
+            var disabilityDto = await _mediator.Send(new GetDisabilityByIdQuery(request.Id));
+            if (disabilityDto == null)
+                return RequestResult<bool>.Failure(disabilityDto.Message , disabilityDto.ErrorCode);
 
-            //disability.Type = request.Type;
-            //disability.Description = request.Description;
-            //disability.RequiresSpecialSupport = request.RequiresSpecialSupport;
+            var disability = disabilityDto.Data.Adapt<Disability>();
+            request.Adapt(disability);
 
             await  _repository.UpdateIncludeAsync(
                 disability,
