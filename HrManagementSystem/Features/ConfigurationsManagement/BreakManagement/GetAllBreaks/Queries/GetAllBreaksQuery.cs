@@ -11,21 +11,23 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManagement.G
 {
     public record GetAllBreaksQuery : IRequest<RequestResult<List<BreakDto>>>;
 
-    //public class GetAllBreaksQueryHandler : RequestHandlerBase<GetAllBreaksQuery, RequestResult<List<BreakDto>>, Break>
-    //{
-    //    public GetAllBreaksQueryHandler(RequestHandlerBaseParameters<Break> parameters) : base(parameters)
-    //    {
-    //    }
+    public class GetAllBreaksQueryHandler : RequestHandlerBase<GetAllBreaksQuery, RequestResult<List<BreakDto>>, Break>
+    {
+        public GetAllBreaksQueryHandler(RequestHandlerBaseParameters<Break> parameters) : base(parameters)
+        {
+        }
 
-    //    public override async Task<RequestResult<List<BreakDto>>> Handle(GetAllBreaksQuery request, CancellationToken cancellationToken)
-    //    {
-    //        var breaks =await _repository.GetAll().ToListAsync(cancellationToken);
+        public override async Task<RequestResult<List<BreakDto>>> Handle(GetAllBreaksQuery request, CancellationToken cancellationToken)
+        {
+            var breaks = await _repository.GetAll().ToListAsync(cancellationToken);
 
-    //        if (!breaks.Any())
-    //            return RequestResult<List<BreakDto>>.Failure("Non Break Found.",ErrorCode.NonBreakFound);
+            if (!breaks.Any())
+                return RequestResult<List<BreakDto>>.Failure("Non Break Found.", ErrorCode.NonBreakFound);
 
-    //        var breakDto = breaks.Adapt<>();
-    //    }
-    //}
+            var breakDto = breaks.Adapt<List<BreakDto>>();
+
+            return RequestResult<List<BreakDto>>.Success(breakDto);
+        }
+    }
 
 }
