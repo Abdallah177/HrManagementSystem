@@ -68,22 +68,6 @@ namespace HrManagementSystem.Common
             //services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
             
 
-            //register a deleteScopeOrchestrator& Commands
-            //services.AddTransient<IRequestHandler
-            //<DeleteConfigurationScopesCommand<Disability, DisabilityScope>,RequestResult<bool>>,
-            //DeleteConfigurationScopesHandler<Disability, DisabilityScope>>();
-
-            //services.AddTransient<IRequestHandler
-            //    <DeleteConfigurationEntityCommand<Disability>,RequestResult<bool>>,
-            //    DeleteConfigurationEntityCommandHandler<Disability>>();
-
-            //services.AddTransient<IRequestHandler
-            //    <DeleteConfigurationOrchestrator<Disability, DisabilityScope>,RequestResult<bool>>,
-            //    DeleteConfigurationOrchestratorHandler<Disability, DisabilityScope>>();
-
-            //services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
-            //services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
-
             services.AddScoped<TransactionMiddleware>();
 
             services.AddFluentValidationConfig();
