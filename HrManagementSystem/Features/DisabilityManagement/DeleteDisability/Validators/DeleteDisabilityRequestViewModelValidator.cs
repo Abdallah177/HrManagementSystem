@@ -8,7 +8,7 @@ namespace HrManagementSystem.Features.DisabilityManagement.DeleteDisability.Vali
         {
             RuleFor(x => x.DisabilityId)
                .NotEmpty()
-               .WithMessage("Disability ID is required");
+               .WithMessage("DisabilityId is required");
 
         }
     }

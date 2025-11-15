@@ -62,6 +62,10 @@
         BreakNotFound = 330,
         NonBreakFound = 331,
 
-        
+        DisabilityTypeNotExist = 340,
+
+        NotExist = 400,
+
+
     }
 }

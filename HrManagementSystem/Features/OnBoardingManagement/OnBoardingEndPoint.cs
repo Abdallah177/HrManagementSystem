@@ -16,15 +16,15 @@ namespace HrManagementSystem.Features.OnBoardingManagement
         }
 
         [HttpPost]
-        public async Task<EndpointResponse<bool>> OnBoarding([FromBody]OnBoardingRequestViewModel RequestViewModel , CancellationToken cancellationToken)
+        public async Task<EndpointResponse<bool>> OnBoarding([FromBody]OnBoardingRequestViewModel requestViewModel , CancellationToken cancellationToken)
         {
-            var validationResult = ValidateRequest(RequestViewModel);
+            var validationResult = ValidateRequest(requestViewModel);
             if (!validationResult.IsSuccess)
             {
                 return validationResult;
             }
 
-            var onBoardingRequest = RequestViewModel.Adapt<OnBoardingDto>();
+            var onBoardingRequest = requestViewModel.Adapt<OnBoardingDto>();
             var onBoardingResult = await _mediator.Send(new OnBoardingOrchestrator(onBoardingRequest, GetCurrentUserId().ToString()),cancellationToken);
             
 

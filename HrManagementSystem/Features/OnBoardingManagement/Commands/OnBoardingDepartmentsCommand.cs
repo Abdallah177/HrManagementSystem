@@ -46,7 +46,6 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     }
                  }).ToList();
 
-            //var departmentsDto = departmentsDtos.Select(x => x.Department).ToList();
             var departments = departmentsDtos.Select(x => x.Department).Adapt<List<Department>>();
 
             await _repository.AddRangeAsync(departments, request.currentUserId, cancellationToken);

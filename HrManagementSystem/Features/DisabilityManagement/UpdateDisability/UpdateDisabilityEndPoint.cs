@@ -15,9 +15,10 @@ namespace HrManagementSystem.Features.DisabilityManagement.UpdateDisability
         [HttpPut]
         public async Task<EndpointResponse<bool>> UpdateDisability(UpdateDisabilityRequestViewModel request, CancellationToken cancellationToken)
         {
-            var validationResponse = ValidateRequest(request);
-            if (!validationResponse.IsSuccess)
-                return EndpointResponse<bool>.Failure(validationResponse.Message);
+            var validationResult = ValidateRequest(request);
+            if (!validationResult.IsSuccess)
+                return validationResult;
+
 
             var updateDisabilityResult = await _mediator.Send(new UpdateDisabilityCommand(request.Id, request.Type, request.Description,request.RequiresSpecialSupport, GetCurrentUserId().ToString()), cancellationToken);
             if (!updateDisabilityResult.Data)

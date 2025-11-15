@@ -8,6 +8,9 @@ using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.DisabilityManagement.Common.CheckIsEntityExist.Queries;
+using HrManagementSystem.Features.DisabilityManagement.Common.DeleteConfigrationScope.Commands;
+using HrManagementSystem.Features.DisabilityManagement.Common.DeleteConfigrationScope.Orchestrators;
 using Mapster;
 using MapsterMapper;
 using MediatR;
@@ -53,12 +56,33 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Shift>, bool>),
                                   typeof(CheckExistsQueryHandler<Shift>));
 
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Disability>, bool>),
+                        typeof(CheckExistsQueryHandler<Disability>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<DisabilityScope>, bool>),
+            typeof(CheckExistsQueryHandler<DisabilityScope>));
+
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
             //services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
+            
 
+            //register a deleteScopeOrchestrator& Commands
+            //services.AddTransient<IRequestHandler
+            //<DeleteConfigurationScopesCommand<Disability, DisabilityScope>,RequestResult<bool>>,
+            //DeleteConfigurationScopesHandler<Disability, DisabilityScope>>();
 
+            //services.AddTransient<IRequestHandler
+            //    <DeleteConfigurationEntityCommand<Disability>,RequestResult<bool>>,
+            //    DeleteConfigurationEntityCommandHandler<Disability>>();
+
+            //services.AddTransient<IRequestHandler
+            //    <DeleteConfigurationOrchestrator<Disability, DisabilityScope>,RequestResult<bool>>,
+            //    DeleteConfigurationOrchestratorHandler<Disability, DisabilityScope>>();
+
+            //services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
+            //services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
 
             services.AddScoped<TransactionMiddleware>();
 
@@ -96,6 +120,29 @@ namespace HrManagementSystem.Common
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
             );
+
+            return services;
+        }
+
+        public static IServiceCollection AddGenericConfigurationHandlers(this IServiceCollection services)
+        {
+            //register a deleteScopeOrchestrator & Commands
+
+            services.AddTransient<IRequestHandler
+            <DeleteConfigurationScopesCommand<Disability, DisabilityScope>, RequestResult<bool>>,
+            DeleteConfigurationScopesHandler<Disability, DisabilityScope>>();
+
+            services.AddTransient<IRequestHandler
+                <DeleteConfigurationEntityCommand<Disability>, RequestResult<bool>>,
+                DeleteConfigurationEntityCommandHandler<Disability>>();
+
+            services.AddTransient<IRequestHandler
+                <DeleteConfigurationOrchestrator<Disability, DisabilityScope>, RequestResult<bool>>,
+                DeleteConfigurationOrchestratorHandler<Disability, DisabilityScope>>();
+
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
 
             return services;
         }
