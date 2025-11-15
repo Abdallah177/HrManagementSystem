@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.G
         [HttpGet]
         public async Task<EndpointResponse<GetBreakByIdResponseViewModel>> GetBreakById ([FromQuery]GetBreakByIdRequestViewModel viewModel)
         {
-            var response =await _mediator.Send(new GetBreaksByIdQuery(viewModel.Id));
+            var response =await _mediator.Send(new GetBreakByIdQuery(viewModel.Id));
 
             if (!response.IsSuccess)
                 return EndpointResponse<GetBreakByIdResponseViewModel>.Failure(response.Message, response.ErrorCode);

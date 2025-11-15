@@ -9,15 +9,15 @@ using MediatR;
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.GetBreakById.Queries
 {
-    public record GetBreaksByIdQuery (string Id) : IRequest<RequestResult<BreakDto>>;
+    public record GetBreakByIdQuery (string Id) : IRequest<RequestResult<BreakDto>>;
 
-    public class GetBreaksByIdQueryHandler : RequestHandlerBase<GetBreaksByIdQuery, RequestResult<BreakDto>, Break>
+    public class GetBreaksByIdQueryHandler : RequestHandlerBase<GetBreakByIdQuery, RequestResult<BreakDto>, Break>
     {
         public GetBreaksByIdQueryHandler(RequestHandlerBaseParameters<Break> parameters) : base(parameters)
         {
         }
 
-        public override async Task<RequestResult<BreakDto>> Handle(GetBreaksByIdQuery request, CancellationToken cancellationToken)
+        public override async Task<RequestResult<BreakDto>> Handle(GetBreakByIdQuery request, CancellationToken cancellationToken)
         {
 
             var Break =await _repository.GetByIDAsync(request.Id);
