@@ -9,23 +9,15 @@
 
   <!-- Remove Unwanted Files -->
   <ItemGroup>
-    <Compile Remove="Features\ConfigurationsManagement\DisabilityManagement\GetDisabilityById\**" />
-    <Compile Remove="Features\ConfigurationsManagement\DisabilityManagement\UpdateDisability\**" />
     <Compile Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <Compile Remove="Features\LocationManagement\CountryManagement\GetById\**" />
     <Compile Remove="Features\TeamManagement\TeamUpdate\**" />
-    <Content Remove="Features\ConfigurationsManagement\DisabilityManagement\GetDisabilityById\**" />
-    <Content Remove="Features\ConfigurationsManagement\DisabilityManagement\UpdateDisability\**" />
     <Content Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <Content Remove="Features\LocationManagement\CountryManagement\GetById\**" />
     <Content Remove="Features\TeamManagement\TeamUpdate\**" />
-    <EmbeddedResource Remove="Features\ConfigurationsManagement\DisabilityManagement\GetDisabilityById\**" />
-    <EmbeddedResource Remove="Features\ConfigurationsManagement\DisabilityManagement\UpdateDisability\**" />
     <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <EmbeddedResource Remove="Features\LocationManagement\CountryManagement\GetById\**" />
     <EmbeddedResource Remove="Features\TeamManagement\TeamUpdate\**" />
-    <None Remove="Features\ConfigurationsManagement\DisabilityManagement\GetDisabilityById\**" />
-    <None Remove="Features\ConfigurationsManagement\DisabilityManagement\UpdateDisability\**" />
     <None Remove="Features\LocationManagement\CountryManagement\GetByIdCountry\**" />
     <None Remove="Features\LocationManagement\CountryManagement\GetById\**" />
     <None Remove="Features\TeamManagement\TeamUpdate\**" />
