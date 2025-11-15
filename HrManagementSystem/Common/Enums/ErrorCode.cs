@@ -62,6 +62,8 @@
         BreakNotFound = 330,
         NonBreakFound = 331,
 
+        ShiftNotExist=340,
+
         
     }
 }
