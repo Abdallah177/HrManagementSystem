@@ -18,21 +18,9 @@ namespace HrManagementSystem.Features.BranchManagement.DeleteBranch.Commands
 
         public override async Task<RequestResult<bool>> Handle(DeleteBranchCommand request, CancellationToken cancellationToken)
         {
-            // CheckBranchExists
-            var IsBranchExists = await _mediator.Send(new CheckExistsQuery<Branch>(request.Id));
-
-            if (!IsBranchExists)
-                return RequestResult<bool>.Failure("Country Not Found", ErrorCode.BranchNotExist);
-
-            // CheckIfBranchHaveAnyDepartment
-            var result = await _mediator.Send(new CheckIfBranchHaveAnyDepartment(request.Id));
-
-            if (result)
-                return RequestResult<bool>.Failure("Can Not Remove This Branch", ErrorCode.CanNotRemoveThisBranch);
-
             await _repository.DeleteAsync(request.Id, request.UserId ,cancellationToken);
 
-            return RequestResult<bool>.Success(true);
+            return RequestResult<bool>.Success(true , "Branch and all related data (departments and teams) deleted successfully");
         }
     }
 }

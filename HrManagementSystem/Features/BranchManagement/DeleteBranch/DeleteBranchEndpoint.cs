@@ -1,6 +1,7 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.BranchManagement.DeleteBranch.Commands;
+using HrManagementSystem.Features.BranchManagement.DeleteBranch.Orchestrators;
 using HrManagementSystem.Features.TeamManagement.DeleteTeam;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,11 @@ namespace HrManagementSystem.Features.BranchManagement.DeleteBranch
         [HttpDelete]
         public async Task<EndpointResponse<bool>> DeleteBranch([FromQuery] DeleteBranchRequestViewModel request)
         {
-            var response =  await _mediator.Send(new DeleteBranchCommand(request.Id, "System"));
+            var validationResult = ValidateRequest(request);
+            if (!validationResult.IsSuccess)
+                return validationResult;
 
+            var response =  await _mediator.Send(new DeleteBranchOrchestrator(request.Id, GetCurrentUserId().ToString()));
             if (!response.IsSuccess)
                 return EndpointResponse<bool>.Failure(response.Message, response.ErrorCode);
 
