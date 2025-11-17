@@ -1,6 +1,6 @@
-﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
+﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch
+namespace HrManagementSystem.Features.Common.Branch.AddBranches.Dtos
 {
     public class BranchesResponseDto
     {

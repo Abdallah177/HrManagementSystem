@@ -4,25 +4,26 @@ using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
 using MediatR;
 using Mapster;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Commands
+namespace HrManagementSystem.Features.Common.Branch.AddBranches.Commands
 {
-    public record OnBoardingBranchesCommand(List<CompaniesResponseDto> Companies, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
-    public class OnBoardingBranchesCommandHandler : RequestHandlerBase<OnBoardingBranchesCommand, RequestResult<List<BranchesResponseDto>>, Branch>
+    public record AddBranchesCommand(List<AddBranchesRequestDto> branchesRequestDto, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
+    public class AddBranchesCommandHandler : RequestHandlerBase<AddBranchesCommand, RequestResult<List<BranchesResponseDto>>, HrManagementSystem.Common.Entities.Branch>
     {
-        public OnBoardingBranchesCommandHandler(RequestHandlerBaseParameters<Branch> parameters) : base(parameters)
+        public AddBranchesCommandHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Branch> parameters) : base(parameters)
         {
         }
 
-        public async override Task<RequestResult<List<BranchesResponseDto>>> Handle(OnBoardingBranchesCommand request, CancellationToken cancellationToken)
+        public async override Task<RequestResult<List<BranchesResponseDto>>> Handle(AddBranchesCommand request, CancellationToken cancellationToken)
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            var branchesDtos = request.Companies
+            var branchesDtos = request.branchesRequestDto
               .SelectMany(company =>
-                (company.Branches != null && company.Branches.Count != 0)
+                company.Branches != null && company.Branches.Count != 0
                     ? company.Branches
                         .Select(b => b with { CompanyId = company.CompanyId })
 
@@ -37,10 +38,10 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                         )
                     }).ToList();
 
-            var branches = branchesDtos.Adapt<List<Branch>>();
+            var branches = branchesDtos.Adapt<List<HrManagementSystem.Common.Entities.Branch>>();
             await _repository.AddRangeAsync(branches, request.currentUserId, cancellationToken);
 
-             branchesResponses = branches.Select((branch, index) => new BranchesResponseDto
+            branchesResponses = branches.Select((branch, index) => new BranchesResponseDto
             {
                 BranchId = branch.Id,
                 BranchName = branch.Name,
@@ -50,7 +51,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             }).ToList();
 
 
-            return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses,"Branches created successfully");
+            return RequestResult<List<BranchesResponseDto>>.Success(branchesResponses, "Branches created successfully");
         }
     }
 }
