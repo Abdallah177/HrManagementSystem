@@ -63,9 +63,10 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
+
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
 
-
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Organization>, bool>), typeof(CheckIsEntityExistQueryHandler<Organization>));
 
             services.AddScoped<TransactionMiddleware>();
 

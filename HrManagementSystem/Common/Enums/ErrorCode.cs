@@ -65,6 +65,8 @@
 
         NotExist = 401,
 
+        FailToAddFullScopes = 500,
+        FailToAddedHierarchy = 501,
 
     }
 }
