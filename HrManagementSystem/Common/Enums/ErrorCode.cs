@@ -5,7 +5,7 @@
         //------------ General (0– 99)---------------
         NoError = 1,
         DuplicateRecord = 2,
-
+        ConfiguratioEntityNotFound = 3,
 
         //--------- Main Entity (100–199)--------------
         OrganizationNotExis = 100,
@@ -46,6 +46,7 @@
         CityNotExist = 222,
         DuplicateCityName = 223,
 
+ 
 
         //--------------Configurations(300–399)----------
         ProbationNotFound = 300,
@@ -54,5 +55,16 @@
         
         VacationNotFound = 310,
         VacationNotExist = 311,
+
+        RequestNotExist = 320,
+        RequestNotFound = 321,
+
+        BreakNotFound = 330,
+        NonBreakFound = 331,
+        DisabilityTypeNotExist =400,
+
+        NotExist = 401,
+
+
     }
 }

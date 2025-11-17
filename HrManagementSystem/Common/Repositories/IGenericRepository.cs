@@ -13,6 +13,7 @@ namespace HrManagementSystem.Common.Repositories
         // --------------------- Add ---------------------
         Task AddAsync(Entity entity, CancellationToken cancellationToken);
         Task AddAsync(Entity entity, string currentUserId, CancellationToken cancellationToken);
+        Task AddRangeAsync(List<Entity> entities, string currentUserId, CancellationToken cancellationToken);
 
         // --------------------- Update ---------------------
         void Update(Entity entity);
@@ -29,5 +30,6 @@ namespace HrManagementSystem.Common.Repositories
         Task DeleteFromAsync(Expression<Func<Entity, bool>> expression, string currentUserId, CancellationToken cancellationToken);
         //_______________ Entity exists ______________________
         Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate);
+        Task<bool> ExistsAsync(Func<object, bool> value, CancellationToken cancellationToken);
     }
 }

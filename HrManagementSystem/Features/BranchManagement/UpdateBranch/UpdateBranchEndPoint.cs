@@ -14,7 +14,6 @@ namespace HrManagementSystem.Features.BranchManagement.UpdateBranch
         }
 
         [HttpPut]
-
         public async Task<EndpointResponse<UpdateBranchResponseViewModel>> UpdateBranch(
             UpdateBranchRequsetViewModel viewModel)
         {
