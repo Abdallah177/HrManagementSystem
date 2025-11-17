@@ -3,8 +3,8 @@ using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
 using MediatR;
-using HrManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetShiftId.Dtos;
 using Mapster;
+using HrManagementSystem.Features.ConfigurationsManagement.Common.Shift.Dtos;
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.ShiftManagement.GetShiftId.Queries
 {

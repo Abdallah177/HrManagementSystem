@@ -24,8 +24,5 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManagement.G
 
             return EndpointResponse<List<GetAllBreaksResponseViewModel>>.Success(getAllBreaksResponseViewModel);    
         }
-
-
-
     }
 }

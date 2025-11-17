@@ -63,7 +63,7 @@
         NonBreakFound = 331,
 
         ShiftNotExist=340,
+        NonShiftFound,
 
-        
     }
 }
