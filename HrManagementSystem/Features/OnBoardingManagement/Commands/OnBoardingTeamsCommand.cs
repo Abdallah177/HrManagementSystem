@@ -9,7 +9,7 @@ using HrManagementSystem.Features.TeamManagement.GetTeamById.Dtos;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingTeamsCommand(List<DepartmentsResponseDto> Departments, string OrganizationId, string currentUserId) : IRequest<RequestResult<List<TeamsResponseDto>>>;
+    public record OnBoardingTeamsCommand(List<AddTeamsHierarchyRequestDto> teamsReuestDto, string OrganizationId, string currentUserId) : IRequest<RequestResult<List<TeamsResponseDto>>>;
 
     public class OnBoardingTeamsCommandHandler : RequestHandlerBase<OnBoardingTeamsCommand, RequestResult<List<TeamsResponseDto>>, Team>
     {
@@ -17,11 +17,11 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
         }
 
-        public override async Task<RequestResult<List<TeamsResponseDto>>> Handle(OnBoardingTeamsCommand request, CancellationToken cancellationToken)
+        public async override Task<RequestResult<List<TeamsResponseDto>>> Handle(OnBoardingTeamsCommand request, CancellationToken cancellationToken)
         {
             var teamsResponses = new List<TeamsResponseDto>();
 
-            var teamsWithScopes = request.Departments
+            var teamsWithScopes = request.teamsReuestDto
              .SelectMany(dept =>
                (dept.Teams != null && dept.Teams.Count != 0)
                 ? dept.Teams

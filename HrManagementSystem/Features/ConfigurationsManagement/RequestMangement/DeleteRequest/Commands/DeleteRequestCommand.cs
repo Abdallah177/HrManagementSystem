@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.
             public override async Task<RequestResult<bool>> Handle(DeleteRequestCommand request, CancellationToken cancellationToken)
             {
                 // CheckRequestExists
-                var IsRequestExists = await _repository.IsExistsAsync(p => p.Id == request.Id);
+                var IsRequestExists = await _repository.IsExistsAsync(p => p.Id == request.Id, cancellationToken);
 
                 if (!IsRequestExists)
                     return RequestResult<bool>.Failure("Request Not Found", ErrorCode.RequestNotExist);

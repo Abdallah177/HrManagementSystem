@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ProbationMangemen
         public override async Task<RequestResult<bool>> Handle(DeleteProbationCommand request, CancellationToken cancellationToken)
         {
             // CheckProbationExists
-            var IsProbationExists = await _repository.IsExistsAsync(p => p.Id == request.Id);
+            var IsProbationExists = await _repository.IsExistsAsync(p => p.Id == request.Id, cancellationToken);
             if (!IsProbationExists)
                 return RequestResult<bool>.Failure("Probation Not Found", ErrorCode.ProbationNotExist);
 

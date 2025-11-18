@@ -8,6 +8,9 @@ using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.ConfigurationsManagement.Common.CheckIsEntityExist.Queries;
+using HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConfigrationScope.Commands;
+using HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConfigrationScope.Orchestrators;
 using HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScopeOrchestrator;
 using Mapster;
 using MapsterMapper;
@@ -60,9 +63,9 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Organization>, bool>), typeof(CheckIsEntityExistQueryHandler<Organization>));
+
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
-
-
 
             services.AddScoped<TransactionMiddleware>();
 
@@ -100,6 +103,29 @@ namespace HrManagementSystem.Common
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
             );
+
+            return services;
+        }
+
+        public static IServiceCollection AddGenericConfigurationHandlers(this IServiceCollection services)
+        {
+            //register a deleteScopeOrchestrator & Commands
+
+            services.AddTransient<IRequestHandler
+            <DeleteConfigurationScopesCommand<Disability, DisabilityScope>, RequestResult<bool>>,
+            DeleteConfigurationScopesHandler<Disability, DisabilityScope>>();
+
+            services.AddTransient<IRequestHandler
+                <DeleteConfigurationEntityCommand<Disability>, RequestResult<bool>>,
+                DeleteConfigurationEntityCommandHandler<Disability>>();
+
+            services.AddTransient<IRequestHandler
+                <DeleteConfigurationOrchestrator<Disability, DisabilityScope>, RequestResult<bool>>,
+                DeleteConfigurationOrchestratorHandler<Disability, DisabilityScope>>();
+
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
+
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
 
             return services;
         }

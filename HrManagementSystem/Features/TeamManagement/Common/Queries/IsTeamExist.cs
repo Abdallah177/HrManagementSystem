@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.TeamManagement.Common.Queries
 
         public override async Task<bool> Handle(IsTeamExist request, CancellationToken cancellationToken)
         {
-            var IsExists =await _repository.IsExistsAsync(T => T.Id == request.Id);
+            var IsExists =await _repository.IsExistsAsync(T => T.Id == request.Id, cancellationToken);
 
             if (IsExists) 
                 return true;

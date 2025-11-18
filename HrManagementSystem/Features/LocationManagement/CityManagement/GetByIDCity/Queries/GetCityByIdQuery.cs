@@ -22,8 +22,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.Queries.
         public override async Task<RequestResult<CityDTOs?>> Handle(GetCityByIdQuery request, CancellationToken cancellationToken)
         {
             
-            var cityDto = await _repository.GetAll()
-                .Where(c => c.Id == request.Id)
+            var cityDto = await _repository.Get(c => c.Id == request.Id)
                 .ProjectToType<CityDTOs>()
                 .FirstOrDefaultAsync(cancellationToken);
 
