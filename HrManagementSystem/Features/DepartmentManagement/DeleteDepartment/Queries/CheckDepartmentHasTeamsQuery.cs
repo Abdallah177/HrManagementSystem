@@ -15,7 +15,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.DeleteDepartment.Quer
         }
         public async override Task<RequestResult<bool>> Handle(CheckDepartmentHasTeamsQuery request, CancellationToken cancellationToken)
         {
-            var hasTeams = await _repository.IsExistsAsync(t => t.DepartmentId == request.DepartmentId);
+            var hasTeams = await _repository.IsExistsAsync(t => t.DepartmentId == request.DepartmentId, cancellationToken);
             return RequestResult<bool>.Success(hasTeams);
         }
     }

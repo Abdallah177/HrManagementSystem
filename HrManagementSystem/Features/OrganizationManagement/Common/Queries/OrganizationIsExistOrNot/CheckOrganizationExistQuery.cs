@@ -18,7 +18,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.Common.Queries.Orga
 
         public override async Task<RequestResult<bool>> Handle(CheckOrganizationExistQuery request, CancellationToken cancellationToken)
         {
-            var exists = await _repository.IsExistsAsync(x => x.Name == request.Name && !x.IsDeleted);
+            var exists = await _repository.IsExistsAsync(x => x.Name == request.Name && !x.IsDeleted, cancellationToken);
             return RequestResult<bool>.Success(exists);
         }
     }

@@ -21,7 +21,7 @@ namespace HrManagementSystem.Features.LocationManagement.CountryManagement.Comma
 
         public async override Task<RequestResult<bool>> Handle(IsCountryExistsByNameQuery request, CancellationToken cancellationToken)
         {
-            var isCountryExists = await _repository.IsExistsAsync(x => x.Name == request.name);
+            var isCountryExists = await _repository.IsExistsAsync(x => x.Name == request.name , cancellationToken);
 
             return RequestResult<bool>.Success(isCountryExists);
 

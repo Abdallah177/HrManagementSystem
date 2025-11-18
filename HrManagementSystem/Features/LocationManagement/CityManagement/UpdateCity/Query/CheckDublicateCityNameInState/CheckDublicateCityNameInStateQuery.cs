@@ -14,7 +14,7 @@ namespace HrManagementSystem.Features.LocationManagement.CityManagement.UpdateCi
         }
         public async override Task<RequestResult<bool>> Handle(CheckDublicateCityNameInStateQuery request, CancellationToken cancellationToken)
         {
-            var isCityDeuplicated = await _repository.IsExistsAsync(c => c.StateId == request.stateId && c.Name.Trim().ToLower() == request.Name.Trim().ToLower());
+            var isCityDeuplicated = await _repository.IsExistsAsync(c => c.StateId == request.stateId && c.Name.Trim().ToLower() == request.Name.Trim().ToLower(), cancellationToken);
             if (isCityDeuplicated)
                 return RequestResult<bool>.Failure("City name already exists in the specified state" ,ErrorCode.DuplicateCityName);
 

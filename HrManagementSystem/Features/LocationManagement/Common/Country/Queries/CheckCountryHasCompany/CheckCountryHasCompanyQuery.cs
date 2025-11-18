@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.LocationManagement.Common.Country.Queries.
 
         public async override Task<RequestResult<bool>> Handle(CheckCountryHasCompanyQuery request, CancellationToken cancellationToken)
         {
-            var hasCompanies = await _repository.IsExistsAsync(c => c.CountryId == request.CountryId && !c.IsDeleted);
+            var hasCompanies = await _repository.IsExistsAsync(c => c.CountryId == request.CountryId && !c.IsDeleted, cancellationToken);
 
             return RequestResult<bool>.Success(hasCompanies);
         }
