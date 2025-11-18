@@ -21,7 +21,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConf
         public async override Task<RequestResult<bool>> Handle(DeleteConfigurationEntityCommand<TConfiguration> request, CancellationToken cancellationToken)
         {
             //check In the configurationEntity
-            var entityIsExist = await _mediator.Send(new CheckIsEntityExistQuery<TConfiguration>(e => e.Id == request.ConfigurationId), cancellationToken);
+            var entityIsExist = await _mediator.Send(new CheckExistsQuery<TConfiguration>(e => e.Id == request.ConfigurationId && !e.IsDeleted && e.IsActive), cancellationToken);
             if (!entityIsExist)
                 return RequestResult<bool>.Failure($"{typeof(TConfiguration).Name} not found", ErrorCode.NotExist);
 
