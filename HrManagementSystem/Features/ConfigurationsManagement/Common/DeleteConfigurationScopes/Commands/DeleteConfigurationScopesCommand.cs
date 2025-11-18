@@ -24,7 +24,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConf
         public async override Task<RequestResult<bool>> Handle(DeleteConfigurationScopesCommand<TConfiguration, TScope> request, CancellationToken cancellationToken)
         {
             //check in the configurationScope Entity
-            var scopeEntityIsExist = await _mediator.Send(new CheckExistsQuery<TScope>(s => s.EntityId == request.ConfigurationId && !s.IsDeleted && s.IsActive), cancellationToken);
+            var scopeEntityIsExist = await _mediator.Send(new CheckIsEntityExistQuery<TScope>(s => s.EntityId == request.ConfigurationId && !s.IsDeleted && s.IsActive), cancellationToken);
             if (!scopeEntityIsExist)
                 return RequestResult<bool>.Failure($"{typeof(TScope).Name} not found",ErrorCode.NotExist);
 

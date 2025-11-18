@@ -22,7 +22,7 @@ namespace HrManagementSystem.Features.OrganizationManagement.AddOrganization.Com
 
         public override async Task<RequestResult<string>> Handle(AddOrganizationCommand request, CancellationToken cancellationToken)
         {
-            var anyOrganizationExists = await _mediator.Send(new CheckExistsQuery<Organization>(o => true), cancellationToken);
+            var anyOrganizationExists = await _mediator.Send(new CheckIsEntityExistQuery<Organization>(o => true), cancellationToken);
 
             if (anyOrganizationExists)
                 return RequestResult<string>.Failure(

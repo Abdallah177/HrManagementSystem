@@ -63,6 +63,7 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Organization>, bool>), typeof(CheckIsEntityExistQueryHandler<Organization>));
 
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
 
@@ -122,9 +123,9 @@ namespace HrManagementSystem.Common
                 <DeleteConfigurationOrchestrator<Disability, DisabilityScope>, RequestResult<bool>>,
                 DeleteConfigurationOrchestratorHandler<Disability, DisabilityScope>>();
 
-            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
 
-            services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
 
             return services;
         }
