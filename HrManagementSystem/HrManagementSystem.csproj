@@ -44,6 +44,7 @@
   <!-- Folder Structure -->
   <ItemGroup>
     <Folder Include="Common\Helper\" />
+    <Folder Include="Features\Common\Scope\GenerateScopes\Dtos\" />
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />

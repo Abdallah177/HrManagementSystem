@@ -5,26 +5,28 @@ using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using MediatR;
 using Mapster;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
+using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Commands
+namespace HrManagementSystem.Features.Common.Department.AddDepartments.Commands
 {
-    public record OnBoardingDepartmentsCommand(List<BranchesResponseDto> Branches, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
-    public class OnBoardingDepartmentsCommandHandler : RequestHandlerBase<OnBoardingDepartmentsCommand, RequestResult<List<DepartmentsResponseDto>>, Department>
+    public record AddDepartmentsCommand(List<AddDepartmentRequestDto> departmentsRequestDto, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
+    public class AddDepartmentsCommandHandler : RequestHandlerBase<AddDepartmentsCommand, RequestResult<List<DepartmentsResponseDto>>, HrManagementSystem.Common.Entities.Department>
     {
-        public OnBoardingDepartmentsCommandHandler(RequestHandlerBaseParameters<Department> parameters) : base(parameters)
+        public AddDepartmentsCommandHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Department> parameters) : base(parameters)
         {
         }
 
-        public async override Task<RequestResult<List<DepartmentsResponseDto>>> Handle(OnBoardingDepartmentsCommand request, CancellationToken cancellationToken)
+        public async override Task<RequestResult<List<DepartmentsResponseDto>>> Handle(AddDepartmentsCommand request, CancellationToken cancellationToken)
         {
             var departmentsResponses = new List<DepartmentsResponseDto>();
 
-            var departmentsDtos = request.Branches
+            var departmentsDtos = request.departmentsRequestDto
              .SelectMany(branch =>
-               (branch.Departments != null && branch.Departments.Count != 0)
+               branch.Departments != null && branch.Departments.Count != 0
                 ? branch.Departments
                     .Select(d => new
                     {
@@ -46,17 +48,17 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
                     }
                  }).ToList();
 
-            var departments = departmentsDtos.Select(x => x.Department).Adapt<List<Department>>();
+            var departments = departmentsDtos.Select(x => x.Department).Adapt<List<HrManagementSystem.Common.Entities.Department>>();
 
             await _repository.AddRangeAsync(departments, request.currentUserId, cancellationToken);
 
-             departmentsResponses = departments.Select((dept, index) => new DepartmentsResponseDto
+            departmentsResponses = departments.Select((dept, index) => new DepartmentsResponseDto
             {
                 DepartmentId = dept.Id,
                 DepartmentName = dept.Name,
                 BranchId = dept.BranchId,
                 CompanyId = departmentsDtos[index].CompanyId,
-                Teams = departmentsDtos[index].Department.Teams 
+                Teams = departmentsDtos[index].Department.Teams
 
             }).ToList();
 

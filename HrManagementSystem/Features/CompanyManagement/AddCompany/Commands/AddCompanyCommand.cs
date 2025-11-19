@@ -21,30 +21,8 @@ namespace HrManagementSystem.Features.CompanyManagement.AddCompany.Commands
 
         public async override Task<RequestResult<AddCompanyDto>> Handle(AddCompanyCommand request, CancellationToken cancellationToken)
         {
-            // CheckCountryExists
-            var IsCountryExists = await _mediator.Send(new CheckExistsQuery<Country>(request.CountryId));
 
-            if (!IsCountryExists)
-                return RequestResult<AddCompanyDto>.Failure("Country Not Found", ErrorCode.CountryNotFound);
-
-            // CheckOrganizationExists
-            var IsOrganizationExists = await _mediator.Send(new CheckExistsQuery<Organization>(request.OrganizationId));
-
-            if (!IsOrganizationExists)
-                return RequestResult<AddCompanyDto>.Failure("Organization Not Found", ErrorCode.OrganizationNotExis);
-
-            var isDuplicateCompany = await _mediator.Send(new CheckCompanyExitstWithName(request.Name, request.CountryId, request.OrganizationId));
-
-            if (isDuplicateCompany)
-                return RequestResult<AddCompanyDto>.Failure("A company with the same name already exists in this country and organization.", ErrorCode.DuplicateRecord);
-
-            var company = new Company
-            {
-                Name = request.Name,
-                CountryId = request.CountryId,
-                OrganizationId = request.OrganizationId,
-                Email = request.Email
-            };
+            var company = request.Adapt<Company>();
 
             await _repository.AddAsync(company,request.currentUserId, cancellationToken);
 
