@@ -8,6 +8,8 @@ using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.Common.CheckExists;
+using HrManagementSystem.Features.ConfigurationsManagement.BreakScopeManagement.AddBreakScope.Commands;
+using HrManagementSystem.Features.ConfigurationsManagement.BreakScopeManagement.AddBreakScope.Queries;
 using HrManagementSystem.Features.ConfigurationsManagement.Common.CheckIsEntityExist.Queries;
 using HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConfigrationScope.Commands;
 using HrManagementSystem.Features.ConfigurationsManagement.Common.DeleteConfigrationScope.Orchestrators;
@@ -65,6 +67,11 @@ namespace HrManagementSystem.Common
 
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
 
+            services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<BreakScope, Break>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<BreakScope, Break>>();
+
+            services.AddTransient<IRequestHandler<AddConfigurationScopeCommand<BreakScope, Break>, RequestResult<bool>>, AddConfigurationScopeCommandHandler<BreakScope, Break>>();
+
+            services.AddTransient<IRequestHandler<CheckConfigurationScopeExistQuery<BreakScope, Break>, bool>, CheckConfigurationScopeExistQueryHandler<BreakScope, Break>>();
 
 
             services.AddScoped<TransactionMiddleware>();
@@ -126,6 +133,7 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<DisabilityScope>, bool>), typeof(CheckIsEntityExistQueryHandler<DisabilityScope>));
 
             services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
+
 
             return services;
         }
