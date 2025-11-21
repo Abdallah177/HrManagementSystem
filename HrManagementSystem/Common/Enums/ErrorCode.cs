@@ -61,9 +61,16 @@
 
         BreakNotFound = 330,
         NonBreakFound = 331,
+        DisabilityTypeNotExist =400,
 
+        NotExist = 401,
+
+
+<<<<<<< HEAD
         ShiftNotExist=340,
         NonShiftFound,
 
+=======
+>>>>>>> master
     }
 }
