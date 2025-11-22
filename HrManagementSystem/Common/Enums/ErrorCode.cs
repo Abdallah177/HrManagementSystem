@@ -13,46 +13,46 @@
         NoOrganizationFound = 102,
         OrganizationAlreadyExists = 103,
 
-        
+
         CompanyNotExist = 110,
 
-       
+
         BranchNotExist = 120,
         CanNotRemoveThisBranch = 121,
 
-       
+
         DepartmentNotExist = 130,
         DepartmentIsExist = 131,
         DepartmentHasRelatedTeams = 132,
 
-        
+
         TeamNotExist = 140,
         NoTeamsFound = 141,
 
         //--------------------Location (200–299)-----------
-        CountryNotFound = 200, 
+        CountryNotFound = 200,
         CountryHasStates = 201,
         CountryHasRelatedCompanies = 202,
         CountryNameIsExist = 203,
 
-       
-        StateNotFound = 210, 
+
+        StateNotFound = 210,
         StateIsExist = 211,
         StateHasCities = 212,
 
-       
+
         NoCitiesfound = 220,
         CityAlreadyExistsInThisState = 221,
         CityNotExist = 222,
         DuplicateCityName = 223,
 
- 
+
 
         //--------------Configurations(300–399)----------
         ProbationNotFound = 300,
         ProbationNotExist = 301,
 
-        
+
         VacationNotFound = 310,
         VacationNotExist = 311,
 
@@ -61,11 +61,12 @@
 
         BreakNotFound = 330,
         NonBreakFound = 331,
+        DisabilityTypeNotExist = 400,
 
-        DisabilityTypeNotExist = 340,
+        NotExist = 401,
 
-        NotExist = 400,
-
+        FailToAddFullScopes = 500,
+        FailToAddedHierarchy = 501,
 
     }
 }

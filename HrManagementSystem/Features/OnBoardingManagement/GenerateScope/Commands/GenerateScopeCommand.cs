@@ -2,7 +2,6 @@
 using HrManagementSystem.Common.Entities.FeatureSope;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Dtos;
 using HrManagementSystem.Features.OnBoardingManagement.Queries;
 using Mapster;

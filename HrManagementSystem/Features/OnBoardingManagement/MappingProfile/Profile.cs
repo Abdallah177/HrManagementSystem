@@ -1,7 +1,7 @@
 ﻿using HrManagementSystem.Common.Entities;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
+using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using Mapster;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.MappingProfile

@@ -1,4 +1,6 @@
-﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
+﻿
+
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company
 {

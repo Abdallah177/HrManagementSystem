@@ -113,7 +113,7 @@ namespace HrManagementSystem.Common.Repositories
         }
 
         //_______________ Entity exists ______________________
-        public async Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate)
+        public async Task<bool> IsExistsAsync(Expression<Func<Entity, bool>> predicate , CancellationToken cancellationToken)
         {
             return await _dbSet.AnyAsync(predicate);
         }
@@ -144,10 +144,6 @@ namespace HrManagementSystem.Common.Repositories
 
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
-
-
-
-      
 
     }
 

@@ -1,6 +1,6 @@
 ﻿
 
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
+using HrManagementSystem.Features.Common.Team.AddTeams.Dtos;
 
 namespace HrManagementSystem.Features.Common.Department.AddDepartments.Dtos
 {

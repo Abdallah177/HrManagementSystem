@@ -1,5 +1,5 @@
 ﻿using HrManagementSystem.Common.Entities;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
 using System.Collections.Generic;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company

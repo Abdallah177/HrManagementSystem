@@ -1,8 +1,6 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.BranchManagement.GetBranchById.Queries.Dtos;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
 using HrManagementSystem.Features.OnBoardingManagement.Queries.GetDefaultCitiesByCountryIds;
 using Mapster;
