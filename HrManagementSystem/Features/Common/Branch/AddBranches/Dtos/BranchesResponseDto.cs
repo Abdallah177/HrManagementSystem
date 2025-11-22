@@ -1,4 +1,4 @@
-﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
+﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 
 namespace HrManagementSystem.Features.Common.Branch.AddBranches.Dtos
 {

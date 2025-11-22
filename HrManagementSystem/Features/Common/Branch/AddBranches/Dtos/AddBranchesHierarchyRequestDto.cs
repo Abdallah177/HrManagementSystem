@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch
+﻿namespace HrManagementSystem.Features.Common.Branch.AddBranches.Dtos
 {
     public record AddBranchesHierarchyRequestDto(
      string CompanyId ,

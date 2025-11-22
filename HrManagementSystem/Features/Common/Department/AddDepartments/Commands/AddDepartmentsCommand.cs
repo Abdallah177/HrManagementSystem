@@ -1,19 +1,14 @@
 ﻿using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
 using MediatR;
 using Mapster;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
-using System.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
 using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
+using HrManagementSystem.Features.Common.Team.AddTeams.Dtos;
 
 namespace HrManagementSystem.Features.Common.Department.AddDepartments.Commands
 {
-    public record AddDepartmentsCommand(List<AddDepartmentRequestDto> departmentsRequestDto, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
+    public record AddDepartmentsCommand(List<AddDepartmentsHierarchyRequestDto> departmentsRequestDto, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
     public class AddDepartmentsCommandHandler : RequestHandlerBase<AddDepartmentsCommand, RequestResult<List<DepartmentsResponseDto>>, HrManagementSystem.Common.Entities.Department>
     {
         public AddDepartmentsCommandHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Department> parameters) : base(parameters)

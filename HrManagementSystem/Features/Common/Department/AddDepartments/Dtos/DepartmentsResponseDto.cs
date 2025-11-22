@@ -1,4 +1,6 @@
-﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
+﻿
+
+using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 
 namespace HrManagementSystem.Features.Common.Department.AddDepartments.Dtos
 {
@@ -6,7 +8,7 @@ namespace HrManagementSystem.Features.Common.Department.AddDepartments.Dtos
     {
         public string DepartmentId { get; set; }
         public string DepartmentName { get; set; } //for a default value
-        public string BranchId { get; set; }
+        public string BranchId { get; set; }   
         public string CompanyId { get; set; }
         public List<TeamsDto> Teams { get; set; }
     }

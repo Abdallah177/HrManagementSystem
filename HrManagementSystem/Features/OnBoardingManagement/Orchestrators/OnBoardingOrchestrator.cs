@@ -6,14 +6,17 @@ using MediatR;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
 using HrManagementSystem.Features.CompanyManagement.AddCompany.Dtos;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
 using HrManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
 using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Commands;
 using Mapster;
 using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Dtos;
 using HrManagementSystem.Common.Enums;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Commands;
+using HrManagementSystem.Features.Common.Department.AddDepartments.Commands;
+using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
+using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
+using HrManagementSystem.Features.Common.Team.AddTeams.Dtos;
+using HrManagementSystem.Features.Common.Team.AddTeams.Commands;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
@@ -37,14 +40,14 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
             var companiesResult = await _mediator.Send(new OnBoardingCompainesCommand(companiesRequest, organizationResult.Data, request.currentUserId), cancellationToken);
 
             var branchesRequest = companiesResult.Data.Adapt<List<AddBranchesHierarchyRequestDto>>();
-            var branchesResult = await _mediator.Send(new OnBoardingBranchesCommand(branchesRequest, request.currentUserId),cancellationToken);
+            var branchesResult = await _mediator.Send(new AddBranchesCommand(branchesRequest, request.currentUserId),cancellationToken);
 
             var departmentRequest = branchesResult.Data.Adapt<List<AddDepartmentsHierarchyRequestDto>>();
-            var departmentsResult = await _mediator.Send(new OnBoardingDepartmentsCommand(departmentRequest, request.currentUserId), cancellationToken);
+            var departmentsResult = await _mediator.Send(new AddDepartmentsCommand(departmentRequest, request.currentUserId), cancellationToken);
 
             var teamsRequest = departmentsResult.Data.Adapt<List<AddTeamsHierarchyRequestDto>>();
 
-            var teamsResult = await _mediator.Send(new OnBoardingTeamsCommand(teamsRequest,organizationResult.Data, request.currentUserId), cancellationToken);
+            var teamsResult = await _mediator.Send(new AddTeamsCommand(teamsRequest,organizationResult.Data, request.currentUserId), cancellationToken);
 
             if (!teamsResult.IsSuccess)
                 return RequestResult<bool>.Failure("The hierarchy added successfully", ErrorCode.FailToAddedHierarchy);

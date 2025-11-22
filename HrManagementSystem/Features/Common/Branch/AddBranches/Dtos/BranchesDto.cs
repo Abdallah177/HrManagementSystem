@@ -1,6 +1,6 @@
-﻿using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Department;
+﻿using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch
+namespace HrManagementSystem.Features.Common.Branch.AddBranches.Dtos
 {
     public record BranchesDto(
          string Name,

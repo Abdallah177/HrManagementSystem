@@ -1,16 +1,16 @@
 ﻿using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common;
 using HrManagementSystem.Common.Views;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Branch;
-using MediatR;
-using Mapster;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
 using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
-using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
+using MediatR;
+using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
+using System.Linq;
+using Mapster;
+
 
 namespace HrManagementSystem.Features.Common.Branch.AddBranches.Commands
 {
-    public record AddBranchesCommand(List<AddBranchesRequestDto> branchesRequestDto, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
+    public record AddBranchesCommand(List<AddBranchesHierarchyRequestDto> branchesRequestDto, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
     public class AddBranchesCommandHandler : RequestHandlerBase<AddBranchesCommand, RequestResult<List<BranchesResponseDto>>, HrManagementSystem.Common.Entities.Branch>
     {
         public AddBranchesCommandHandler(RequestHandlerBaseParameters<HrManagementSystem.Common.Entities.Branch> parameters) : base(parameters)

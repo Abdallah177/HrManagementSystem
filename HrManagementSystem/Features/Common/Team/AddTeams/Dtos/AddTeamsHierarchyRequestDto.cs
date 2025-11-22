@@ -1,4 +1,4 @@
-﻿namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team
+﻿namespace HrManagementSystem.Features.Common.Team.AddTeams.Dtos
 {
     public record AddTeamsHierarchyRequestDto(
      string DepartmentId,

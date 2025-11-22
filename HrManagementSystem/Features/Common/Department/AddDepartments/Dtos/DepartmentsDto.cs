@@ -1,4 +1,6 @@
-﻿namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos
+﻿using HrManagementSystem.Features.Common.Team.AddTeams.Dtos;
+
+namespace HrManagementSystem.Features.Common.Department.AddDepartments.Dtos
 {
     public record DepartmentsDto(
         string Name,
