@@ -60,22 +60,22 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.C
             if (ids == null || ids.Count == 0)
                 return;
 
-            foreach (var id in ids)
-            {
-                var scopeVm = new ScopeViewModel
-                {
-                    OrganizationId = request.ScopeViewModel.OrganizationId,
-                    CompanyId = type == "company" ? id : null,
-                    BranchId = type == "branch" ? id : null,
-                    DepartmentId = type == "dept" ? id : null,
-                    TeamId = type == "team" ? id : null,
-                };
+            //foreach (var id in ids)
+            //{
+            //    var scopeVm = new ScopeViewModel
+            //    {
+            //        OrganizationId = request.ScopeViewModel.OrganizationId,
+            //        CompanyId = type == "company" ? id : null,
+            //        BranchId = type == "branch" ? id : null,
+            //        DepartmentId = type == "dept" ? id : null,
+            //        TeamId = type == "team" ? id : null,
+            //    };
 
-                //await _mediator.Send(
-                //    new ConfigurationScopeOrchestrator<BreakScope, Break>(scopeVm, breakId),
-                //    cancellationToken
-                //);
-            }
+            //    //await _mediator.Send(
+            //    //    new ConfigurationScopeOrchestrator<BreakScope, Break>(scopeVm, breakId),
+            //    //    cancellationToken
+            //    //);
+            //}
         }
     }
 
