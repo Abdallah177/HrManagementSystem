@@ -11,7 +11,7 @@ using MediatR;
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScopeOrchestrator
 {
-    public record ConfigurationScopeOrchestrator<TConfigScope, TEntity>(ScopeViewModel ViewModel, string ConfigId)
+    public record ConfigurationScopeOrchestrator<TConfigScope, TEntity>(OrganizationViewModel ViewModel, string ConfigId)
         : IRequest<RequestResult<bool>>
         where TConfigScope : BaseScope<TEntity>, new()
         where TEntity : BaseModel;
@@ -24,8 +24,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
         where TConfigScope : BaseScope<TEntity>, new()
         where TEntity : BaseModel
     {
-        public ConfigurationScopeOrchestratorHandler(
-            RequestHandlerBaseParameters<TConfigScope> parameters)
+        public ConfigurationScopeOrchestratorHandler(RequestHandlerBaseParameters<TConfigScope> parameters)
             : base(parameters)
         {
         }
@@ -35,23 +34,14 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
             CancellationToken cancellationToken)
         {
 
-            //var IsConfigIdExist = await _mediator.Send(new CheckExistsQuery<TEntity>(request.ConfigId));
+            var IsConfigIdExist = await _mediator.Send(new CheckExistsQuery<TEntity>(request.ConfigId));
 
-            //if (!IsConfigIdExist)
-            //    return RequestResult<bool>.Failure($"Configuration Entity is Not Found",ErrorCode.ConfiguratioEntityNotFound); 
+            if (!IsConfigIdExist)
+                return RequestResult<bool>.Failure($"Configuration Entity is Not Found", ErrorCode.ConfiguratioEntityNotFound);
 
-            var scopeIdResponse = await _mediator.Send(
-                new GetScopeQuery(
-                    request.ViewModel.OrganizationId,
-                    request.ViewModel.CompanyId,
-                    request.ViewModel.BranchId,
-                    request.ViewModel.DepartmentId,
-                    request.ViewModel.TeamId
-                )
-            );
+            var scopeIdResponse = await _mediator.Send(new GetScopeQuery(request.ViewModel));
 
-            if (!scopeIdResponse.IsSuccess)
-                return RequestResult<bool>.Failure(
+            if (!scopeIdResponse.IsSuccess)return RequestResult<bool>.Failure(
                     scopeIdResponse.Message,
                     scopeIdResponse.ErrorCode
                 );

@@ -65,12 +65,8 @@
 
         NotExist = 401,
 
-
-<<<<<<< HEAD
         ShiftNotExist=340,
         NonShiftFound,
 
-=======
->>>>>>> master
     }
 }

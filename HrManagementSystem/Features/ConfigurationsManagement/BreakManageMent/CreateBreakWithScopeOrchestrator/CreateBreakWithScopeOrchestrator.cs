@@ -71,10 +71,10 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.C
                     TeamId = type == "team" ? id : null,
                 };
 
-                await _mediator.Send(
-                    new ConfigurationScopeOrchestrator<BreakScope, Break>(scopeVm, breakId),
-                    cancellationToken
-                );
+                //await _mediator.Send(
+                //    new ConfigurationScopeOrchestrator<BreakScope, Break>(scopeVm, breakId),
+                //    cancellationToken
+                //);
             }
         }
     }

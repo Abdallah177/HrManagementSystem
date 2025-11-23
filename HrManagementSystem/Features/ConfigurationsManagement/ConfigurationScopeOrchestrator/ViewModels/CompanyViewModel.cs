@@ -2,7 +2,7 @@
 {
     public class CompanyViewModel
     {
-        public string CompanyId { get; set; } = null!;
-        public DepartmentViewModel? departmentViewModel { get; set; } 
+        public string? CompanyId { get; set; } = null!;
+        public List<BranchViewModel?> barnchViewModel { get; set; } = null!;
     }
 }
