@@ -11,7 +11,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingDepartmentsCommand(List<BranchesResponseDto> Branches, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
+    public record OnBoardingDepartmentsCommand(List<AddDepartmentsHierarchyRequestDto> departmentsReuestDto, string currentUserId) : IRequest<RequestResult<List<DepartmentsResponseDto>>>;
     public class OnBoardingDepartmentsCommandHandler : RequestHandlerBase<OnBoardingDepartmentsCommand, RequestResult<List<DepartmentsResponseDto>>, Department>
     {
         public OnBoardingDepartmentsCommandHandler(RequestHandlerBaseParameters<Department> parameters) : base(parameters)
@@ -22,7 +22,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var departmentsResponses = new List<DepartmentsResponseDto>();
 
-            var departmentsDtos = request.Branches
+            var departmentsDtos = request.departmentsReuestDto
              .SelectMany(branch =>
                (branch.Departments != null && branch.Departments.Count != 0)
                 ? branch.Departments

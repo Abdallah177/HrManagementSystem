@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.Common.CheckIsEnt
 
         public async override Task<bool> Handle(CheckIsEntityExistQuery<TConfiguration> request, CancellationToken cancellationToken)
         {
-            var exists = await _repository.IsExistsAsync(request.Predicate);
+            var exists = await _repository.IsExistsAsync(request.Predicate ,cancellationToken);
             return exists;
         }
     }

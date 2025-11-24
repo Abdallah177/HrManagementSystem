@@ -3,14 +3,15 @@ using HrManagementSystem.Common.Entities.FeatureSope;
 using HrManagementSystem.Common.Views;
 using HrManagementSystem.Features.CompanyManagement.GetAllCompany.Query;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Team;
+using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Dtos;
 using HrManagementSystem.Features.OnBoardingManagement.Queries;
 using Mapster;
 using MediatR;
 using System.Net.NetworkInformation;
 
-namespace HrManagementSystem.Features.OnBoardingManagement.Commands.GenerateScope
+namespace HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Commands
 {
-    public record GenerateScopeCommand(List<TeamsResponseDto> scopesData,string currentUserId) : IRequest<RequestResult<int>>;
+    public record GenerateScopeCommand(List<GenerateScopesDto> scopesData, string currentUserId) : IRequest<RequestResult<int>>;
 
     public class GenerateScopeCommandHandler : RequestHandlerBase<GenerateScopeCommand, RequestResult<int>, ScopeBase>
     {
@@ -24,7 +25,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.GenerateScop
 
             await _repository.AddRangeAsync(scopes, request.currentUserId, cancellationToken);
 
-            return RequestResult<int>.Success(scopes.Count,$"Generated {scopes.Count} scopes successfully");
+            return RequestResult<int>.Success(scopes.Count, $"Generated {scopes.Count} scopes successfully");
 
         }
     }

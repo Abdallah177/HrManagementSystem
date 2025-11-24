@@ -13,7 +13,7 @@ namespace HrManagementSystem.Features.Common.Company.CheckCompanyExists
 
         public override async Task<bool> Handle(CheckCompanyExistsQuery request, CancellationToken cancellationToken)
         {
-            var result = await _repository.IsExistsAsync(C => C.Id == request.Id);
+            var result = await _repository.IsExistsAsync(C => C.Id == request.Id, cancellationToken);
 
             if (result)
                 return false;

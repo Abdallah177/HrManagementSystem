@@ -16,7 +16,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.VacationMangement
         public override async Task<RequestResult<bool>> Handle(DeleteVacationCommand request, CancellationToken cancellationToken)
         {
             // CheckVacationExists
-            var IsVacationExists = await _repository.IsExistsAsync(p => p.Id == request.Id);
+            var IsVacationExists = await _repository.IsExistsAsync(p => p.Id == request.Id, cancellationToken);
             if (!IsVacationExists)
                 return RequestResult<bool>.Failure("Vacation Not Found", ErrorCode.VacationNotExist);
 

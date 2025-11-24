@@ -8,5 +8,5 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company
     string? Email,
     string CountryId,
     string OrganizationId,
-     List<BranchesDto>? Branches = null);
+    List<BranchesDto>? Branches = null);
 }

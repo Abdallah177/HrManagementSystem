@@ -14,7 +14,7 @@ namespace HrManagementSystem.Features.DepartmentManagement.Common.CheckDepartmen
         }
         public async override Task<RequestResult<bool>> Handle(CheckDepartmentIsExistQuery request, CancellationToken cancellationToken)
         {
-            var departmentExists = await _repository.IsExistsAsync(d => d.Id == request.DepartmentId);
+            var departmentExists = await _repository.IsExistsAsync(d => d.Id == request.DepartmentId , cancellationToken);
 
             return RequestResult<bool>.Success(departmentExists);
         }

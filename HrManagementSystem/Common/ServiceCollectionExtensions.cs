@@ -65,8 +65,11 @@ namespace HrManagementSystem.Common
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<State>, bool>), typeof(CheckExistsQueryHandler<State>));
             services.AddTransient(typeof(IRequestHandler<CheckExistsQuery<Branch>, bool>), typeof(CheckExistsQueryHandler<Branch>));
 
+            services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Organization>, bool>), typeof(CheckIsEntityExistQueryHandler<Organization>));
+
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<ShiftScope, Shift>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<ShiftScope, Shift>>();
 
+<<<<<<< HEAD
             services.AddTransient<IRequestHandler<ConfigurationScopeOrchestrator<BreakScope, Break>, RequestResult<bool>>, ConfigurationScopeOrchestratorHandler<BreakScope, Break>>();
 
             services.AddTransient<IRequestHandler<AddConfigurationScopeCommand<BreakScope, Break>, RequestResult<bool>>, AddConfigurationScopeCommandHandler<BreakScope, Break>>();
@@ -74,6 +77,8 @@ namespace HrManagementSystem.Common
             services.AddTransient<IRequestHandler<CheckConfigurationScopeExistQuery<BreakScope, Break>, bool>, CheckConfigurationScopeExistQueryHandler<BreakScope, Break>>();
 
 
+=======
+>>>>>>> 189bbbbc7e0745fdbac0426f360cd7f7c67732a4
             services.AddScoped<TransactionMiddleware>();
 
             services.AddFluentValidationConfig();

@@ -48,6 +48,7 @@
     <Folder Include="Features\CompanyManagement\AddCompany\Queries\" />
     <Folder Include="Features\CompanyManagement\UpdateCompany\Queries\" />
     <Folder Include="Features\BranchManagement\GetAllBranches\Commands\" />
+    <Folder Include="Features\ConfigurationsManagement\ProbationMangement\AddProbation\Queries\" />
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\Common\Query\" />
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\DeleteProbation\Queries\" />
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\GetAllProbation\Commands\" />

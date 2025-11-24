@@ -9,7 +9,7 @@ using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
-    public record OnBoardingBranchesCommand(List<CompaniesResponseDto> Companies, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
+    public record OnBoardingBranchesCommand(List<AddBranchesHierarchyRequestDto> branchesRequestDto, string currentUserId) : IRequest<RequestResult<List<BranchesResponseDto>>>;
     public class OnBoardingBranchesCommandHandler : RequestHandlerBase<OnBoardingBranchesCommand, RequestResult<List<BranchesResponseDto>>, Branch>
     {
         public OnBoardingBranchesCommandHandler(RequestHandlerBaseParameters<Branch> parameters) : base(parameters)
@@ -20,7 +20,7 @@ namespace HrManagementSystem.Features.OnBoardingManagement.Commands
         {
             var branchesResponses = new List<BranchesResponseDto>();
 
-            var branchesDtos = request.Companies
+            var branchesDtos = request.branchesRequestDto
               .SelectMany(company =>
                 (company.Branches != null && company.Branches.Count != 0)
                     ? company.Branches
