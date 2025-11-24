@@ -65,8 +65,13 @@
 
         NotExist = 401,
 
+<<<<<<< HEAD
         FailToAddFullScopes = 500,
         FailToAddedHierarchy = 501,
+=======
+        ShiftNotExist=340,
+        NonShiftFound,
+>>>>>>> abdullah-features
 
     }
 }

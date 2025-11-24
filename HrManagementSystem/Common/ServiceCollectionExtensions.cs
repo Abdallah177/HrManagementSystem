@@ -74,6 +74,11 @@ namespace HrManagementSystem.Common
 
             services.AddTransient<IRequestHandler<AddConfigurationScopeCommand<BreakScope, Break>, RequestResult<bool>>, AddConfigurationScopeCommandHandler<BreakScope, Break>>();
 
+            services.AddTransient<IRequestHandler<AddConfigurationScopeCommand<ShiftScope, Shift>,RequestResult<bool>>, AddConfigurationScopeCommandHandler<ShiftScope, Shift>>();
+
+            services.AddTransient<IRequestHandler<CheckConfigurationScopeExistQuery<ShiftScope, Shift>, bool>,CheckConfigurationScopeExistQueryHandler<ShiftScope, Shift>>();
+
+
             services.AddTransient<IRequestHandler<CheckConfigurationScopeExistQuery<BreakScope, Break>, bool>, CheckConfigurationScopeExistQueryHandler<BreakScope, Break>>();
 
 

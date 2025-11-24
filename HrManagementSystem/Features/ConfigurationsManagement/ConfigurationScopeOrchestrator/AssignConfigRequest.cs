@@ -4,7 +4,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
 {
     public class AssignConfigRequest
     {
-        public ScopeViewModel ScopeViewModel { get; set; } = null!;
+        public OrganizationViewModel ScopeViewModel { get; set; } = null!;
         public string ConfigId { get; set; } = null!;
     }
 
