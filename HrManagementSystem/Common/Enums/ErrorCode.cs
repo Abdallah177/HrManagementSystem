@@ -61,17 +61,16 @@
 
         BreakNotFound = 330,
         NonBreakFound = 331,
-        DisabilityTypeNotExist =400,
 
+        ShiftNotExist = 340,
+        NonShiftFound = 341,
+
+        DisabilityTypeNotExist =400,
         NotExist = 401,
 
-<<<<<<< HEAD
         FailToAddFullScopes = 500,
         FailToAddedHierarchy = 501,
-=======
-        ShiftNotExist=340,
-        NonShiftFound,
->>>>>>> abdullah-features
+
 
     }
 }
