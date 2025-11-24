@@ -34,11 +34,6 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScop
             CancellationToken cancellationToken)
         {
 
-            var IsConfigIdExist = await _mediator.Send(new CheckExistsQuery<TEntity>(request.ConfigId));
-
-            if (!IsConfigIdExist)
-                return RequestResult<bool>.Failure($"Configuration Entity is Not Found", ErrorCode.ConfiguratioEntityNotFound);
-
             var scopeIdResponse = await _mediator.Send(new GetScopeQuery(request.ViewModel));
 
             if (!scopeIdResponse.IsSuccess)return RequestResult<bool>.Failure(

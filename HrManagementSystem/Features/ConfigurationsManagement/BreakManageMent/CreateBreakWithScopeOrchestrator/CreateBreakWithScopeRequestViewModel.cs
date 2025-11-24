@@ -1,4 +1,6 @@
-﻿namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.CreateBreakWithScopeOrchestrator
+﻿using HrManagementSystem.Features.ConfigurationsManagement.ConfigurationScopeOrchestrator.ViewModels;
+
+namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.CreateBreakWithScopeOrchestrator
 {
     public class CreateBreakWithScopeRequestViewModel
     {
@@ -6,6 +8,6 @@
         public TimeSpan Duration { get; set; }
         public bool IsPaid { get; set; }
 
-        public MultiScopeViewModel ScopeViewModel { get; set; } = null!;
+        public OrganizationViewModel ScopeViewModel { get; set; } = null!;
     }
 }
