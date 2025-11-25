@@ -39,6 +39,8 @@ namespace HrManagementSystem.Common.Data
         public DbSet<RequestScope> RequestScopes { get; set; }
         public DbSet<ShiftScope> ShiftScopes { get; set; }
         public DbSet<VacationScope> VacationScopes { get; set; }
+        public DbSet<PublicHoliday> PublicHolidays { get; set; }
+
 
 
 
