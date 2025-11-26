@@ -1,5 +1,6 @@
 
 using HrManagementSystem.Common;
+using HrManagementSystem.Common.Helper.HolidayService;
 using HrManagementSystem.Common.Middlewares;
 using HrManagementSystem.Common.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,11 @@ namespace HrManagementSystem
             builder.Services.AddScoped(typeof(RequestHandlerBaseParameters<>));
             builder.Services.AddScoped(typeof(EndpointBaseParameters<>));
             builder.Services.AddGenericConfigurationHandlers();
+
+            builder.Services.Configure<HolidayApiSettings>(builder.Configuration.GetSection("HolidayApi"));
+
+            builder.Services.AddHttpClient<IHolidayClient, HolidayClient>();
+
 
             var app = builder.Build();
 
