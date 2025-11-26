@@ -1,8 +1,8 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.Common.Location.City;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
-using HrManagementSystem.Features.OnBoardingManagement.Queries.GetDefaultCitiesByCountryIds;
 using Mapster;
 using MediatR;
 

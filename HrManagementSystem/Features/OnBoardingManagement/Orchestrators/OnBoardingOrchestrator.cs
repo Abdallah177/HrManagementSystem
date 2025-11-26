@@ -7,9 +7,7 @@ using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos;
 using HrManagementSystem.Features.CompanyManagement.AddCompany.Dtos;
 using HrManagementSystem.Features.OnBoardingManagement.Commands.Dtos.Company;
 using HrManagementSystem.Features.OrganizationManagement.AddOrganization.Commands;
-using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Commands;
 using Mapster;
-using HrManagementSystem.Features.OnBoardingManagement.GenerateScope.Dtos;
 using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Features.Common.Branch.AddBranches.Commands;
 using HrManagementSystem.Features.Common.Department.AddDepartments.Commands;
@@ -17,6 +15,8 @@ using HrManagementSystem.Features.Common.Branch.AddBranches.Dtos;
 using HrManagementSystem.Features.Common.Department.AddDepartments.Dtos;
 using HrManagementSystem.Features.Common.Team.AddTeams.Dtos;
 using HrManagementSystem.Features.Common.Team.AddTeams.Commands;
+using HrManagementSystem.Features.Common.Scope.GenerateScopes.Dtos;
+using HrManagementSystem.Features.Common.Scope.GenerateScopes.Commands;
 
 namespace HrManagementSystem.Features.OnBoardingManagement.Commands
 {
