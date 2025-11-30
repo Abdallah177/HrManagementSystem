@@ -39,7 +39,10 @@ namespace HrManagementSystem.Features.CompanyManagement.AddCompany.Orchestrators
                 return RequestResult<AddCompanyResponseViewModel>.Failure("A company with the same name already exists in this country and organization.", ErrorCode.DuplicateRecord);
 
             var addCompanyResult = await _mediator.Send(new AddCompanyCommand(request.Name,request.Email,request.CountryId,request.OrganizationId,request.currentUserId));
-            if()
+            if (!addCompanyResult.IsSuccess)
+                return RequestResult<AddCompanyResponseViewModel>.Failure(addCompanyResult.Message);
+
+            var company = addCompanyResult.Data;
         }
     }
 
