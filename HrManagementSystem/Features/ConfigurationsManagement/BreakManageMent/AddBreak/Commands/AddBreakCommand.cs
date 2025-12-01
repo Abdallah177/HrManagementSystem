@@ -26,7 +26,7 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.BreakManageMent.A
 
             var Break = request.Adapt<Break>();
 
-            await _repository.AddAsync(Break, cancellationToken);
+            await _repository.AddAsync(Break, "System",cancellationToken);
 
             var addBreakDto = Break.Adapt<AddBreakDto>();
 

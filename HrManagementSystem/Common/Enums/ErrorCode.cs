@@ -61,12 +61,16 @@
 
         BreakNotFound = 330,
         NonBreakFound = 331,
-        DisabilityTypeNotExist =400,
 
+        ShiftNotExist = 340,
+        NonShiftFound = 341,
+
+        DisabilityTypeNotExist =400,
         NotExist = 401,
 
         FailToAddFullScopes = 500,
         FailToAddedHierarchy = 501,
+
 
     }
 }

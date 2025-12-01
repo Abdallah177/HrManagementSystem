@@ -2,7 +2,7 @@
 {
     public class DepartmentViewModel
     {
-        public string DepartmentId { get; set; } = null!;
-        public TeamViewModel? teamViewModel { get; set; }
+        public string? DepartmentId { get; set; } = null!;
+        public List<TeamViewModel?> teamViewModel { get; set; } = null!;
     }
 }

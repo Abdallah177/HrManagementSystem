@@ -2,6 +2,6 @@
 {
     public class TeamViewModel
     {
-        public string TeamId { get; set; } = null!;
+        public string? TeamId { get; set; } = null!;
     }
 }
