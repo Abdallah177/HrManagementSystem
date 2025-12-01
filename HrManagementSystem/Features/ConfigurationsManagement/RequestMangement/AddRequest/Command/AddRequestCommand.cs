@@ -1,26 +1,30 @@
 ﻿using HrManagementSystem.Common;
 using HrManagementSystem.Common.Entities.Features;
+using HrManagementSystem.Common.Enums;
 using HrManagementSystem.Common.Enums.FeatureEnums;
 using HrManagementSystem.Common.Views;
+using HrManagementSystem.Features.ConfigurationsManagement.Common.CheckIsEntityExist.Queries;
+using HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest.DTOS;
+using Mapster;
 using MediatR;
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest.Command
 {
-    public record AddRequestCommand(string Title, RequestStatus Status, string Description, string UserId) : IRequest<RequestResult<bool>>;
+    public record AddRequestCommand(string Title, RequestStatus Status, string Description, string UserId) : IRequest<RequestResult<AddRequestDTO>>;
 
-    public class AddRequestCommandHandler : RequestHandlerBase<AddRequestCommand, RequestResult<bool>, Request>
+    public class AddRequestCommandHandler : RequestHandlerBase<AddRequestCommand, RequestResult<AddRequestDTO>, Request>
     {
         public AddRequestCommandHandler(RequestHandlerBaseParameters<Request> parameters) : base(parameters) { }
-        public override async Task<RequestResult<bool>> Handle(AddRequestCommand request, CancellationToken cancellationToken)
+        public override async Task<RequestResult<AddRequestDTO>> Handle(AddRequestCommand request, CancellationToken cancellationToken)
         {
-            var requestEntity = new Request
-            {
-                Title = request.Title,
-                Status = request.Status,
-                Description = request.Description
-            };
-            await _repository.AddAsync(requestEntity, request.UserId, cancellationToken);
-            return RequestResult<bool>.Success(true, "Request created successfully");
+            var ExistRequest = await _mediator.Send(new CheckIsEntityExistQuery<Request>(x=>x.Title==request.Title));
+            if (ExistRequest)
+                return RequestResult<AddRequestDTO>.Failure("A Request with this title already exists.", ErrorCode.DuplicateRecord);
+            var requestEntity = request.Adapt<Request>();
+            await _repository.AddAsync(requestEntity, cancellationToken);
+            var addRequestDto = requestEntity.Adapt<AddRequestDTO>();
+            return RequestResult<AddRequestDTO>.Success(addRequestDto);
+
         }
     }
 

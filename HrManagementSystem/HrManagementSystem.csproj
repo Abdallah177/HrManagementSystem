@@ -54,6 +54,7 @@
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\GetAllProbation\Commands\" />
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\GetProbationById\Commands\" />
     <Folder Include="Features\ConfigurationsManagement\ProbationMangement\UpdateProbation\Queries\" />
+    <Folder Include="Features\ConfigurationsManagement\RequestMangement\AddRequest\Query\" />
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\DeleteVacation\Queries\" />
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\GetAllVacation\Command\" />
     <Folder Include="Features\ConfigurationsManagement\VacationMangement\GetVacationById\Commands\" />
