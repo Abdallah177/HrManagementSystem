@@ -6,31 +6,29 @@ using HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddR
 using HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest.DTOS;
 using System.ComponentModel.DataAnnotations;
 
-namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest
+namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest.RequestOrchestrator
 {
-    public class AddRequestViewModel
+    public class AddRequestViewModelWithScop
     {
-       
 
         //list of List Ids {o,c,b,d,t}
-        public ScopeViewModel ScopeViewModel { get; set; } = null!;
 
-        //entity id 
-        public string ConfigId { get; set; } = null!;
-
+        public OrganizationViewModel ScopeViewModel { get; set; } = null!;
+        
         //Property
         
-        public AddRequestCommand AddRequestCommand { get; set; }
-
+        public string Title { get; set; }
+        public RequestStatus Status { get; set; }
+        public  string Description { get; set; }
+          
 
     }
 
-    public class AddRequestViewModelValidator : AbstractValidator<AddRequestViewModel>
+    public class AddRequestViewModelValidator : AbstractValidator<AddRequestViewModelWithScop>
     {
         public AddRequestViewModelValidator()
         {
-            RuleFor(x => x).NotNull().WithMessage("Request data is required.");
-            RuleFor(x => x.ConfigId).NotEmpty().WithMessage("ConfigId is required.");   
+            RuleFor(x => x).NotNull().WithMessage("Request data is required.");  
            
         }
     }

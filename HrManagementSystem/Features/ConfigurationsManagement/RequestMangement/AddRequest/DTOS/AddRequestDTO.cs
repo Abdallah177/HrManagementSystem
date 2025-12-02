@@ -2,5 +2,5 @@
 
 namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.AddRequest.DTOS
 {
-    public record AddRequestDTO(string Title, string? Description, RequestStatus Status);
+    public record AddRequestDTO( string Id,string Title, string? Description, RequestStatus Status);
 }

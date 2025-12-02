@@ -19,7 +19,8 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.
             config.NewConfig<Request, AddRequestDTO>()
                 .Map(dest => dest.Title, src => src.Title)
                 .Map(dest => dest.Description, src => src.Description)
-                .Map(dest => dest.Status, src => src.Status);
+                .Map(dest => dest.Status, src => src.Status)
+                 .Map(dest => dest.Id, src => src.Id);
 
             config.NewConfig<AddRequestCommand, AddRequestDTO>()
                 .Map(dest => dest.Title, src => src.Title)
@@ -36,7 +37,8 @@ namespace HrManagementSystem.Features.ConfigurationsManagement.RequestMangement.
             config.NewConfig<AddRequestDTO, Request>()
                 .Map(dest => dest.Title, src => src.Title)
                 .Map(dest => dest.Description, src => src.Description)
-                .Map(dest => dest.Status, src => src.Status);
+                .Map(dest => dest.Status, src => src.Status)
+                .Map(dest => dest.Id, src => src.Id);
 
             config.NewConfig<AddRequestDTO, AddRequestCommand>()
                 .Map(dest => dest.Title, src => src.Title)

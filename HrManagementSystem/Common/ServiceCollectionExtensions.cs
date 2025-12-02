@@ -136,6 +136,11 @@ namespace HrManagementSystem.Common
 
             services.AddTransient(typeof(IRequestHandler<CheckIsEntityExistQuery<Disability>, bool>), typeof(CheckIsEntityExistQueryHandler<Disability>));
 
+            services.AddTransient<
+    IRequestHandler<ConfigurationScopeOrchestrator<RequestScope, Request>, RequestResult<bool>>,
+    ConfigurationScopeOrchestratorHandler<RequestScope, Request>
+>();
+
 
             return services;
         }
